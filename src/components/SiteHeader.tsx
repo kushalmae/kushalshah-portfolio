@@ -1,7 +1,8 @@
 import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { useTheme } from "next-themes";
+import { cn } from "@/lib/utils";
 
 const navItems = [
   { label: "About", path: "/about" },
@@ -15,12 +16,22 @@ const SiteHeader = () => {
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
   const { theme, setTheme } = useTheme();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-line">
+    <header className={cn(
+      "fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b transition-all duration-300",
+      scrolled ? "border-line shadow-[0_1px_20px_0_hsl(0_0%_0%/0.15)]" : "border-transparent"
+    )}>
       <div className="container flex items-center justify-between h-16">
-        <Link to="/" className="font-mono text-sm tracking-widest text-muted-foreground hover:text-foreground transition-colors uppercase">
-          KS
+        <Link to="/" className="text-sm font-semibold tracking-tight text-foreground hover:text-primary transition-colors">
+          Kushal Shah
         </Link>
 
         {/* Desktop nav */}
