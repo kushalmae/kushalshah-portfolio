@@ -138,6 +138,48 @@ const Work = () => {
               No case studies match this filter yet.
             </p>
           )}
+
+          <Reveal delay={220}>
+            <div className="mt-16 border border-line rounded-lg p-6 md:p-8 bg-card/30">
+              <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-muted-foreground mb-3">
+                Foundations
+              </p>
+              <h2 className="text-lg md:text-xl font-semibold tracking-tight text-foreground mb-3">
+                Legacy engineering portfolio: hands-on depth before leadership scope.
+              </h2>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-5 max-w-3xl">
+                Earlier work includes aircraft design optimization, robotics controls, wind-tunnel testing, solar thermal design,
+                and manufacturing builds (manual machining, CNC, molding, and 3D printing). That build-and-test foundation still
+                shapes how I make architectural and program decisions today.
+              </p>
+              <div className="flex flex-wrap gap-2 text-xs">
+                <a
+                  href="https://kushalshahmae.weebly.com/projects.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-1.5 border border-line rounded-sm text-muted-foreground hover:text-foreground hover:border-muted-foreground/40 transition-colors"
+                >
+                  Projects Archive
+                </a>
+                <a
+                  href="https://kushalshahmae.weebly.com/research-experience.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-1.5 border border-line rounded-sm text-muted-foreground hover:text-foreground hover:border-muted-foreground/40 transition-colors"
+                >
+                  Research Archive
+                </a>
+                <a
+                  href="https://kushalshahmae.weebly.com/3d-modeling-and-manufacturing.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-1.5 border border-line rounded-sm text-muted-foreground hover:text-foreground hover:border-muted-foreground/40 transition-colors"
+                >
+                  CAD / Manufacturing Archive
+                </a>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
     </PageLayout>

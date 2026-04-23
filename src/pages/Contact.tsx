@@ -11,10 +11,10 @@ const Contact = () => (
         <Reveal>
           <SectionLabel>Contact</SectionLabel>
           <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground mb-6">
-            Let's connect.
+            Let's build something mission-critical.
           </h1>
           <p className="text-muted-foreground leading-relaxed mb-16 max-w-xl">
-            I'm open to technical leadership roles, advisory engagements, and select collaborations where systems thinking and architectural clarity create real leverage.
+            I am open to technical program leadership, systems engineering management, and select advisory engagements where cross-functional execution and technical rigor drive measurable outcomes.
           </p>
         </Reveal>
 
@@ -57,7 +57,7 @@ const Contact = () => (
 
         <Reveal>
           <p className="text-sm text-muted-foreground">
-            Based in the United States. Open to remote and hybrid engagements.
+            Based in Cypress, California. Open to remote and hybrid engagements.
           </p>
         </Reveal>
       </div>

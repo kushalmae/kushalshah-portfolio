@@ -9,29 +9,29 @@ const About = () => (
         <Reveal>
           <SectionLabel>About</SectionLabel>
           <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground mb-12">
-            Breadth isn't a lack of focus — it's an architectural advantage.
+            I build mission-critical systems where technical depth and leadership have to work together.
           </h1>
         </Reveal>
 
         <div className="space-y-6 text-muted-foreground leading-relaxed">
           <Reveal delay={50}>
             <p>
-              My career started in aerospace and defense — working on payload systems, signal processing, radiometry, and missile classification. I didn't just operate these systems. I learned how they were designed, why they failed, and what made them resilient. That exposure trained me to think in systems, not features.
+              I am a Technical Program Manager and Section Manager at Northrop Grumman, where I lead teams working on OPIR payload performance for U.S. Space Force programs. My work spans mission algorithms, line-of-sight performance, radiometry, system testing, and anomaly response in high-consequence environments.
             </p>
           </Reveal>
           <Reveal delay={100}>
             <p>
-              Over time, I expanded into spacecraft-side engineering — power systems, bus architecture, GNC, flight dynamics, flight software, and ground software. I developed a rare ability to see across subsystem boundaries and understand how decisions in one domain ripple through others.
+              Across roles, I have led cross-functional execution through launch, early on-orbit testing, and sustainment phases. That means connecting hardware, software, thermal, GNC, electrical, mission planning, and operations teams into one coordinated delivery system under real schedule and budget pressure.
             </p>
           </Reveal>
           <Reveal delay={150}>
             <p>
-              Then I moved into software — building mission-critical internal tools, designing APIs and microservices, creating automation pipelines, and developing load monitoring and alarm platforms. Not because I abandoned hardware, but because I saw that software was the highest-leverage layer for improving complex systems.
+              I also design and ship internal software platforms that make technical organizations more effective. Using Python, Flask, Streamlit, React, and analytics tooling, I have built systems for anomaly monitoring, automated reporting, and build analysis that drove measurable savings and faster decision cycles.
             </p>
           </Reveal>
           <Reveal delay={200}>
             <p>
-              More recently, I've worked at the intersection of AI, workflow automation, and product strategy — designing AI agents, supporting startups from PRD through delivery, and shaping technical direction across engineering teams.
+              My background is rooted in mechanical and aerospace engineering with a controls-focused M.S. from UCLA, and strengthened by formal program leadership training including PMP certification.
             </p>
           </Reveal>
 
@@ -42,17 +42,17 @@ const About = () => (
           </Reveal>
           <Reveal delay={50}>
             <p>
-              I'm not a specialist who goes deep in one stack. I'm an architect who understands how real-world constraints — physics, budget, schedule, organizational friction, and technical debt — shape what's actually possible. I design systems that account for those constraints from the start.
+              I bring systems-level judgment: the ability to translate mission requirements into executable plans, align technical teams around clear architecture, and deliver outcomes that are technically sound and operationally reliable.
             </p>
           </Reveal>
           <Reveal delay={100}>
             <p>
-              I can sit in a room with hardware engineers, software developers, program managers, and executives — and translate between all of them. Not because I simplify, but because I understand each perspective deeply enough to find the structural solution.
+              I am most effective in complex environments where constraints are real: cost, schedule, risk, stakeholder alignment, and engineering uncertainty. I help teams move from ambiguity to decisions, and from decisions to execution.
             </p>
           </Reveal>
           <Reveal delay={150}>
             <p>
-              My value isn't in doing one thing extremely well. It's in seeing the whole system, identifying where structure is missing, and designing the architecture — technical, organizational, or strategic — that makes everything else work better.
+              Whether the problem is spacecraft performance, tooling, or organization design, my focus is the same: build structure that improves speed, quality, and long-term resilience.
             </p>
           </Reveal>
 
@@ -63,11 +63,11 @@ const About = () => (
           </Reveal>
           <ul className="space-y-3">
             {[
-              "Architecture is a leadership act, not just a technical one.",
-              "The best systems are designed for the constraints they'll actually face.",
-              "Clarity of structure creates speed. Ambiguity creates waste.",
-              "Software is leverage — but only when applied with systems awareness.",
-              "Cross-domain judgment is rarer and more valuable than deep specialization alone.",
+              "Architecture only matters when it survives real operational constraints.",
+              "Cross-functional clarity is a technical advantage, not only a management skill.",
+              "Teams execute faster when risk and assumptions are made explicit early.",
+              "Software should reduce friction for mission-critical engineering decisions.",
+              "Leadership is the system that makes technical excellence repeatable.",
             ].map((belief, i) => (
               <Reveal key={belief} delay={i * 60}>
                 <li className="flex gap-3 items-start">
