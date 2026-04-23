@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import SiteHeader from "./SiteHeader";
 import SiteFooter from "./SiteFooter";
+import BackToTop from "./BackToTop";
 import { site } from "@/config/site";
 
 interface PageLayoutProps {
@@ -19,6 +20,7 @@ const PageLayout = ({ children, title }: PageLayoutProps) => {
       <SiteHeader />
       <main className="flex-1 pt-16">{children}</main>
       <SiteFooter />
+      <BackToTop />
     </div>
   );
 };

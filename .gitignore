@@ -5,8 +5,7 @@ node_modules/
 dist/
 dist-ssr/
 
-# Environment
-.env
+# Environment — commit .env.example only, never actual values
 .env.local
 .env.*.local
 

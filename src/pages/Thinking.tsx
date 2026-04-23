@@ -39,22 +39,27 @@ const Thinking = () => (
           <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground mb-6">
             Writing on systems, strategy, and structure.
           </h1>
-          <p className="text-muted-foreground leading-relaxed mb-16">
+          <p className="text-muted-foreground leading-relaxed mb-4">
             Essays on technical architecture, systems design, and the intersection of engineering leadership and software leverage.
+          </p>
+          <p className="text-sm text-muted-foreground/60 mb-16">
+            Essays in progress — publishing soon.
           </p>
         </Reveal>
 
         <div className="space-y-0">
           {articles.map((article, i) => (
             <Reveal key={article.title} delay={i * 80}>
-              <div className="border-t border-line py-8">
+              <div className="group border-t border-line py-8">
                 <div className="flex flex-col md:flex-row md:items-start gap-2 md:gap-8">
-                  <span className="font-mono text-xs text-muted-foreground tracking-wider w-28 shrink-0 mt-1">
+                  <span className="font-mono text-xs text-muted-foreground/50 tracking-wider w-28 shrink-0 mt-1">
                     {article.date}
                   </span>
                   <div>
-                    <h3 className="text-base font-semibold text-foreground mb-2">{article.title}</h3>
-                    <p className="text-sm text-muted-foreground">{article.description}</p>
+                    <h3 className="text-base font-semibold text-foreground/60 mb-2 group-hover:text-foreground transition-colors">
+                      {article.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground/60">{article.description}</p>
                   </div>
                 </div>
               </div>
@@ -62,6 +67,18 @@ const Thinking = () => (
           ))}
           <div className="border-t border-line" />
         </div>
+
+        <Reveal delay={articles.length * 80 + 80}>
+          <div className="mt-12 pt-2">
+            <p className="text-sm text-muted-foreground">
+              To be notified when essays are published, reach out via the{" "}
+              <a href="/contact" className="text-foreground hover:text-primary underline underline-offset-4 transition-colors">
+                contact page
+              </a>
+              .
+            </p>
+          </div>
+        </Reveal>
       </div>
     </section>
   </PageLayout>
