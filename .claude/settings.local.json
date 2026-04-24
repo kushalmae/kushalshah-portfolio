@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(bun install *)",
-      "PowerShell(Get-Command *)"
+      "PowerShell(Get-Command *)",
+      "Bash(gh pr *)"
     ]
   }
 }

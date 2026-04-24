@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import PageLayout from "@/components/PageLayout";
 import SectionLabel from "@/components/SectionLabel";
 import Reveal from "@/components/Reveal";
@@ -99,6 +99,17 @@ const ArticlePage = () => {
                       </p>
                     ))}
                   </div>
+                  {section.relatedArticle && (
+                    <div className="mt-8 pt-6 border-t border-line/40">
+                      <Link
+                        to={`/thinking/${section.relatedArticle.slug}`}
+                        className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.15em] uppercase text-primary hover:text-primary/70 transition-colors"
+                      >
+                        {section.relatedArticle.label}
+                        <ArrowRight size={12} />
+                      </Link>
+                    </div>
+                  )}
                   {section.table && (
                     <div className="overflow-x-auto mt-8">
                       <table className="w-full text-sm border-collapse">

@@ -9,6 +9,7 @@ export interface ArticleSection {
   heading: string;
   paragraphs: string[];
   table?: ArticleTable;
+  relatedArticle?: { slug: string; label: string };
 }
 
 export interface Article {
@@ -32,7 +33,7 @@ export const articles: Article[] = [
     description:
       "Every gram, watt, and arc-second is allocated before a satellite ever leaves the ground. Missions don't fail from a single catastrophe — they fail from budget violations that cascade through interconnected systems.",
     date: "Apr 2025",
-    readTime: "15 min read",
+    readTime: "8 min read",
     tags: ["Aerospace", "Systems Engineering", "Architecture"],
     intro: [
       "Picture this: you're designing a satellite that needs to capture high-resolution Earth imagery, survive 15 years in the harsh radiation environment of geostationary orbit, maintain pointing accuracy within 0.01 degrees, and do all of this while weighing less than your car and consuming less power than a hair dryer. How do you ensure every subsystem gets exactly what it needs — no more, no less — while leaving enough margin for the unexpected?",
@@ -104,6 +105,10 @@ export const articles: Article[] = [
           "Pointing errors don't simply add together — they accumulate via Root Sum Square methodology, meaning each error source compounds in quadrature. Star tracker inaccuracies, reaction wheel precision limits, structural flexing from thermal gradients, and control system processing delays all stack into a total error envelope that must stay within mission requirements.",
           "The Hubble Space Telescope achieves 0.007 arcsecond pointing stability — equivalent to holding a laser pointer steady on a dime in New York while standing in Los Angeles. That precision requires six-degree-of-freedom vibration isolation, reaction wheels with magnetic bearings, fine guidance sensors updating 40 times per second, and a thermally stable graphite-epoxy structure. Every element feeds the same budget. Slip one, and the others cannot compensate.",
         ],
+        relatedArticle: {
+          slug: "satellite-pointing-budget",
+          label: "Deep Dive: The Pointing Budget",
+        },
       },
       {
         id: "radiation",
@@ -125,14 +130,24 @@ export const articles: Article[] = [
           "Budget violations compound. Engineers who understand this don't manage budgets as isolated constraints — they manage them as an interconnected system, watching the margins erode together and making trades with full visibility into the downstream effects.",
         ],
       },
-      {
-        id: "pointing-deep-dive",
-        label: "Deep Dive",
-        heading: "Pointing Budget: A Complete Treatment",
-        paragraphs: [
-          "Of all the satellite engineering budgets, pointing is the most architecturally pervasive. It touches the mechanical structure, the thermal design, the software, the sensor suite, and the actuator selection. A mass error shows up once — at the launch vehicle interface. A pointing error shows up in every image the satellite ever takes. The following sections build the pointing budget from first principles: what pointing accuracy actually means, where errors originate, how they compound mathematically, which hardware determines them, and how on-orbit calibration closes the loop between prediction and reality.",
-        ],
-      },
+    ],
+    insight:
+      "The art of satellite engineering isn't in any single budget — it's in understanding how every resource allocation decision propagates through every other constraint. That's not unique to spacecraft. It's the nature of any system where the physics are real and the margins are finite.",
+  },
+  {
+    slug: "satellite-pointing-budget",
+    title: "The Pointing Budget",
+    subtitle: "A Complete Treatment of Attitude Accuracy, Error Sources, and On-Orbit Verification",
+    description:
+      "Of all the satellite engineering budgets, pointing is the most architecturally pervasive. A deep dive into PKE, PCE, and PSE — from error sources and RSS methodology to hardware selection, cascade control, and on-orbit calibration.",
+    date: "Apr 2025",
+    readTime: "10 min read",
+    tags: ["Aerospace", "Systems Engineering", "Attitude Control"],
+    intro: [
+      "Of all the budgets that govern satellite design, pointing is the one that follows the mission everywhere. A mass error shows up once — at the launch vehicle interface. A power error manifests in worst-case operating modes. A pointing error shows up in every image, every science measurement, every communication link the spacecraft ever attempts. It is the budget that separates a capable spacecraft from an expensive piece of orbital metal.",
+      "This piece builds the pointing budget from first principles. It covers what pointing accuracy actually means — the three distinct quantities of knowledge, control, and stability — where errors originate across the sensor, actuator, structure, and software domains, how they compound mathematically through RSS methodology, which hardware physically embodies those error allocations, how the cascade control architecture converts them into torque commands, and how on-orbit calibration closes the loop between predicted and measured performance.",
+    ],
+    sections: [
       {
         id: "pointing-anatomy",
         label: "Pointing 01",
@@ -202,6 +217,6 @@ export const articles: Article[] = [
       },
     ],
     insight:
-      "The art of satellite engineering isn't in any single budget — it's in understanding how every resource allocation decision propagates through every other constraint. That's not unique to spacecraft. It's the nature of any system where the physics are real and the margins are finite.",
+      "A pointing budget isn't a specification you write once and hand to the hardware team. It's a living model that propagates every design assumption into an angular error term — and the gap between that model and on-orbit reality is the truest measure of how well the team understood the physics.",
   },
 ];
