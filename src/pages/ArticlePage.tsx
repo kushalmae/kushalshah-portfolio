@@ -99,6 +99,45 @@ const ArticlePage = () => {
                       </p>
                     ))}
                   </div>
+                  {section.table && (
+                    <div className="overflow-x-auto mt-8">
+                      <table className="w-full text-sm border-collapse">
+                        <thead>
+                          <tr className="border-b border-line">
+                            {section.table.headers.map((header, idx) => (
+                              <th
+                                key={idx}
+                                className="font-mono text-[10px] tracking-wider uppercase text-muted-foreground text-left py-3 pr-8 first:pl-0 whitespace-nowrap"
+                              >
+                                {header}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {section.table.rows.map((row, rowIdx) => (
+                            <tr
+                              key={rowIdx}
+                              className="border-b border-line/40 hover:bg-muted/10 transition-colors"
+                            >
+                              {row.map((cell, cellIdx) => (
+                                <td
+                                  key={cellIdx}
+                                  className={`py-3 pr-8 first:pl-0 align-top leading-relaxed text-foreground/75 ${
+                                    cellIdx === 0
+                                      ? "font-medium text-foreground whitespace-nowrap"
+                                      : ""
+                                  }`}
+                                >
+                                  {cell}
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  )}
                 </div>
               </Reveal>
             ))}
