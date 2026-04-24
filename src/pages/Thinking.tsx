@@ -12,6 +12,13 @@ const articles = [
     date: "Apr 2025",
   },
   {
+    slug: "satellite-pointing-budget",
+    title: "The Pointing Budget",
+    description:
+      "Of all the satellite engineering budgets, pointing is the most architecturally pervasive. A complete treatment: PKE, PCE, and PSE, error sources and RSS methodology, hardware selection, cascade control, and on-orbit calibration.",
+    date: "Apr 2025",
+  },
+  {
     title: "Why Systems Architects Think Differently",
     description:
       "On the difference between solving problems and designing the structure that prevents them.",
