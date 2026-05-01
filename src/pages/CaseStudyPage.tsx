@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ExternalLink } from "lucide-react";
 import PageLayout from "@/components/PageLayout";
 import SectionLabel from "@/components/SectionLabel";
 import Reveal from "@/components/Reveal";
@@ -78,6 +78,17 @@ const CaseStudyPage = () => {
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-3xl">
               {study.summary}
             </p>
+            {study.githubUrl && (
+              <a
+                href={study.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 mt-4 font-mono text-[11px] tracking-[0.15em] uppercase text-primary hover:text-primary/70 transition-colors"
+              >
+                View Source on GitHub
+                <ExternalLink size={12} />
+              </a>
+            )}
           </Reveal>
         </div>
       </section>
@@ -181,6 +192,30 @@ const CaseStudyPage = () => {
           </div>
         </div>
       </section>
+
+      <div className="container max-w-4xl"><div className="h-px bg-line" /></div>
+
+      {/* Related article */}
+      {study.relatedArticle && (
+        <section className="py-8 md:py-10">
+          <div className="container max-w-4xl">
+            <Reveal>
+              <div className="md:ml-[160px] md:pl-10">
+                <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-muted-foreground mb-3">
+                  Want the full technical depth?
+                </p>
+                <Link
+                  to={`/thinking/${study.relatedArticle.slug}`}
+                  className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.15em] uppercase text-primary hover:text-primary/70 transition-colors"
+                >
+                  {study.relatedArticle.label}
+                  <ArrowRight size={12} />
+                </Link>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+      )}
 
       <div className="container max-w-4xl"><div className="h-px bg-line" /></div>
 

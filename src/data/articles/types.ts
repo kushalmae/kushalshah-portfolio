@@ -10,6 +10,16 @@ export interface ArticleSection {
   paragraphs: string[];
   table?: ArticleTable;
   relatedArticle?: { slug: string; label: string };
+  diagramId?: string;
+}
+
+export interface ArticleFeaturedWork {
+  title: string;
+  org: string;
+  year: string;
+  type: string;
+  role: string;
+  highlights: string[];
 }
 
 export interface Article {
@@ -22,5 +32,6 @@ export interface Article {
   tags: string[];
   intro: string[];
   sections: ArticleSection[];
+  featuredWork?: ArticleFeaturedWork[];
   insight: string;
 }

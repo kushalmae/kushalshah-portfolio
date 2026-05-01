@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import PageLayout from "@/components/PageLayout";
 import SectionLabel from "@/components/SectionLabel";
 import Reveal from "@/components/Reveal";
+import { ArticleDiagram } from "@/components/ArticleDiagram";
 import { articles } from "@/data/articles";
 
 const ArticlePage = () => {
@@ -99,6 +100,9 @@ const ArticlePage = () => {
                       </p>
                     ))}
                   </div>
+                  {section.diagramId && (
+                    <ArticleDiagram id={section.diagramId} />
+                  )}
                   {section.relatedArticle && (
                     <div className="mt-8 pt-6 border-t border-line/40">
                       <Link
@@ -153,6 +157,56 @@ const ArticlePage = () => {
               </Reveal>
             ))}
           </div>
+
+          {article.featuredWork && article.featuredWork.length > 0 && (
+            <>
+              <div className="h-px bg-line my-16" />
+              <Reveal>
+                <div>
+                  <SectionLabel>Featured In Work</SectionLabel>
+                  <p className="text-sm text-muted-foreground mt-2 mb-8">
+                    Where these concepts were applied in practice.
+                  </p>
+                  <div className="space-y-5">
+                    {article.featuredWork.map((item, i) => (
+                      <div
+                        key={i}
+                        className="border border-line rounded-sm p-5 md:p-6 bg-card/40"
+                      >
+                        <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
+                          <div>
+                            <h3 className="text-base font-semibold text-foreground leading-snug">
+                              {item.title}
+                            </h3>
+                            <p className="text-sm text-muted-foreground mt-0.5">
+                              {item.org} · {item.year}
+                            </p>
+                          </div>
+                          <span className="font-mono text-[9px] tracking-[0.15em] uppercase text-muted-foreground border border-line px-2 py-0.5 rounded shrink-0">
+                            {item.type}
+                          </span>
+                        </div>
+                        <div className="mb-4">
+                          <span className="font-mono text-[10px] tracking-[0.15em] uppercase text-primary">
+                            Role
+                          </span>
+                          <p className="text-sm text-foreground/80 mt-0.5">{item.role}</p>
+                        </div>
+                        <ul className="space-y-2">
+                          {item.highlights.map((h, j) => (
+                            <li key={j} className="flex items-start gap-2.5">
+                              <span className="mt-[7px] w-1 h-1 rounded-full bg-primary/50 shrink-0" />
+                              <span className="text-sm text-foreground/75 leading-relaxed">{h}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </Reveal>
+            </>
+          )}
 
           <div className="h-px bg-line my-16" />
 
