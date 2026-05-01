@@ -5,10 +5,24 @@ import Reveal from "@/components/Reveal";
 
 const articles = [
   {
+    slug: "spacecraft-communication-protocols",
+    title: "Spacecraft Communication Protocols",
+    description:
+      "Stop asking what the acronyms mean. Start asking what problem each interface is solving. The space communications landscape splits cleanly into control links, onboard data networks, and space-link protocols — and the right answer depends entirely on which layer of the spacecraft you're designing.",
+    date: "Apr 2025",
+  },
+  {
     slug: "satellite-engineering-budgets",
     title: "The Hidden Architecture of Satellites",
     description:
       "Every gram, watt, and arc-second is allocated before a satellite ever leaves the ground. Missions don't fail from a single catastrophe — they fail from budget violations that cascade through interconnected systems.",
+    date: "Apr 2025",
+  },
+  {
+    slug: "satellite-pointing-budget",
+    title: "The Pointing Budget",
+    description:
+      "Of all the satellite engineering budgets, pointing is the most architecturally pervasive. A complete treatment: PKE, PCE, and PSE, error sources and RSS methodology, hardware selection, cascade control, and on-orbit calibration.",
     date: "Apr 2025",
   },
   {
