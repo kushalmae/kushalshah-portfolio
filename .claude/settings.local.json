@@ -3,7 +3,8 @@
     "allow": [
       "Bash(bun install *)",
       "PowerShell(Get-Command *)",
-      "Bash(gh pr *)"
+      "Bash(gh pr *)",
+      "Bash(git worktree *)"
     ]
   }
 }

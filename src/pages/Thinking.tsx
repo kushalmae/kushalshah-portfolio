@@ -5,6 +5,13 @@ import Reveal from "@/components/Reveal";
 
 const articles = [
   {
+    slug: "spacecraft-communication-protocols",
+    title: "Spacecraft Communication Protocols",
+    description:
+      "Stop asking what the acronyms mean. Start asking what problem each interface is solving. The space communications landscape splits cleanly into control links, onboard data networks, and space-link protocols — and the right answer depends entirely on which layer of the spacecraft you're designing.",
+    date: "Apr 2025",
+  },
+  {
     slug: "satellite-engineering-budgets",
     title: "The Hidden Architecture of Satellites",
     description:
