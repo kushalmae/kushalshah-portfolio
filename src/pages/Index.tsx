@@ -41,7 +41,7 @@ const Index = () => (
           I lead complex technical systems from ambiguity to execution.
         </h1>
         <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mb-12 animate-fade-up" style={{ animationDelay: "0.1s" }}>
-          Technical Program Manager and Section Manager delivering OPIR payload performance, mission algorithms, and software automation for high-stakes aerospace programs.
+          Combining systems thinking, technical strategy, architecture, software leverage, and cross-functional leadership to design and deliver what matters.
         </p>
         <div className="flex flex-wrap gap-4 animate-fade-up" style={{ animationDelay: "0.2s" }}>
           <Button variant="hero" size="lg" asChild>

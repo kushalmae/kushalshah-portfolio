@@ -1,8 +1,8 @@
 export const site = {
   name: "Kushal Shah",
-  title: "Kushal Shah — Technical Program Manager & Systems Leader",
+  title: "Kushal Shah — Systems Architect & Technical Strategist",
   description:
-    "I lead mission-critical aerospace systems from ambiguity to execution across OPIR payload performance, mission algorithms, and cross-functional technical delivery.",
+    "I lead complex technical systems from ambiguity to execution. Systems architecture, technical strategy, and cross-functional leadership.",
   email: "kushalshah.kai@gmail.com",
   linkedin: "https://www.linkedin.com/in/kushalmae/",
   resumeUrl: "/resume.pdf",
