@@ -7,13 +7,19 @@ import { Download } from "lucide-react";
 
 const experience = [
   {
-    period: "Jan 2023 - Present",
+    period: "Jul 2025 - Present",
+    title: "Mission Operations — Rocket Lab",
+    description:
+      "Member of Global Operations, leading end-to-end mission operations across commercial and defense programs from launch through on-orbit sustainment. Mission Operations Lead for the Globalstar LEO constellation and SDA T2TL within PWSA, spanning flight software, GNC, FIDO, and ground systems through integration testing, container build and validation, simulations, and mission rehearsals. Design FSW state machines and application logic aligned with ground procedures; deliver ground automation and tooling that reduces manual console work. Supporting early T3TL operational concept development for next-generation transport-layer missions.",
+  },
+  {
+    period: "Jan 2023 - Jul 2025",
     title: "Technical Program Manager (System Performance IPT Lead) - Northrop Grumman",
     description:
       "Lead a $5M annual budget and 25-engineer team across six U.S. Space Force OPIR programs. Own LOS and radiometry mission performance, EVMS execution, anomaly resolution, and stakeholder alignment across PMO, chief engineering, Lockheed Martin, and Space Force partners.",
   },
   {
-    period: "Jan 2022 - Present",
+    period: "Jan 2022 - Jul 2025",
     title: "Section Manager, Mission Algorithms - Northrop Grumman",
     description:
       "Supervise 14 algorithm engineers delivering image processing, tracking, and telemetry analytics for space-based sensors. Direct staffing and resource strategy supporting a 200+ engineer SEIT organization, and oversee algorithm validation across HIL/SIL test environments.",

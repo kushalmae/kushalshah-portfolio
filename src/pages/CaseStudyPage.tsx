@@ -24,21 +24,27 @@ const CaseStudyPage = () => {
     );
   }
 
-  const sections = [
+  const sectionsBeforeTech = [
     { id: "context", label: "Context", value: study.context },
     { id: "problem", label: "Problem", value: study.problem },
     { id: "constraints", label: "Constraints", value: study.constraints },
     { id: "role", label: "My Role", value: study.role },
+  ];
+
+  const sectionsAfterTech = [
     { id: "approach", label: "Approach", value: study.approach },
     { id: "solution", label: "Solution", value: study.solution },
     { id: "impact", label: "Impact", value: study.impact },
   ];
 
+  const hasTech = study.technologies.length > 0;
+
   const tocItems = [
     { id: "summary", label: "Overview" },
     { id: "tldr", label: "TL;DR" },
-    ...sections.map((s) => ({ id: s.id, label: s.label })),
-    ...(study.technologies.length > 0 ? [{ id: "tech", label: "Tech" }] : []),
+    ...sectionsBeforeTech.map((s) => ({ id: s.id, label: s.label })),
+    ...(hasTech ? [{ id: "tech", label: "Tech" }] : []),
+    ...sectionsAfterTech.map((s) => ({ id: s.id, label: s.label })),
     { id: "insight", label: "Insight" },
   ];
 
@@ -152,7 +158,7 @@ const CaseStudyPage = () => {
       <section className="py-10 md:py-14">
         <div className="container max-w-4xl">
           <div className="space-y-8 md:space-y-9">
-            {sections.map(({ id, label, value }, i) => (
+            {sectionsBeforeTech.map(({ id, label, value }, i) => (
               <Reveal key={label} delay={i * 40}>
                 <div id={id} className="grid md:grid-cols-[160px_1fr] gap-2 md:gap-10 scroll-mt-24">
                   <h3 className="font-mono text-[11px] tracking-[0.2em] uppercase text-muted-foreground pt-1">
@@ -170,8 +176,8 @@ const CaseStudyPage = () => {
               </Reveal>
             ))}
 
-            {study.technologies.length > 0 && (
-              <Reveal delay={sections.length * 40}>
+            {hasTech && (
+              <Reveal delay={sectionsBeforeTech.length * 40}>
                 <div id="tech" className="grid md:grid-cols-[160px_1fr] gap-2 md:gap-10 scroll-mt-24">
                   <h3 className="font-mono text-[11px] tracking-[0.2em] uppercase text-muted-foreground pt-1">
                     Tech & Methods
@@ -189,6 +195,27 @@ const CaseStudyPage = () => {
                 </div>
               </Reveal>
             )}
+
+            {sectionsAfterTech.map(({ id, label, value }, i) => (
+              <Reveal
+                key={label}
+                delay={(sectionsBeforeTech.length + (hasTech ? 1 : 0) + i) * 40}
+              >
+                <div id={id} className="grid md:grid-cols-[160px_1fr] gap-2 md:gap-10 scroll-mt-24">
+                  <h3 className="font-mono text-[11px] tracking-[0.2em] uppercase text-muted-foreground pt-1">
+                    {label}
+                  </h3>
+                  <ul className="space-y-1.5">
+                    {value.map((item, idx) => (
+                      <li key={idx} className="flex gap-3 text-sm md:text-[15px] text-foreground/85 leading-snug">
+                        <span aria-hidden className="mt-[0.5rem] h-1 w-1 shrink-0 rounded-full bg-primary/70" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>

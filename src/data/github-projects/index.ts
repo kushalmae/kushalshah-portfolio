@@ -24,18 +24,6 @@ export const githubProjects: GitHubProject[] = [
     caseStudyId: "satops-procedure-tool",
   },
   {
-    slug: "procedure_tool",
-    name: "SatOps Procedure Tool",
-    repo: "procedure_tool",
-    description:
-      "Operator procedure runner with step validation, run notes, and audit history — foundation for the full SatOps platform.",
-    url: "https://github.com/kushalmae/procedure_tool",
-    language: "Python",
-    tags: ["Aerospace", "Platform"],
-    featured: true,
-    caseStudyId: "satops-procedure-tool",
-  },
-  {
     slug: "posgres_grafana_project",
     name: "Spacecraft Telemetry Pipeline",
     repo: "posgres_grafana_project",
@@ -48,22 +36,11 @@ export const githubProjects: GitHubProject[] = [
     caseStudyId: "spacecraft-telemetry-pipeline",
   },
   {
-    slug: "astra",
-    name: "ASTRA — Threshold Reporting & Alerts",
-    repo: "ASTRA",
-    description:
-      "Automated Satellite Threshold Reporting & Alerts: monitor telemetry limits and surface violations for ops teams.",
-    url: "https://github.com/kushalmae/ASTRA",
-    language: "Python",
-    tags: ["Aerospace", "Automation"],
-    featured: true,
-  },
-  {
     slug: "astra-v2",
     name: "ASTRA v2",
     repo: "ASTRA_V2",
     description:
-      "Second-generation alerting and threshold tooling for satellite telemetry workflows.",
+      "Automated Satellite Threshold Reporting & Alerts: monitor telemetry limits and surface violations for ops teams.",
     url: "https://github.com/kushalmae/ASTRA_V2",
     language: "Python",
     tags: ["Aerospace", "Automation"],
@@ -89,16 +66,6 @@ export const githubProjects: GitHubProject[] = [
     tags: ["Aerospace", "Automation"],
   },
   {
-    slug: "limits",
-    name: "Alerts & Limits Utilities",
-    repo: "limits",
-    description:
-      "Python utilities for defining, parsing, and evaluating spacecraft alert and limit configurations.",
-    url: "https://github.com/kushalmae/limits",
-    language: "Python",
-    tags: ["Aerospace", "Automation"],
-  },
-  {
     slug: "rag-agent",
     name: "RAG Agent",
     repo: "RAG_AGENT",
@@ -120,28 +87,7 @@ export const githubProjects: GitHubProject[] = [
     language: "TypeScript",
     tags: ["AI", "Web"],
     featured: true,
-  },
-  {
-    slug: "xls-merger",
-    name: "Excel Merger",
-    repo: "xls_merger",
-    description:
-      "Automation for merging and normalizing spreadsheet exports from engineering test and analysis workflows.",
-    url: "https://github.com/kushalmae/xls_merger",
-    language: "Python",
-    tags: ["Automation", "Platform"],
-  },
-  {
-    slug: "kushalshah-portfolio",
-    name: "Portfolio Site",
-    repo: "kushalshah-portfolio",
-    description:
-      "This site — React, TypeScript, Vite, and Tailwind with content-driven case studies and technical writing.",
-    url: "https://github.com/kushalmae/kushalshah-portfolio",
-    homepage: "https://kushalshah-portfolio.vercel.app",
-    language: "TypeScript",
-    tags: ["Web"],
-  },
+  }
 ];
 
 export const featuredGitHubProjects = githubProjects.filter((p) => p.featured);
