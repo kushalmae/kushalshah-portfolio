@@ -972,6 +972,200 @@ function EpsShedTiersDiagram() {
   );
 }
 
+// ── Orbit regimes ─────────────────────────────────────────────────────────────
+
+function OrbitAltitudeRegimesDiagram() {
+  const regimes = [
+    { name: "ISS / crewed LEO", alt: "400 km", pct: 2 },
+    { name: "EO / comm LEO", alt: "500–800 km", pct: 4 },
+    { name: "Starlink shell", alt: "550 km", pct: 3 },
+    { name: "O3b MEO", alt: "8,062 km", pct: 18 },
+    { name: "GPS / GNSS", alt: "20,200 km", pct: 45 },
+    { name: "GEO", alt: "35,786 km", pct: 80 },
+    { name: "L1 / L2", alt: "~1.5M km", pct: 100 },
+  ];
+  return (
+    <Wrapper title="Altitude Scale — Earth-Centered Regimes (Log-Relative)">
+      <div className="space-y-2">
+        {regimes.map((r) => (
+          <div key={r.name} className="flex items-center gap-3">
+            <span className="w-[110px] font-mono text-[10px] text-muted-foreground/70 text-right shrink-0">
+              {r.name}
+            </span>
+            <div className="flex-1 h-3.5 bg-muted/30 rounded-[1px] overflow-hidden">
+              <div
+                className="h-full bg-primary/45 rounded-[1px]"
+                style={{ width: `${r.pct}%` }}
+              />
+            </div>
+            <span className="font-mono text-[10px] text-muted-foreground/60 w-[72px] shrink-0">
+              {r.alt}
+            </span>
+          </div>
+        ))}
+      </div>
+      <p className="mt-3 font-mono text-[9px] text-muted-foreground/50 text-center">
+        Bar length is illustrative — GEO is ~90× ISS altitude; L2 is ~40× GEO
+      </p>
+    </Wrapper>
+  );
+}
+
+function OrbitLeoEnvironmentDiagram() {
+  return (
+    <Wrapper title="LEO Orbital Environment — ~500 km Reference">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center">
+        <div className="border border-line/30 rounded-[2px] px-2 py-2">
+          <div className="font-mono text-[9px] text-muted-foreground/60">Period</div>
+          <div className="font-mono text-xs text-foreground">~95 min</div>
+        </div>
+        <div className="border border-line/30 rounded-[2px] px-2 py-2">
+          <div className="font-mono text-[9px] text-muted-foreground/60">Eclipse</div>
+          <div className="font-mono text-xs text-foreground">~35 min</div>
+        </div>
+        <div className="border border-line/30 rounded-[2px] px-2 py-2">
+          <div className="font-mono text-[9px] text-muted-foreground/60">Velocity</div>
+          <div className="font-mono text-xs text-foreground">~7.6 km/s</div>
+        </div>
+        <div className="border border-primary/20 rounded-[2px] px-2 py-2 bg-primary/5">
+          <div className="font-mono text-[9px] text-muted-foreground/60">Drag</div>
+          <div className="font-mono text-xs text-primary">Non-negligible</div>
+        </div>
+      </div>
+      <div className="mt-4 flex items-center gap-2 justify-center flex-wrap">
+        <Box title="Van Allen" value="Inner belt" sub="below ~1,000 km" />
+        <span className="text-muted-foreground/40 font-mono text-sm">+</span>
+        <Box title="Atmosphere" value="Residual" sub="drag · decay" accent />
+        <span className="text-muted-foreground/40 font-mono text-sm">+</span>
+        <Box title="Link" value="Favorable" sub="short range" />
+      </div>
+    </Wrapper>
+  );
+}
+
+function OrbitRegimeTradeoffsDiagram() {
+  const axes = [
+    { regime: "LEO", latency: "Low", coverage: "Segment", cost: "Many sats", env: "Harsh" },
+    { regime: "MEO", latency: "Medium", coverage: "Regional+", cost: "Moderate", env: "Radiation" },
+    { regime: "GEO", latency: "High", coverage: "Hemisphere", cost: "Few sats", env: "Stable view" },
+    { regime: "L2", latency: "Very high", coverage: "Deep sky", cost: "Single", env: "Cold ops" },
+  ];
+  return (
+    <Wrapper title="Regime Trade Space — Latency vs. Coverage vs. Spacecraft Count">
+      <div className="space-y-2">
+        {axes.map((a) => (
+          <div key={a.regime} className="border border-line rounded-[2px] p-3 bg-card/50">
+            <div className="font-mono text-[10px] text-primary mb-1.5">{a.regime}</div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 font-mono text-[9px] text-muted-foreground/70">
+              <span>Latency: <span className="text-foreground/85">{a.latency}</span></span>
+              <span>Coverage: <span className="text-foreground/85">{a.coverage}</span></span>
+              <span>Fleet size: <span className="text-foreground/85">{a.cost}</span></span>
+              <span>Environment: <span className="text-foreground/85">{a.env}</span></span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </Wrapper>
+  );
+}
+
+// ── GitOps ────────────────────────────────────────────────────────────────────
+
+function GitopsReconcileLoopDiagram() {
+  const steps = [
+    { label: "Author", value: "PR + review", sub: "Desired state diff" },
+    { label: "Git", value: "Merge", sub: "Versioned truth" },
+    { label: "Controller", value: "Sync", sub: "Render + apply" },
+    { label: "Cluster", value: "Reconcile", sub: "Observed → desired" },
+  ];
+  return (
+    <Wrapper title="GitOps Control Loop — Event vs. Continuous Reconciliation">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2 sm:gap-3">
+        {steps.map((s, i) => (
+          <React.Fragment key={s.label}>
+            <Box title={s.label} value={s.value} sub={s.sub} accent={i === 1 || i === 2} />
+            {i < steps.length - 1 && (
+              <div className="flex sm:flex-col items-center justify-center shrink-0 py-1 sm:py-0">
+                <span className="font-mono text-[9px] text-muted-foreground/50 hidden sm:inline">
+                  {i === 0 ? "merge" : i === 1 ? "pull" : "apply"}
+                </span>
+                <div className="w-8 sm:w-12 h-px sm:h-px bg-primary/40 rotate-90 sm:rotate-0" />
+              </div>
+            )}
+          </React.Fragment>
+        ))}
+      </div>
+      <p className="mt-4 font-mono text-[9px] text-muted-foreground/50 text-center">
+        CI validates artifacts and opens tag bumps · Controller enforces config until OutOfSync = 0
+      </p>
+    </Wrapper>
+  );
+}
+
+function GitopsPushVsPullDiagram() {
+  return (
+    <Wrapper title="Deploy Trust Boundary — Push Pipeline vs. Pull Agent">
+      <div className="grid sm:grid-cols-2 gap-4">
+        <div className="border border-line rounded-[2px] p-4 bg-card/50">
+          <div className="font-mono text-[10px] text-muted-foreground mb-3 uppercase tracking-[0.12em]">
+            Push (classic CI/CD)
+          </div>
+          <div className="flex flex-col items-center gap-2">
+            <Box title="CI runner" value="kubeconfig" sub="Cluster-admin creds" />
+            <div className="w-px h-4 bg-primary/30" />
+            <Box title="API server" value="kubectl apply" sub="One-shot deploy" accent />
+          </div>
+        </div>
+        <div className="border border-primary/25 rounded-[2px] p-4 bg-primary/5">
+          <div className="font-mono text-[10px] text-primary mb-3 uppercase tracking-[0.12em]">
+            Pull (GitOps)
+          </div>
+          <div className="flex flex-col items-center gap-2">
+            <Box title="Git" value="main @ sha" sub="No prod creds in CI" accent />
+            <div className="w-px h-4 bg-primary/30" />
+            <Box title="In-cluster agent" value="Reconcile loop" sub="Scoped RBAC" accent />
+          </div>
+        </div>
+      </div>
+      <p className="mt-3 font-mono text-[9px] text-muted-foreground/50 text-center">
+        Handoff: CI merges image tag PR · Agent owns everything after Git
+      </p>
+    </Wrapper>
+  );
+}
+
+// ── GCP automation ────────────────────────────────────────────────────────────
+
+function GcpAutomationPipelineDiagram() {
+  const steps = [
+    { label: "Scheduler", value: "Cron tick", sub: "HTTP or Pub/Sub" },
+    { label: "Buffer", value: "Tasks / Pub/Sub", sub: "Optional queue" },
+    { label: "Worker", value: "Functions / Run", sub: "HTTP handler" },
+  ];
+  return (
+    <Wrapper title="GCP Automation Pipeline — Time → Buffer → Execution">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2 sm:gap-3">
+        {steps.map((s, i) => (
+          <React.Fragment key={s.label}>
+            <Box title={s.label} value={s.value} sub={s.sub} accent={i === 0 || i === 2} />
+            {i < steps.length - 1 && (
+              <div className="flex sm:flex-col items-center justify-center shrink-0 py-1 sm:py-0">
+                <span className="font-mono text-[9px] text-muted-foreground/50 hidden sm:inline">
+                  {i === 0 ? "enqueue" : "deliver"}
+                </span>
+                <div className="w-8 sm:w-12 h-px bg-primary/40 rotate-90 sm:rotate-0" />
+              </div>
+            )}
+          </React.Fragment>
+        ))}
+      </div>
+      <p className="mt-4 font-mono text-[9px] text-muted-foreground/50 text-center">
+        Pattern C: dispatcher enqueues one task per shard · Tasks controls rate and retries
+      </p>
+    </Wrapper>
+  );
+}
+
 // ── Public export ─────────────────────────────────────────────────────────────
 
 export function ArticleDiagram({ id }: { id: string }) {
@@ -999,6 +1193,12 @@ export function ArticleDiagram({ id }: { id: string }) {
     case "eps-orbit-energy":     return <EpsOrbitEnergyDiagram />;
     case "eps-uv-stages":        return <EpsUvStagesDiagram />;
     case "eps-shed-tiers":       return <EpsShedTiersDiagram />;
+    case "orbit-altitude-regimes": return <OrbitAltitudeRegimesDiagram />;
+    case "orbit-leo-environment": return <OrbitLeoEnvironmentDiagram />;
+    case "orbit-regime-tradeoffs": return <OrbitRegimeTradeoffsDiagram />;
+    case "gitops-reconcile-loop":  return <GitopsReconcileLoopDiagram />;
+    case "gitops-push-vs-pull":    return <GitopsPushVsPullDiagram />;
+    case "gcp-automation-pipeline": return <GcpAutomationPipelineDiagram />;
     default:                     return null;
   }
 }

@@ -10,8 +10,18 @@ import satellitePointingBudget from "./articles/satellite-pointing-budget";
 import counterUasKillChainArchitecture from "./articles/counter-uas-kill-chain-architecture";
 import satopsProcedureTool from "./articles/satops-procedure-tool";
 import electricPropulsionSystems from "./articles/electric-propulsion-systems";
+import satelliteOrbitTypes from "./articles/satellite-orbit-types";
+import pwsaArchitecture from "./articles/pwsa-architecture";
+import pwsaTransportLayer from "./articles/pwsa-transport-layer";
+import pwsaTrackingLayer from "./articles/pwsa-tracking-layer";
+import gitops from "./articles/gitops";
+import gcpAutomatedTasking from "./articles/gcp-automated-tasking";
 
 export const articles = [
+  pwsaArchitecture,
+  pwsaTransportLayer,
+  pwsaTrackingLayer,
+  satelliteOrbitTypes,
   electricPropulsionSystems,
   spacecraftPowerBudgeting,
   spacecraftRfCommunications,
@@ -22,4 +32,6 @@ export const articles = [
   satellitePointingBudget,
   counterUasKillChainArchitecture,
   satopsProcedureTool,
+  gitops,
+  gcpAutomatedTasking,
 ];
