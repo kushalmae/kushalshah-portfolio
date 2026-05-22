@@ -12,6 +12,9 @@ import Projects from "./pages/Projects";
 import CaseStudyPage from "./pages/CaseStudyPage";
 import Thinking from "./pages/Thinking";
 import ArticlePage from "./pages/ArticlePage";
+import Books from "./pages/Books";
+import BookPage from "./pages/BookPage";
+import MentalModelPage from "./pages/MentalModelPage";
 import Resume from "./pages/Resume";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
@@ -38,6 +41,9 @@ const App = () => (
                 <Route path="/work/:id" element={<CaseStudyPage />} />
                 <Route path="/thinking" element={<Thinking />} />
                 <Route path="/thinking/:slug" element={<ArticlePage />} />
+                <Route path="/books" element={<Books />} />
+                <Route path="/books/models/:slug" element={<MentalModelPage />} />
+                <Route path="/books/:slug" element={<BookPage />} />
                 <Route path="/resume" element={<Resume />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="*" element={<NotFound />} />

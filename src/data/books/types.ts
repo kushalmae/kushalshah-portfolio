@@ -1,3 +1,8 @@
+/** Broad themes for filtering — keep this list small */
+export const BOOK_THEMES = ["Leadership", "Learning", "Strategy", "Culture"] as const;
+
+export type BookTheme = (typeof BOOK_THEMES)[number];
+
 export interface BookSection {
   id: string;
   label: string;
@@ -14,7 +19,7 @@ export interface Book {
   year: string;
   description: string;
   readTime: string;
-  tags: string[];
+  tags: BookTheme[];
   intro: string[];
   sections: BookSection[];
   insight: string;
@@ -27,7 +32,7 @@ export interface MentalModel {
   name: string;
   oneLiner: string;
   description: string;
-  tags: string[];
+  tags: BookTheme[];
   definition: string[];
   whenToUse: string[];
   pitfalls: string[];

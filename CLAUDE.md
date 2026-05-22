@@ -36,6 +36,9 @@ React 18 + TypeScript SPA built with Vite and React SWC. Client-side routing via
 | `/work/:id` | Full case study |
 | `/thinking` | Articles index |
 | `/thinking/:slug` | Full article |
+| `/books` | Book summaries and mental models index |
+| `/books/:slug` | Full book summary |
+| `/books/models/:slug` | Mental model detail |
 | `/resume` | Experience, skills, PDF download |
 | `/contact` | Contact form + direct links |
 
@@ -46,6 +49,7 @@ Content is defined as typed TypeScript objects, not fetched from an API.
 - `src/data/case-studies.ts` — imports and re-exports all case study objects; each case study lives in `src/data/case-studies/<id>.ts`
 - `src/data/articles.ts` — imports and re-exports all article objects; each article lives in `src/data/articles/<slug>.ts`
 - `src/data/articles/types.ts` — `Article` interface (slug, title, date, description, sections, diagrams)
+- `src/data/books.ts` — book summaries and mental models; each book in `src/data/books/<slug>.ts`, each model in `src/data/mental-models/<slug>.ts`
 - Case study shape: id, label, title, image, summary, tags, technologies, tldr, metrics, context, problem, constraints, role, approach, solution, impact, insight
 
 To add a new case study or article: create the file in the matching subdirectory, then import and add it to the index file.
