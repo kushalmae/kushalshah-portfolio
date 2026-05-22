@@ -73,18 +73,9 @@ const experience = [
   },
 ];
 
-const highlights: { text: string; caseStudyId?: string; caseStudyTitle?: string }[] = [
-  {
-    text: "Participated in the Architect Apprenticeship Program (AAP), dissecting customer mission requirements and conducting trade studies to architect the Counter-Unmanned Aircraft System (C-UAS) solution, integrating radar, EO/IR systems, and AI-driven data fusion.",
-    caseStudyId: drozoneLayerCuas.id,
-    caseStudyTitle: drozoneLayerCuas.title,
-  },
-  {
-    text: "Architected and delivered Python, Flask, Streamlit, and React internal applications for anomaly monitoring, automated performance reporting, and build analysis, generating $1M+ in savings.",
-  },
-  {
-    text: "Authored technical BOEs for $10M+ proposals, translating mission requirements into architecture options, effort models, and risk profiles.",
-  },
+const highlights = [
+  "Architected and delivered Python, Flask, Streamlit, and React internal applications for anomaly monitoring, automated performance reporting, and build analysis, generating $1M+ in savings.",
+  "Authored technical BOEs for $10M+ proposals, translating mission requirements into architecture options, effort models, and risk profiles.",
 ];
 
 const education = [
@@ -92,10 +83,44 @@ const education = [
   "B.S., Mechanical Engineering and Aerospace Engineering (Double Major), UCI (GPA: 3.90)",
 ];
 
-const certifications = [
-  "Project Management Professional (PMP), 2024",
-  "SASE Top Gun 2 Leadership Training, 2023",
-  "Caltech Systems Engineering Certificate, 2020",
+type Certification =
+  | string
+  | { title: string; bullets: string[]; caseStudyId?: string; caseStudyTitle?: string };
+
+const certifications: Certification[] = [
+  {
+    title: "Project Management Professional (PMP), 2024",
+    bullets: [
+      "PMI credential in program and project leadership — people, process, and business environment across predictive, agile, and hybrid delivery.",
+      "Applied to OPIR IPT execution: scope, schedule, cost, risk, and stakeholder management across six U.S. Space Force programs with EVMS and a $5M annual budget.",
+      "Extends to technical proposal BOEs — mission requirements, architecture options, effort models, and risk-informed estimates for $10M+ pursuits.",
+    ],
+  },
+  {
+    title: "SASE Top Gun 2 Leadership Training, 2023",
+    bullets: [
+      "Selective 8-week cohort (We R Human) — workshops, reflection assignments, and weekly peer coaching pods for high-potential leaders.",
+      "Phase I–II: success mindset, emotional intelligence, authentic remote communication, leadership brand, and intrapreneurship.",
+      "Phase III: stakeholder-driven team purpose and high-performance team dynamics (purpose, culture, execution).",
+    ],
+  },
+  {
+    title: "Architect Apprenticeship Program (AAP), 2022",
+    bullets: [
+      "Participated in the Architect Apprenticeship Program (AAP), dissecting customer mission requirements and conducting trade studies to architect the Counter-Unmanned Aircraft System (C-UAS) solution, integrating radar, EO/IR systems, and AI-driven data fusion.",
+      "Capstone: Drozone Layer — multi-layer kill chain (MESA radar, EOIR, FAAD C2, 30mm effector) for forward-area drone defense; led AOA and timing budgets as primary architecture author.",
+    ],
+    caseStudyId: drozoneLayerCuas.id,
+    caseStudyTitle: drozoneLayerCuas.title,
+  },
+  {
+    title: "Caltech Certificate in Systems Engineering, 2020",
+    bullets: [
+      "Capstone: Sky X autonomous package-delivery UAV — fulfillment-to-customer delivery under FAA, Amazon ConOps, and mission constraints (20-mile range, 10-lb payloads).",
+      "Led system block diagrams, DSMs, ICDs, and requirements allocation across six subsystems with MOE/MOP/TPM traceability.",
+      "Delivered subsystem trade studies plus bottom-up cost estimation, WBS, schedule, and risk register through detailed design.",
+    ],
+  },
 ];
 
 const domains = [
@@ -215,29 +240,10 @@ const Resume = () => (
           </Reveal>
           <ul className="space-y-4 border-y border-line py-8">
             {highlights.map((item, i) => (
-              <Reveal key={item.text} delay={i * 80}>
-                <li
-                  className={
-                    item.caseStudyId
-                      ? "border border-primary/25 rounded-sm p-5 bg-primary/5"
-                      : "flex gap-3 items-start"
-                  }
-                >
-                  <div className={item.caseStudyId ? "space-y-3" : "flex gap-3 items-start"}>
-                    <div className="flex gap-3 items-start">
-                      <span className="w-1 h-1 rounded-full bg-primary mt-2.5 shrink-0" />
-                      <span className="text-sm text-muted-foreground leading-relaxed">{item.text}</span>
-                    </div>
-                    {item.caseStudyId && (
-                      <Link
-                        to={`/work/${item.caseStudyId}`}
-                        className="inline-flex items-center gap-2 font-mono text-xs tracking-wider uppercase text-primary hover:text-foreground transition-colors pl-4"
-                      >
-                        {item.caseStudyTitle}
-                        <ArrowRight size={12} />
-                      </Link>
-                    )}
-                  </div>
+              <Reveal key={item} delay={i * 80}>
+                <li className="flex gap-3 items-start text-sm text-muted-foreground leading-relaxed">
+                  <span className="w-1 h-1 rounded-full bg-primary mt-2.5 shrink-0" />
+                  <span>{item}</span>
                 </li>
               </Reveal>
             ))}
@@ -261,10 +267,41 @@ const Resume = () => (
           <Reveal>
             <h2 className="font-mono text-xs tracking-[0.2em] uppercase text-muted-foreground mb-8">Certifications and Training</h2>
           </Reveal>
-          <ul className="space-y-4 border-y border-line py-8">
+          <ul className="space-y-6 border-y border-line py-8">
             {certifications.map((item, i) => (
-              <Reveal key={item} delay={i * 80}>
-                <li className="text-sm text-muted-foreground leading-relaxed">{item}</li>
+              <Reveal key={typeof item === "string" ? item : item.title} delay={i * 80}>
+                <li>
+                  {typeof item === "string" ? (
+                    <span className="text-sm text-muted-foreground leading-relaxed">{item}</span>
+                  ) : (
+                    <div
+                      className={
+                        item.caseStudyId
+                          ? "border border-primary/25 rounded-sm p-5 bg-primary/5"
+                          : undefined
+                      }
+                    >
+                      <p className="text-sm font-medium text-foreground mb-3">{item.title}</p>
+                      <ul className="space-y-2">
+                        {item.bullets.map((bullet) => (
+                          <li key={bullet} className="flex gap-3 items-start text-sm text-muted-foreground leading-relaxed">
+                            <span className="w-1 h-1 rounded-full bg-primary mt-2.5 shrink-0" />
+                            <span>{bullet}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      {item.caseStudyId && (
+                        <Link
+                          to={`/work/${item.caseStudyId}`}
+                          className="inline-flex items-center gap-2 font-mono text-xs tracking-wider uppercase text-primary hover:text-foreground transition-colors mt-4"
+                        >
+                          {item.caseStudyTitle}
+                          <ArrowRight size={12} />
+                        </Link>
+                      )}
+                    </div>
+                  )}
+                </li>
               </Reveal>
             ))}
           </ul>
