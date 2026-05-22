@@ -1,6 +1,6 @@
-import type { Article } from "./types";
+import type { ArticleContent } from "./types";
 
-const article: Article = {
+const article: ArticleContent = {
   slug: "gcp-automated-tasking",
   title: "Automated Tasking on Google Cloud",
   subtitle: "Scheduler, Cloud Tasks, and Functions — and when to use something else",

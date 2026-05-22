@@ -1,9 +1,9 @@
-import type { Article } from "./types";
+import type { ArticleContent } from "./types";
 
-const article: Article = {
+const article: ArticleContent = {
   slug: "counter-uas-kill-chain-architecture",
   title: "Counter-UAS Engagement Architecture",
-  subtitle: "Sensor fusion, timing budgets, and SWaP constraints in forward-deployed drone defense",
+  subtitle: "Sensor fusion, timing budgets, and SWaP constraints in forward-deployed counter-UAS",
   description:
     "A drone swarm costs a few thousand dollars to field. Defeating it reliably, in any weather, in under 20 seconds, from a system you can assemble in three hours — that's a systems engineering problem.",
   date: "Nov 2022",
@@ -19,7 +19,7 @@ const article: Article = {
       label: "Phase 01",
       heading: "What Makes Drone Swarms Hard to Defeat",
       paragraphs: [
-        "The drone threat isn't monolithic. Group 1 drones are small commercial quadrotors — slow, low-altitude, visually small. Group 2 are medium UAS with greater range and speed. Group 3 are large, fast, and fly at altitudes that challenge both optical and radar systems differently. A defense architecture that closes against Group 1 at 3 km may fail against Group 3 at 5 km.",
+        "The drone threat isn't monolithic. Group 1 drones are small commercial quadrotors — slow, low-altitude, visually small. Group 2 are medium UAS with greater range and speed. Group 3 are large, fast, and fly at altitudes that challenge both optical and radar systems differently. An engagement architecture that closes against Group 1 at 3 km may fail against Group 3 at 5 km.",
         "Swarm geometry adds another dimension. A nominal 8-drone swarm with 0.1 km spacing between rows creates a maximum angular spread of roughly 5 degrees at threshold engagement ranges. That narrow spread is actually an advantage for the defender: once you acquire the first target in a swarm, you can narrow your field of interest dramatically for subsequent searches — reducing false alarms and accelerating tracking on the remaining threats.",
         "The hardest constraint isn't detection. It's time. A 20-second window to detect, identify, track, and engage a single threat leaves very little margin for sensor handoffs, C2 latency, or decision hesitation. Every second allocated to one phase is a second stolen from another.",
       ],

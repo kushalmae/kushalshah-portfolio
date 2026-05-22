@@ -1,6 +1,6 @@
-import type { Article } from "./types";
+import type { ArticleContent } from "./types";
 
-const article: Article = {
+const article: ArticleContent = {
   slug: "satellite-engineering-budgets",
   title: "The Hidden Architecture of Satellites",
   subtitle: "How Engineering Budgets Make or Break Space Missions",
@@ -151,7 +151,7 @@ const article: Article = {
   ],
   featuredWork: [
     {
-      title: "Drozone Layer — Drone Defense System",
+      title: "Drozone Layer — Counter-Drone System",
       org: "Northrop Grumman",
       year: "2022",
       type: "Government White Paper",

@@ -12,7 +12,7 @@ const experience = [
     period: "Jul 2025 - Present",
     title: "Mission Operations — Rocket Lab",
     bullets: [
-      "Member of Global Operations, leading mission operations across commercial and defense programs from launch through on-orbit sustainment.",
+      "Member of Global Operations, leading mission operations across commercial and government programs from launch through on-orbit sustainment.",
       "Mission Operations Lead for the Globalstar LEO constellation across launch and on-orbit operations.",
       "Mission Ops Lead for SDA T2TL within PWSA, spanning flight software, GNC, FIDO, and ground systems.",
       "Build, test, and deploy containerized ground software on AWS (EC2) and Kubernetes — Docker images, kubectl pod management, integration testing, and mission rehearsal validation across ground and flight stacks.",
@@ -108,7 +108,7 @@ const certifications: Certification[] = [
     title: "Architect Apprenticeship Program (AAP), 2022",
     bullets: [
       "Participated in the Architect Apprenticeship Program (AAP), dissecting customer mission requirements and conducting trade studies to architect the Counter-Unmanned Aircraft System (C-UAS) solution, integrating radar, EO/IR systems, and AI-driven data fusion.",
-      "Capstone: Drozone Layer — multi-layer engagement architecture (MESA radar, EOIR, FAAD C2, 30mm effector) for forward-area drone defense; led AOA and timing budgets as primary architecture author.",
+      "Capstone: Drozone Layer — multi-layer engagement architecture (MESA radar, EOIR, FAAD C2, 30mm effector) for forward-area counter-UAS; led AOA and timing budgets as primary architecture author.",
     ],
     caseStudyId: drozoneLayerCuas.id,
     caseStudyTitle: drozoneLayerCuas.title,
@@ -176,7 +176,7 @@ const Resume = () => (
             Aerospace systems leadership and technical execution.
           </h1>
           <p className="text-muted-foreground leading-relaxed mb-4">
-            Program and systems leader with deep OPIR payload experience across mission algorithms, LOS/radiometry performance, test campaigns, and anomaly response in high-stakes defense environments.
+            Program and systems leader with deep OPIR payload experience across mission algorithms, LOS/radiometry performance, test campaigns, and anomaly response in high-stakes mission environments.
           </p>
           <Button variant="subtle" size="default" className="mb-16 gap-2" asChild>
             <a href={site.resumeUrl} download="Kushal_Shah_Resume.pdf">

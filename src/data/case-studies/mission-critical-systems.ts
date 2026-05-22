@@ -3,10 +3,10 @@ import image from "@/assets/case-study-1.jpg";
 
 const caseStudy: CaseStudy = {
   id: "mission-critical-systems",
-  label: "Aerospace & Defense",
+  label: "Aerospace & Mission Systems",
   title: "Mission-Critical System Leadership",
   image,
-  summary: "Led cross-functional technical execution across payload systems, signal processing, and spacecraft operations for high-stakes defense programs.",
+  summary: "Led cross-functional technical execution across payload systems, signal processing, and spacecraft operations for high-stakes mission-critical programs.",
   featured: true,
   tags: ["Aerospace", "Architecture"],
   technologies: ["Signal Processing", "Systems Engineering", "Python", "MATLAB", "Interface Control Documents", "Performance Modeling"],
@@ -21,7 +21,7 @@ const caseStudy: CaseStudy = {
     { value: "Reusable", label: "Architectural patterns" },
   ],
   context: [
-    "Large-scale defense program with multiple payload subsystems",
+    "Large-scale mission-critical program with multiple payload subsystems",
     "Spans signal processing, radiometry, and classification algorithms",
     "Multiple contractor organizations with competing priorities",
     "Multi-year timeline with evolving requirements and tight compliance",

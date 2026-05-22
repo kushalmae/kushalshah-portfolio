@@ -1,6 +1,6 @@
-import type { Article } from "./types";
+import type { ArticleContent } from "./types";
 
-const article: Article = {
+const article: ArticleContent = {
   slug: "satops-procedure-tool",
   title: "Designing SatOps",
   subtitle: "Building a complete satellite operations management framework — eleven modules, one platform",

@@ -1,5 +1,25 @@
-export type { ArticleTable, ArticleSection, Article } from "./articles/types";
+export type {
+  ArticleTable,
+  ArticleSection,
+  Article,
+  ArticleContent,
+  ArticleTopic,
+  ArticleSeries,
+  ArticleNavigation,
+} from "./articles/types";
 
+export { ARTICLE_TOPICS } from "./articles/types";
+export {
+  ALL_ARTICLE_TAGS,
+  START_HERE_SLUGS,
+  attachNavigation,
+  getSeriesArticles,
+  getAdjacentInSeries,
+  groupByTopic,
+  articleNavigation,
+} from "./articles/navigation";
+
+import { attachNavigation } from "./articles/navigation";
 import spacecraftPowerBudgeting from "./articles/spacecraft-power-budgeting";
 import spacecraftRfCommunications from "./articles/spacecraft-rf-communications";
 import spacecraftCommunicationProtocols from "./articles/spacecraft-communication-protocols";
@@ -17,7 +37,7 @@ import pwsaTrackingLayer from "./articles/pwsa-tracking-layer";
 import gitops from "./articles/gitops";
 import gcpAutomatedTasking from "./articles/gcp-automated-tasking";
 
-export const articles = [
+const articleContents = [
   pwsaArchitecture,
   pwsaTransportLayer,
   pwsaTrackingLayer,
@@ -35,3 +55,9 @@ export const articles = [
   gitops,
   gcpAutomatedTasking,
 ];
+
+export const articles = articleContents.map(attachNavigation);
+
+export function getArticleBySlug(slug: string) {
+  return articles.find((a) => a.slug === slug);
+}

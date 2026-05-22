@@ -1,6 +1,6 @@
-import type { Article } from "./types";
+import type { ArticleContent } from "./types";
 
-const article: Article = {
+const article: ArticleContent = {
   slug: "spacecraft-link-security",
   title: "The Complete Guide to Spacecraft Link Encryption",
   subtitle: "SDLS, SPIs, SAs, and MACs",

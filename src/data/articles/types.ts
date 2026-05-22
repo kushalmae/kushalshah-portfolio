@@ -28,6 +28,27 @@ export interface ArticleAttachment {
   downloadFilename?: string;
 }
 
+export interface ArticleSeries {
+  id: string;
+  title: string;
+  part: number;
+  total: number;
+}
+
+export type ArticleTopic =
+  | "Space Architecture"
+  | "Spacecraft Systems"
+  | "Communications"
+  | "Threat Engagement"
+  | "Platform";
+
+export interface ArticleNavigation {
+  topic: ArticleTopic;
+  series?: ArticleSeries;
+  startHere?: boolean;
+  keyTakeaways: string[];
+}
+
 export interface Article {
   slug: string;
   title: string;
@@ -41,4 +62,24 @@ export interface Article {
   featuredWork?: ArticleFeaturedWork[];
   attachment?: ArticleAttachment;
   insight: string;
+  topic: ArticleTopic;
+  series?: ArticleSeries;
+  startHere?: boolean;
+  keyTakeaways: string[];
 }
+
+/** Article body without index/navigation fields (filled by attachNavigation). */
+export type ArticleContent = Omit<Article, "topic" | "startHere" | "keyTakeaways"> & {
+  topic?: ArticleTopic;
+  series?: ArticleSeries;
+  startHere?: boolean;
+  keyTakeaways?: string[];
+};
+
+export const ARTICLE_TOPICS: ArticleTopic[] = [
+  "Space Architecture",
+  "Spacecraft Systems",
+  "Communications",
+  "Threat Engagement",
+  "Platform",
+];

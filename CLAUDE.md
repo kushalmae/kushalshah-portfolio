@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Personal portfolio site for **Kushal Shah** — Systems Architect and Technical Strategist. The site presents his professional identity, selected work, and writing to prospective employers, collaborators, and advisors.
 
-Kushal's background spans aerospace/defense (payload systems, signal processing, missile classification), spacecraft engineering (power, GNC, flight software, ground software), software platform development (APIs, microservices, automation pipelines), and AI/workflow automation. The portfolio reflects that breadth: case studies show cross-domain systems thinking, and the "Thinking" section hosts long-form technical writing.
+Kushal's background spans aerospace and mission-critical systems work (payload systems, signal processing, missile classification), spacecraft engineering (power, GNC, flight software, ground software), software platform development (APIs, microservices, automation pipelines), and AI/workflow automation. The portfolio reflects that breadth: case studies show cross-domain systems thinking, and the "Thinking" section hosts long-form technical writing.
 
 The tone throughout is direct, confident, and technical — not a generic dev portfolio.
 

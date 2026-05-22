@@ -16,7 +16,7 @@ const About = () => (
         <div className="space-y-6 text-muted-foreground leading-relaxed">
           <Reveal delay={50}>
             <p>
-              My career started in aerospace and defense — working on payload systems, signal processing, radiometry, and missile classification. I didn't just operate these systems. I learned how they were designed, why they failed, and what made them resilient. That exposure trained me to think in systems, not features.
+              My career started in aerospace and mission-critical programs — working on payload systems, signal processing, radiometry, and missile classification. I didn't just operate these systems. I learned how they were designed, why they failed, and what made them resilient. That exposure trained me to think in systems, not features.
             </p>
           </Reveal>
           <Reveal delay={100}>

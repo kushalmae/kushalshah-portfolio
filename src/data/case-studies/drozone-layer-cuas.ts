@@ -3,10 +3,10 @@ import image from "@/assets/case-study-1.jpg";
 
 const caseStudy: CaseStudy = {
   id: "drozone-layer-cuas",
-  label: "Counter-UAS Defense",
-  title: "Drozone Layer — Counter-Drone Defense System",
+  label: "Counter-UAS",
+  title: "Drozone Layer — Counter-Drone System",
   image,
-  summary: "Architected a fixed-site multi-layer Counter-UAS defense system integrating MESA radar, EOIR imaging, and a 30mm chain gun under strict SWaP and engagement timing constraints.",
+  summary: "Architected a fixed-site multi-layer Counter-UAS system integrating MESA radar, EOIR imaging, and a 30mm chain gun under strict SWaP and engagement timing constraints.",
   featured: true,
   tags: ["Aerospace", "Architecture"],
   technologies: [

@@ -1,6 +1,6 @@
-import type { Article } from "./types";
+import type { ArticleContent } from "./types";
 
-const article: Article = {
+const article: ArticleContent = {
   slug: "satellite-orbit-types",
   title: "Orbits as Mission Architecture",
   subtitle: "Altitude, inclination, and period — and the missions each regime was built for",
@@ -34,7 +34,7 @@ const article: Article = {
       label: "Section 01",
       heading: "Orbital Regimes at a Glance",
       paragraphs: [
-        "The table below is the map every architecture review should start from — not exhaustive of every specialty orbit, but the set that appears in civil, commercial, and national security mission portfolios.",
+        "The table below is the map every architecture review should start from — not exhaustive of every specialty orbit, but the set that appears in civil, commercial, and mission-driven portfolios.",
       ],
       table: {
         headers: ["Regime", "Typical Altitude", "Period", "Primary Stress on Spacecraft"],
@@ -118,7 +118,7 @@ const article: Article = {
       heading: "Sun-Synchronous, Polar, and Repeat-Ground-Track Orbits",
       paragraphs: [
         "Not all LEO missions optimize for lowest altitude. Sun-synchronous orbits (SSO) combine altitude and inclination so Earth's oblateness precesses the orbital plane at ~1° per day — matching Earth's orbit around the Sun. The result is consistent local solar time on each pass: dawn-dusk orbits minimize surface shadow for optical imaging; morning orbits balance glint and thermal contrast.",
-        "Polar and near-polar inclinations (~90°) maximize latitude coverage per pass and are standard for reconnaissance, environmental monitoring, and missile warning architectures that must see high latitudes on every revolution. Russia's Meteor-M series, US Defense Meteorological Satellite Program successors, and many SAR missions use high-inclination LEO for this reason.",
+        "Polar and near-polar inclinations (~90°) maximize latitude coverage per pass and are standard for reconnaissance, environmental monitoring, and missile warning architectures that must see high latitudes on every revolution. Russia's Meteor-M series, US DMSP successors, and many SAR missions use high-inclination LEO for this reason.",
         "Repeat-ground-track (RGT) orbits tighten revisit further by choosing altitude and inclination so the ground track closes on itself every N days — Sentinel-1's 12-day cycle and TOPEX/Poseidon's precise ocean altimetry tracks are textbook examples. RGT is a design choice, not a natural consequence of 'being in LEO': it constrains launch timing and maneuver budget for maintenance.",
         "Very low Earth orbit (VLEO) — below roughly 450 km — is an active research area for aerodynamic drag compensation and high-resolution imaging with shorter slant ranges. The regime trades propellant or novel drag-sail control against atmospheric decay risk; missions here plan active deorbit as a reliability requirement, not an afterthought.",
       ],

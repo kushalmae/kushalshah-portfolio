@@ -1,6 +1,6 @@
-import type { Article } from "./types";
+import type { ArticleContent } from "./types";
 
-const article: Article = {
+const article: ArticleContent = {
   slug: "satellite-pointing-budget",
   title: "The Pointing Budget",
   subtitle: "A Complete Treatment of Attitude Accuracy, Error Sources, and On-Orbit Verification",

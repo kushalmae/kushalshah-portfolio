@@ -1,6 +1,6 @@
-import type { Article } from "./types";
+import type { ArticleContent } from "./types";
 
-const article: Article = {
+const article: ArticleContent = {
   slug: "cop-1-protocol",
   title: "COP-1: Reliable Telecommand at the Transfer Layer",
   subtitle: "FOP-1, FARM-1, and the go-back-n discipline behind sequence-controlled commanding",

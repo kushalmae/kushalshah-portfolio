@@ -1,6 +1,6 @@
 # Kushal Shah - Portfolio
 
-Portfolio site for Kushal Shah, a Technical Program Manager and systems leader focused on mission-critical aerospace and defense programs.
+Portfolio site for Kushal Shah, a Technical Program Manager and systems leader focused on mission-critical aerospace and space systems programs.
 
 Built with React, TypeScript, Vite, Tailwind CSS, and shadcn/ui.
 

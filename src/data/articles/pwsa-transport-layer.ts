@@ -1,6 +1,6 @@
-import type { Article } from "./types";
+import type { ArticleContent } from "./types";
 
-const article: Article = {
+const article: ArticleContent = {
   slug: "pwsa-transport-layer",
   title: "PWSA Transport Layer",
   subtitle: "Optical mesh networking, hosted battle management, and the data plane every other layer rides",
@@ -8,7 +8,7 @@ const article: Article = {
     "Transport is the heartbeat of the Proliferated Warfighter Space Architecture — a proliferated LEO constellation cross-linked by optical inter-satellite links, sized for resilience and latency, and built in tranches on a fixed launch cadence.",
   date: "May 2026",
   readTime: "9 min read",
-  tags: ["Aerospace", "Systems Engineering", "National Security", "Communications"],
+  tags: ["Aerospace", "Systems Engineering", "Mission Systems", "Communications"],
   intro: [
     "In PWSA, every sensor product, every custody feed, and every tactical message eventually transits the Transport Layer. Tracking satellites do not replace it; Custody partners do not bypass it. Transport is the data plane — a router constellation in low Earth orbit connected by optical inter-satellite links (OISLs) rather than omnidirectional RF between spacecraft.",
     "SDA describes each Transport satellite as maintaining links to neighbors ahead, behind, port, and starboard. The resulting mesh is deliberately pedestrian in topology terms and powerful in mission terms: if one node is lost, traffic reroutes through surviving links before it ever has to fall back to a sparse ground network. That is the proliferated answer to exquisite GEO targets that are slow, predictable, and few.",
@@ -87,7 +87,7 @@ const article: Article = {
       paragraphs: [
         "Mission operations for Transport is not single-spacecraft commanding. It is constellation state management: which nodes have closed OISLs, which are in safe mode, which tranche build is on which software baseline, and which ground station contact will carry the next ephemeris upload or routing-table change. FIDO-class tools, containerized ground software on cloud/kubernetes stacks, and flight-software state machines must agree on the same vehicle state — a systems-integration problem that grows with every tranche added on orbit.",
         "Contact scheduling scales nonlinearly. Hundreds of LEO assets imply hundreds of pass opportunities, but also hundreds of ways for a missed pass to leave a node on stale routing tables or optical alignment parameters. Automation is not optional; it is how the ops team buys back margin for anomalies that still need human judgment.",
-        "Commercial convergence is worth watching operationally, not only politically. Starshield and similar offerings market secure proliferated networking with Starlink heritage — overlapping Transport’s mesh story. Whether defense Transport and commercial megaconstellations share gateways, waveforms, or entirely separate paths is still being written in policy. Technically, the ops playbooks rhyme: proliferated LEO, optical or high-rate links, edge processing, ground automation at scale.",
+        "Commercial convergence is worth watching operationally, not only politically. Starshield and similar offerings market secure proliferated networking with Starlink heritage — overlapping Transport’s mesh story. Whether government-sector Transport and commercial megaconstellations share gateways, waveforms, or entirely separate paths is still being written in policy. Technically, the ops playbooks rhyme: proliferated LEO, optical or high-rate links, edge processing, ground automation at scale.",
       ],
     },
     {

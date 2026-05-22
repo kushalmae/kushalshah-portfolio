@@ -1,6 +1,6 @@
-import type { Article } from "./types";
+import type { ArticleContent } from "./types";
 
-const article: Article = {
+const article: ArticleContent = {
   slug: "spacecraft-power-budgeting",
   title: "Spacecraft Power Budgeting, SOC Estimation, and Undervoltage FDIR",
   subtitle: "From eclipse energy to load shedding — proving the EPS survives corner cases",

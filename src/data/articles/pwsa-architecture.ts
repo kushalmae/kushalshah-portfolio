@@ -1,17 +1,17 @@
-import type { Article } from "./types";
+import type { ArticleContent } from "./types";
 
-const article: Article = {
+const article: ArticleContent = {
   slug: "pwsa-architecture",
   title: "The Proliferated Warfighter Space Architecture",
-  subtitle: "How SDA rebuilt national-security space acquisition around tranches, layers, and a LEO mesh",
+  subtitle: "How SDA rebuilt proliferated space acquisition around tranches, layers, and a LEO mesh",
   description:
     "PWSA (formerly NDSA) is the Pentagon's answer to slow GEO-centric procurement: a proliferated LEO stack built in two-year tranches, organized into functional layers, and designed to put tactical data on the ground before the threat moves.",
   date: "May 2026",
   readTime: "11 min read",
-  tags: ["Aerospace", "Systems Engineering", "National Security"],
+  tags: ["Aerospace", "Systems Engineering", "Mission Systems"],
   intro: [
-    "For decades, U.S. national-security space meant a small number of large satellites in geostationary and mid-Earth orbit — exquisite assets with long development cycles, monolithic ground segments, and procurement timelines measured in years. That model still has a role. It no longer matches the pace adversaries set in low Earth orbit.",
-    "The Space Development Agency was stood up in 2019 with an explicit mandate: reform acquisition, proliferate capability in LEO, and deliver integrated missile warning, tracking, and tactical data to the warfighter on a schedule industry can plan against. The result is the Proliferated Warfighter Space Architecture (PWSA) — still often called the National Defense Space Architecture (NDSA) in older briefings and press.",
+    "For decades, U.S. mission space architecture meant a small number of large satellites in geostationary and mid-Earth orbit — exquisite assets with long development cycles, monolithic ground segments, and procurement timelines measured in years. That model still has a role. It no longer matches the pace adversaries set in low Earth orbit.",
+    "The Space Development Agency was stood up in 2019 with an explicit mandate: reform acquisition, proliferate capability in LEO, and deliver integrated missile warning, tracking, and tactical data to the warfighter on a schedule industry can plan against. The result is the Proliferated Warfighter Space Architecture (PWSA) — still often called NDSA in older briefings and press.",
     "PWSA is not a single program or a single constellation. It is a layered architecture — transport mesh, tracking sensors, battle management at the edge, custody via partners, and ground support tied together by optical inter-satellite links and a tranche-based launch rhythm. Understanding it means understanding how the Pentagon divided orbital regimes across agencies, how acquisition was sliced into generational drops, and why each layer exists as a separable engineering problem.",
   ],
   sections: [
@@ -20,7 +20,7 @@ const article: Article = {
       label: "Section 01",
       heading: "Why the Architecture Exists",
       paragraphs: [
-        "The problem statement is familiar to anyone who has sat through a defense acquisition review: legacy methods optimize for a few highly capable platforms, not for resilience, latency, or industrial scale. Frank Calvelli's space acquisition philosophy memo put it plainly — developing a small number of large satellites plus large monolithic ground systems over many years cannot remain the default if the U.S. intends to compete in space.",
+        "The problem statement is familiar to anyone who has sat through a federal space acquisition review: legacy methods optimize for a few highly capable platforms, not for resilience, latency, or industrial scale. Frank Calvelli's space acquisition philosophy memo put it plainly — developing a small number of large satellites plus large monolithic ground systems over many years cannot remain the default if the U.S. intends to compete in space.",
         "SDA's charter was to break that bind. Patrick Shanahan's 2019 memorandum establishing the agency framed the goal as persistent, resilient, global, low-latency surveillance — a prerequisite to deterrence, not a science project. PWSA grew out of that mandate as a tactical LEO network: missile warning and tracking, beyond-line-of-sight targeting cues, position/navigation/timing when GPS is degraded, and the infrastructure to move that data to whoever needs it on the ground with minimal delay.",
         "The architectural shift is as much about operations as orbit. Proliferation trades individual satellite fragility for network survivability. Smallsats cost orders of magnitude less than traditional GEO platforms, which changes how many nodes you can afford, how fast you can refresh technology, and how painful the loss of any single asset is to the mission.",
       ],
@@ -34,12 +34,12 @@ const article: Article = {
       label: "Section 02",
       heading: "GEO, MEO, and LEO — Who Owns What",
       paragraphs: [
-        "Space is not new to the Department of Defense. Missile Defense Agency and Space Systems Command have operated GEO and MEO missile-tracking and defense assets for decades. SDA's addition is deliberate: PWSA is the LEO piece of an integrated national-defense space picture, not a replacement for everything that already flies higher.",
-        "MDA descends from the Strategic Defense Initiative consolidation of the 1980s and today operates the Ballistic Missile Defense System, including a GEO constellation component for missile detection and tracking. SSC delivers lethal and resilient space capabilities with operational heritage in MEO and GEO. SDA coordinates with both so constellation planning, data products, and operator workflows do not fork into incompatible silos.",
+        "Space is not new to the DoD. MDA and Space Systems Command have operated GEO and MEO missile-tracking assets for decades. SDA's addition is deliberate: PWSA is the LEO piece of an integrated mission space picture, not a replacement for everything that already flies higher.",
+        "MDA descends from the SDI consolidation of the 1980s and today operates the BMDS, including a GEO constellation component for missile detection and tracking. SSC delivers lethal and resilient space capabilities with operational heritage in MEO and GEO. SDA coordinates with both so constellation planning, data products, and operator workflows do not fork into incompatible silos.",
         "The division of labor is orbital and functional, not bureaucratic turf for its own sake. GEO and MEO provide persistent wide-area stare and established missile-warning chains. LEO provides lower latency paths, denser revisit, and a mesh that can reroute around attrition. Frank Turner's framing — everybody brings core competencies to an integrated architecture — is the systems-integration requirement written in org chart terms.",
       ],
       table: {
-        headers: ["Agency", "Primary regimes", "Core contribution to integrated defense space"],
+        headers: ["Agency", "Primary regimes", "Core contribution to integrated mission space"],
         rows: [
           [
             "SDA",
@@ -49,7 +49,7 @@ const article: Article = {
           [
             "MDA",
             "GEO (BMDS component)",
-            "Ballistic missile defense system; established detection/tracking chain",
+            "BMDS; established detection/tracking chain",
           ],
           [
             "SSC",

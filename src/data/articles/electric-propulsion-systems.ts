@@ -1,6 +1,6 @@
-import type { Article } from "./types";
+import type { ArticleContent } from "./types";
 
-const article: Article = {
+const article: ArticleContent = {
   slug: "electric-propulsion-systems",
   title: "Electric Propulsion Systems for Spacecraft",
   subtitle: "High specific impulse, low thrust — and the architecture that makes both work",

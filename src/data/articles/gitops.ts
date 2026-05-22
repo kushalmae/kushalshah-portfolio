@@ -1,6 +1,6 @@
-import type { Article } from "./types";
+import type { ArticleContent } from "./types";
 
-const article: Article = {
+const article: ArticleContent = {
   slug: "gitops",
   title: "GitOps as an Operating Model",
   subtitle: "Declarative infrastructure, pull-based deploys, and why Git becomes the control plane",

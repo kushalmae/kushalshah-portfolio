@@ -1,6 +1,6 @@
-import type { Article } from "./types";
+import type { ArticleContent } from "./types";
 
-const article: Article = {
+const article: ArticleContent = {
   slug: "pwsa-tracking-layer",
   title: "PWSA Tracking Layer",
   subtitle: "Infrared sensing, missile detect-and-track, and the path from LEO stare to fire-control timelines",
@@ -8,7 +8,7 @@ const article: Article = {
     "The Tracking Layer is PWSA's dedicated missile-warning and tracking constellation in LEO — IR payloads cross-linked into Transport so threat data reaches the ground and the battlespace in seconds, not after a GEO processing chain.",
   date: "May 2026",
   readTime: "9 min read",
-  tags: ["Aerospace", "Systems Engineering", "National Security", "Sensors"],
+  tags: ["Aerospace", "Systems Engineering", "Mission Systems", "Sensors"],
   intro: [
     "If Transport is PWSA's heartbeat, Tracking is its eyes — a separate LEO constellation purpose-built for missile detection and tracking, not a repurposed Earth-observation platform or a GEO stare satellite lowered in altitude.",
     "Tracking Layer spacecraft carry infrared sensors tuned for boost-phase and midcourse signatures against earth limb and cloud backgrounds. Their data products are worthless without time: a track that reaches a fire-control node thirty seconds late is a different class of failure than a missed detection. That is why every Tracking satellite is designed to inject into the Transport mesh via optical inter-satellite links instead of relying on sparse, contended RF downlinks alone.",
@@ -81,9 +81,9 @@ const article: Article = {
       label: "Section 04",
       heading: "Fusing LEO Tracking with GEO and MEO Chains",
       paragraphs: [
-        "PWSA does not exist in a vacuum. MDA's Ballistic Missile Defense System and SSC's MEO/GEO assets provide long heritage in missile warning and tracking. Tracking Layer LEO adds low-latency, proliferated geometry — more look angles, faster revisit on some threat profiles, and mesh-routed data that does not wait on a single exquisite downlink.",
+        "PWSA does not exist in a vacuum. MDA's BMDS and SSC's MEO/GEO assets provide long heritage in missile warning and tracking. Tracking Layer LEO adds low-latency, proliferated geometry — more look angles, faster revisit on some threat profiles, and mesh-routed data that does not wait on a single exquisite downlink.",
         "Fusion is a systems problem: align coordinate frames, time bases, track IDs, and classification labels so operators see one picture, not three incompatible streams. GEO stare detects and holds strategic context; LEO tracking refines geometry for engagement timelines; ground algorithms and battle management decide which source wins for which cue at which phase of flight.",
-        "Northrop Grumman and Lockheed Martin heritage in OPIR and missile defense algorithms is relevant background for anyone implementing fusion — the portfolio's OPIR performance work is the same class of problem at different altitude and refresh rate. Architects should specify which MOEs/MOPs apply per layer (detection latency, track accuracy, false track rate, handoff time) rather than a single \"missile defense\" checkbox.",
+        "Northrop Grumman and Lockheed Martin heritage in OPIR and missile-warning algorithms is relevant background for anyone implementing fusion — the portfolio's OPIR performance work is the same class of problem at different altitude and refresh rate. Architects should specify which MOEs/MOPs apply per layer (detection latency, track accuracy, false track rate, handoff time) rather than a single \"missile warning\" checkbox.",
       ],
     },
     {

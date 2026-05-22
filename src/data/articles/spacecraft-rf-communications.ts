@@ -1,6 +1,6 @@
-import type { Article } from "./types";
+import type { ArticleContent } from "./types";
 
-const article: Article = {
+const article: ArticleContent = {
   slug: "spacecraft-rf-communications",
   title: "Fundamentals of Spacecraft RF Communications",
   subtitle: "From carrier lock to link margin — the physics and operations behind the space link",
