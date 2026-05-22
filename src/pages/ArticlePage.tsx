@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, Download } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import PageLayout from "@/components/PageLayout";
 import SectionLabel from "@/components/SectionLabel";
 import Reveal from "@/components/Reveal";
@@ -53,7 +54,9 @@ const ArticlePage = () => {
               {article.subtitle}
             </p>
 
-            <div className="flex flex-wrap gap-1.5 mb-14">
+            <div
+              className={`flex flex-wrap gap-1.5 ${article.attachment ? "mb-8" : "mb-14"}`}
+            >
               {article.tags.map((tag) => (
                 <span
                   key={tag}
@@ -63,6 +66,20 @@ const ArticlePage = () => {
                 </span>
               ))}
             </div>
+
+            {article.attachment && (
+              <Button variant="subtle" size="default" className="mb-14 gap-2" asChild>
+                <a
+                  href={article.attachment.url}
+                  download={article.attachment.downloadFilename}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Download size={14} />
+                  {article.attachment.label}
+                </a>
+              </Button>
+            )}
           </Reveal>
 
           <div className="h-px bg-line mb-14" />

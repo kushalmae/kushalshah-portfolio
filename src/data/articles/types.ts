@@ -22,6 +22,12 @@ export interface ArticleFeaturedWork {
   highlights: string[];
 }
 
+export interface ArticleAttachment {
+  url: string;
+  label: string;
+  downloadFilename?: string;
+}
+
 export interface Article {
   slug: string;
   title: string;
@@ -33,5 +39,6 @@ export interface Article {
   intro: string[];
   sections: ArticleSection[];
   featuredWork?: ArticleFeaturedWork[];
+  attachment?: ArticleAttachment;
   insight: string;
 }
