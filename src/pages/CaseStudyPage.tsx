@@ -24,14 +24,11 @@ const CaseStudyPage = () => {
     );
   }
 
-  const sectionsBeforeTech = [
+  const sections = [
     { id: "context", label: "Context", value: study.context },
     { id: "problem", label: "Problem", value: study.problem },
     { id: "constraints", label: "Constraints", value: study.constraints },
     { id: "role", label: "My Role", value: study.role },
-  ];
-
-  const sectionsAfterTech = [
     { id: "approach", label: "Approach", value: study.approach },
     { id: "solution", label: "Solution", value: study.solution },
     { id: "impact", label: "Impact", value: study.impact },
@@ -42,9 +39,8 @@ const CaseStudyPage = () => {
   const tocItems = [
     { id: "summary", label: "Overview" },
     { id: "tldr", label: "TL;DR" },
-    ...sectionsBeforeTech.map((s) => ({ id: s.id, label: s.label })),
     ...(hasTech ? [{ id: "tech", label: "Tech" }] : []),
-    ...sectionsAfterTech.map((s) => ({ id: s.id, label: s.label })),
+    ...sections.map((s) => ({ id: s.id, label: s.label })),
     { id: "insight", label: "Insight" },
   ];
 
@@ -99,7 +95,7 @@ const CaseStudyPage = () => {
         </div>
       </section>
 
-      <section id="tldr" className="pb-10 md:pb-12 scroll-mt-24">
+      <section id="tldr" className={`scroll-mt-24 ${hasTech ? "pb-6 md:pb-8" : "pb-10 md:pb-12"}`}>
         <div className="container max-w-4xl">
           <Reveal>
             <div className="bg-card border border-line rounded-lg p-5 md:p-6">
@@ -152,55 +148,38 @@ const CaseStudyPage = () => {
         </div>
       </section>
 
+      {hasTech && (
+        <section id="tech" className="pb-10 md:pb-12 scroll-mt-24">
+          <div className="container max-w-4xl">
+            <Reveal>
+              <div className="grid md:grid-cols-[160px_1fr] gap-2 md:gap-10">
+                <h3 className="font-mono text-[11px] tracking-[0.2em] uppercase text-muted-foreground pt-1">
+                  Tech & Methods
+                </h3>
+                <div className="flex flex-wrap gap-1.5">
+                  {study.technologies.map((t) => (
+                    <span
+                      key={t}
+                      className="font-mono text-[11px] tracking-wide text-foreground/85 bg-card border border-line px-2 py-0.5 rounded"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+      )}
+
       <div className="container max-w-4xl"><div className="h-px bg-line" /></div>
 
       {/* Sections */}
       <section className="py-10 md:py-14">
         <div className="container max-w-4xl">
           <div className="space-y-8 md:space-y-9">
-            {sectionsBeforeTech.map(({ id, label, value }, i) => (
+            {sections.map(({ id, label, value }, i) => (
               <Reveal key={label} delay={i * 40}>
-                <div id={id} className="grid md:grid-cols-[160px_1fr] gap-2 md:gap-10 scroll-mt-24">
-                  <h3 className="font-mono text-[11px] tracking-[0.2em] uppercase text-muted-foreground pt-1">
-                    {label}
-                  </h3>
-                  <ul className="space-y-1.5">
-                    {value.map((item, idx) => (
-                      <li key={idx} className="flex gap-3 text-sm md:text-[15px] text-foreground/85 leading-snug">
-                        <span aria-hidden className="mt-[0.5rem] h-1 w-1 shrink-0 rounded-full bg-primary/70" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </Reveal>
-            ))}
-
-            {hasTech && (
-              <Reveal delay={sectionsBeforeTech.length * 40}>
-                <div id="tech" className="grid md:grid-cols-[160px_1fr] gap-2 md:gap-10 scroll-mt-24">
-                  <h3 className="font-mono text-[11px] tracking-[0.2em] uppercase text-muted-foreground pt-1">
-                    Tech & Methods
-                  </h3>
-                  <div className="flex flex-wrap gap-1.5">
-                    {study.technologies.map((t) => (
-                      <span
-                        key={t}
-                        className="font-mono text-[11px] tracking-wide text-foreground/85 bg-card border border-line px-2 py-0.5 rounded"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </Reveal>
-            )}
-
-            {sectionsAfterTech.map(({ id, label, value }, i) => (
-              <Reveal
-                key={label}
-                delay={(sectionsBeforeTech.length + (hasTech ? 1 : 0) + i) * 40}
-              >
                 <div id={id} className="grid md:grid-cols-[160px_1fr] gap-2 md:gap-10 scroll-mt-24">
                   <h3 className="font-mono text-[11px] tracking-[0.2em] uppercase text-muted-foreground pt-1">
                     {label}

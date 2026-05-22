@@ -3,57 +3,88 @@ import SectionLabel from "@/components/SectionLabel";
 import Reveal from "@/components/Reveal";
 import { Button } from "@/components/ui/button";
 import { site } from "@/config/site";
-import { Download } from "lucide-react";
+import drozoneLayerCuas from "@/data/case-studies/drozone-layer-cuas";
+import { Download, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const experience = [
   {
     period: "Jul 2025 - Present",
     title: "Mission Operations — Rocket Lab",
-    description:
-      "Member of Global Operations, leading end-to-end mission operations across commercial and defense programs from launch through on-orbit sustainment. Mission Operations Lead for the Globalstar LEO constellation and SDA T2TL within PWSA, spanning flight software, GNC, FIDO, and ground systems through integration testing, container build and validation, simulations, and mission rehearsals. Design FSW state machines and application logic aligned with ground procedures; deliver ground automation and tooling that reduces manual console work. Supporting early T3TL operational concept development for next-generation transport-layer missions.",
+    bullets: [
+      "Member of Global Operations, leading mission operations across commercial and defense programs from launch through on-orbit sustainment.",
+      "Mission Operations Lead for the Globalstar LEO constellation across launch and on-orbit operations.",
+      "Mission Ops Lead for SDA T2TL within PWSA, spanning flight software, GNC, FIDO, and ground systems.",
+      "Drive integration testing, container build and validation, simulations, and mission rehearsals across ground and flight software.",
+      "Design FSW state machines and application logic aligned with ground operations; build ground automation and internal tools to reduce manual console work.",
+      "Supporting early T3TL operational concept development for next-generation transport-layer missions.",
+    ],
   },
   {
     period: "Jan 2023 - Jul 2025",
     title: "Technical Program Manager (System Performance IPT Lead) - Northrop Grumman",
-    description:
-      "Lead a $5M annual budget and 25-engineer team across six U.S. Space Force OPIR programs. Own LOS and radiometry mission performance, EVMS execution, anomaly resolution, and stakeholder alignment across PMO, chief engineering, Lockheed Martin, and Space Force partners.",
+    bullets: [
+      "Lead a $5M annual budget and 25-engineer team across six U.S. Space Force OPIR programs.",
+      "Own LOS and radiometry mission performance, EVMS execution, and anomaly resolution.",
+      "Align stakeholders across PMO, chief engineering, Lockheed Martin, and Space Force partners.",
+    ],
   },
   {
     period: "Jan 2022 - Jul 2025",
     title: "Section Manager, Mission Algorithms - Northrop Grumman",
-    description:
-      "Supervise 14 algorithm engineers delivering image processing, tracking, and telemetry analytics for space-based sensors. Direct staffing and resource strategy supporting a 200+ engineer SEIT organization, and oversee algorithm validation across HIL/SIL test environments.",
+    bullets: [
+      "Supervise 14 algorithm engineers delivering image processing, tracking, and telemetry analytics for space-based sensors.",
+      "Direct staffing and resource strategy supporting a 200+ engineer SEIT organization.",
+      "Oversee algorithm validation across HIL/SIL test environments.",
+    ],
   },
   {
     period: "Apr 2020 - Dec 2022",
     title: "System Performance Lead, LOS Team (SBIRS Payloads) - Northrop Grumman",
-    description:
-      "Led and mentored 25+ engineers through LOS/radiometry test design, execution, and analysis across TVAC, launch vehicle integration, EOT, and sustainment. Served as payload technical lead coordinating thermal, GNC, electrical, software, mission planning, and operations teams through GEO-5 and GEO-6 calibration and on-orbit campaigns.",
+    bullets: [
+      "Led and mentored 25+ engineers through LOS/radiometry test design, execution, and analysis across TVAC, launch integration, EOT, and sustainment.",
+      "Served as payload technical lead coordinating thermal, GNC, electrical, software, mission planning, and operations through GEO-5 and GEO-6 calibration and on-orbit campaigns.",
+    ],
   },
   {
     period: "May 2018 - Mar 2020",
     title: "Responsible Engineer, LOS System Performance (GEO-5) - Northrop Grumman",
-    description:
-      "Performed system-level LOS knowledge and pointing analysis using IR sensor, gimbal, motor, and gyro data. Built MATLAB tooling for Kalman filter and jitter analysis to improve targeting accuracy and payload calibration outcomes.",
+    bullets: [
+      "Performed system-level LOS knowledge and pointing analysis using IR sensor, gimbal, motor, and gyro data.",
+      "Built MATLAB tooling for Kalman filter and jitter analysis to improve targeting accuracy and payload calibration outcomes.",
+    ],
   },
   {
     period: "Jun 2015 - May 2018",
     title: "SEIT Pathway Rotation Program - Northrop Grumman",
-    description:
-      "Drove on-orbit anomaly investigations, led 24/7 early on-orbit test campaigns for multiple payloads, and delivered radiometric performance analysis. Also developed a MATLAB GUI for rapid missile trajectory generation and threat visualization.",
+    bullets: [
+      "Drove on-orbit anomaly investigations and led 24/7 early on-orbit test campaigns for multiple payloads.",
+      "Delivered radiometric performance analysis across rotation assignments.",
+      "Developed a MATLAB GUI for rapid missile trajectory generation and threat visualization.",
+    ],
   },
   {
     period: "Apr 2013 - Sep 2014",
     title: "Mechanical Engineering Intern, R&D Innovation Lab - Thales Avionics",
-    description:
-      "Contributed to a 7-engineer prototyping team developing immersive seat system concepts and validating aperture-related design hypotheses through hands-on testing.",
+    bullets: [
+      "Contributed to a 7-engineer prototyping team developing immersive seat system concepts.",
+      "Validated aperture-related design hypotheses through hands-on testing.",
+    ],
   },
 ];
 
-const highlights = [
-  "Architected and delivered Python, Flask, Streamlit, and React internal applications for anomaly monitoring, automated performance reporting, and build analysis, generating $1M+ in savings.",
-  "Authored technical BOEs for $10M+ proposals, translating mission requirements into architecture options, effort models, and risk profiles.",
-  "Contributed to counter-UAS architecture trade studies integrating radar, EO/IR sensors, and AI-driven data fusion workflows.",
+const highlights: { text: string; caseStudyId?: string; caseStudyTitle?: string }[] = [
+  {
+    text: "Participated in the Architect Apprenticeship Program (AAP), dissecting customer mission requirements and conducting trade studies to architect the Counter-Unmanned Aircraft System (C-UAS) solution, integrating radar, EO/IR systems, and AI-driven data fusion.",
+    caseStudyId: drozoneLayerCuas.id,
+    caseStudyTitle: drozoneLayerCuas.title,
+  },
+  {
+    text: "Architected and delivered Python, Flask, Streamlit, and React internal applications for anomaly monitoring, automated performance reporting, and build analysis, generating $1M+ in savings.",
+  },
+  {
+    text: "Authored technical BOEs for $10M+ proposals, translating mission requirements into architecture options, effort models, and risk profiles.",
+  },
 ];
 
 const education = [
@@ -161,8 +192,15 @@ const Resume = () => (
                     {item.period}
                   </span>
                   <div>
-                    <h3 className="text-base font-semibold text-foreground mb-2">{item.title}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+                    <h3 className="text-base font-semibold text-foreground mb-3">{item.title}</h3>
+                    <ul className="space-y-3">
+                      {item.bullets.map((bullet) => (
+                        <li key={bullet} className="flex gap-3 items-start text-sm text-muted-foreground leading-relaxed">
+                          <span className="w-1 h-1 rounded-full bg-primary mt-2.5 shrink-0" />
+                          <span>{bullet}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </Reveal>
@@ -177,10 +215,29 @@ const Resume = () => (
           </Reveal>
           <ul className="space-y-4 border-y border-line py-8">
             {highlights.map((item, i) => (
-              <Reveal key={item} delay={i * 80}>
-                <li className="flex gap-3 items-start text-sm text-muted-foreground leading-relaxed">
-                  <span className="w-1 h-1 rounded-full bg-primary mt-2.5 shrink-0" />
-                  <span>{item}</span>
+              <Reveal key={item.text} delay={i * 80}>
+                <li
+                  className={
+                    item.caseStudyId
+                      ? "border border-primary/25 rounded-sm p-5 bg-primary/5"
+                      : "flex gap-3 items-start"
+                  }
+                >
+                  <div className={item.caseStudyId ? "space-y-3" : "flex gap-3 items-start"}>
+                    <div className="flex gap-3 items-start">
+                      <span className="w-1 h-1 rounded-full bg-primary mt-2.5 shrink-0" />
+                      <span className="text-sm text-muted-foreground leading-relaxed">{item.text}</span>
+                    </div>
+                    {item.caseStudyId && (
+                      <Link
+                        to={`/work/${item.caseStudyId}`}
+                        className="inline-flex items-center gap-2 font-mono text-xs tracking-wider uppercase text-primary hover:text-foreground transition-colors pl-4"
+                      >
+                        {item.caseStudyTitle}
+                        <ArrowRight size={12} />
+                      </Link>
+                    )}
+                  </div>
                 </li>
               </Reveal>
             ))}
