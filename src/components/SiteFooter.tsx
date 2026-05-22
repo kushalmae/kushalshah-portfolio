@@ -12,6 +12,14 @@ const SiteFooter = () => (
           Contact
         </Link>
         <a
+          href={site.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-xs text-muted-foreground hover:text-foreground tracking-wide uppercase transition-colors"
+        >
+          GitHub
+        </a>
+        <a
           href={site.linkedin}
           target="_blank"
           rel="noopener noreferrer"

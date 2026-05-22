@@ -5,7 +5,10 @@ import SectionLabel from "@/components/SectionLabel";
 import Reveal from "@/components/Reveal";
 import { Button } from "@/components/ui/button";
 import { caseStudies } from "@/data/case-studies";
+import { featuredGitHubProjects } from "@/data/github-projects";
+import GitHubProjectCard from "@/components/GitHubProjectCard";
 import SystemsHero from "@/components/SystemsHero";
+import { site } from "@/config/site";
 
 const pillars = [
   {
@@ -121,6 +124,46 @@ const Index = () => (
             <Button variant="subtle" asChild>
               <Link to="/work">View All Case Studies</Link>
             </Button>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+
+    <div className="container"><div className="h-px bg-line" /></div>
+
+    {/* GitHub Projects */}
+    <section className="py-24 md:py-32">
+      <div className="container max-w-6xl">
+        <Reveal>
+          <SectionLabel>Open Source & Code</SectionLabel>
+          <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-4 tracking-tight">
+            GitHub projects you can inspect.
+          </h2>
+          <p className="text-sm text-muted-foreground leading-relaxed mb-10 max-w-2xl">
+            Satellite ops platforms, telemetry pipelines, and automation tooling — repositories
+            alongside the case studies, with source and demos where available.
+          </p>
+        </Reveal>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
+          {featuredGitHubProjects.map((project, i) => (
+            <Reveal key={project.slug} delay={i * 60}>
+              <GitHubProjectCard project={project} />
+            </Reveal>
+          ))}
+        </div>
+        <Reveal delay={360}>
+          <div className="mt-8 flex flex-wrap items-center gap-4">
+            <Button variant="subtle" asChild>
+              <Link to="/projects">View All Projects</Link>
+            </Button>
+            <a
+              href={site.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-muted-foreground hover:text-foreground tracking-widest uppercase transition-colors"
+            >
+              github.com/{site.githubUsername}
+            </a>
           </div>
         </Reveal>
       </div>

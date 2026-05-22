@@ -8,6 +8,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Work from "./pages/Work";
+import Projects from "./pages/Projects";
 import CaseStudyPage from "./pages/CaseStudyPage";
 import Thinking from "./pages/Thinking";
 import ArticlePage from "./pages/ArticlePage";
@@ -33,6 +34,7 @@ const App = () => (
                 <Route path="/" element={<Index />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/work" element={<Work />} />
+                <Route path="/projects" element={<Projects />} />
                 <Route path="/work/:id" element={<CaseStudyPage />} />
                 <Route path="/thinking" element={<Thinking />} />
                 <Route path="/thinking/:slug" element={<ArticlePage />} />
