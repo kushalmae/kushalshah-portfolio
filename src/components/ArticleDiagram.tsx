@@ -420,9 +420,9 @@ function SensorFusionDiagram() {
   );
 }
 
-// ── Kill Chain Timing ─────────────────────────────────────────────────────────
+// ── Engagement Timing ─────────────────────────────────────────────────────────
 
-function KillChainTimingDiagram() {
+function EngagementTimingDiagram() {
   const groups = [
     { name: "Group 1", detectId: 38.9, engage: 58.3, color: "bg-primary/30" },
     { name: "Group 2", detectId: 38.9, engage: 23.3, color: "bg-primary/50" },
@@ -431,7 +431,7 @@ function KillChainTimingDiagram() {
   const maxVal = 100;
 
   return (
-    <Wrapper title="Kill Chain Timing Budget — Seconds Available per Phase per Group">
+    <Wrapper title="Engagement Timing Budget — Seconds Available per Phase per Group">
       <div className="space-y-4">
         {groups.map((g) => (
           <div key={g.name}>
@@ -478,6 +478,146 @@ function KillChainTimingDiagram() {
   );
 }
 
+// ── COP-1 FOP / FARM ──────────────────────────────────────────────────────────
+
+function CopFopFarmDiagram() {
+  return (
+    <Wrapper title="COP-1 Closed Loop — FOP-1 ↔ CLCW ↔ FARM-1">
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+        <Box title="Ground" value="FOP-1" sub="V(S), NN(R)" accent />
+        <div className="flex flex-col items-center gap-1 shrink-0">
+          <span className="font-mono text-[9px] text-muted-foreground/50">AD frames N(S)</span>
+          <div className="w-12 sm:w-16 h-px bg-primary/40" />
+          <span className="font-mono text-[9px] text-primary/70">TC / USLP</span>
+        </div>
+        <Box title="Spacecraft" value="FARM-1" sub="V(R)" accent />
+      </div>
+      <div className="mt-4 flex flex-col sm:flex-row items-center justify-center gap-2">
+        <div className="hidden sm:block flex-1" />
+        <div className="border border-dashed border-line/50 rounded-[2px] px-4 py-2 text-center w-full sm:w-auto">
+          <div className="font-mono text-[9px] tracking-[0.15em] uppercase text-muted-foreground/60">
+            CLCW in Telemetry
+          </div>
+          <div className="font-mono text-[10px] text-foreground/75 mt-1">
+            N(R) · Lockout · Wait · Retransmit
+          </div>
+        </div>
+        <div className="hidden sm:block flex-1" />
+      </div>
+      <p className="mt-3 font-mono text-[9px] text-muted-foreground/50 text-center">
+        Frames must pass Frame Validation Check before entering COP-1 state machines
+      </p>
+    </Wrapper>
+  );
+}
+
+function CopFopStatesDiagram() {
+  const states = [
+    { id: "S1", name: "Active", note: "Normal AD transmit" },
+    { id: "S2", name: "Retransmit", note: "Wait=0, go-back-n" },
+    { id: "S3", name: "Retransmit", note: "Wait=1, hold" },
+    { id: "S4", name: "Init (no BC)", note: "Await clean CLCW" },
+    { id: "S5", name: "Init (BC)", note: "Unlock / Set V(R)" },
+    { id: "S6", name: "Initial", note: "Queues purged" },
+  ];
+  return (
+    <Wrapper title="FOP-1 State Summary — S1 through S6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+        {states.map((s) => (
+          <div
+            key={s.id}
+            className={`border rounded-[2px] px-2.5 py-2 ${
+              s.id === "S1" ? "border-primary/30 bg-primary/5" : "border-line bg-card/60"
+            }`}
+          >
+            <div className="font-mono text-[10px] text-primary">{s.id}</div>
+            <div className="font-mono text-[10px] text-foreground/80 mt-0.5">{s.name}</div>
+            <div className="font-mono text-[9px] text-muted-foreground/55 mt-0.5">{s.note}</div>
+          </div>
+        ))}
+      </div>
+    </Wrapper>
+  );
+}
+
+function CopSlidingWindowDiagram() {
+  const k = 4;
+  const vr = 10;
+  const frames = Array.from({ length: 8 }, (_, i) => {
+    const ns = vr + i;
+    const inWindow = i < k;
+    const acked = i === 0;
+    return { ns, inWindow, acked };
+  });
+  return (
+    <Wrapper title="Sliding Window — FOP K=4 unacknowledged frames, FARM V(R)=10">
+      <div className="mb-3 font-mono text-[9px] text-muted-foreground/55 text-center">
+        Sender may have up to K frames ahead of N(R); receiver accepts N(S) in [V(R), V(R)+PW)
+      </div>
+      <div className="flex flex-wrap justify-center gap-1.5">
+        {frames.map((f) => (
+          <div
+            key={f.ns}
+            className={`w-10 h-10 flex flex-col items-center justify-center border rounded-[2px] font-mono text-[9px] ${
+              f.acked
+                ? "border-line/30 bg-muted/20 text-muted-foreground/40"
+                : f.inWindow
+                ? "border-primary/35 bg-primary/10 text-primary"
+                : "border-line/30 bg-card/40 text-muted-foreground/50"
+            }`}
+          >
+            <span>N(S)</span>
+            <span className="text-[11px] font-medium">{f.ns}</span>
+          </div>
+        ))}
+      </div>
+      <div className="mt-3 flex justify-center gap-4 font-mono text-[9px] text-muted-foreground/55">
+        <span className="flex items-center gap-1.5">
+          <span className="w-2 h-2 rounded-[1px] bg-primary/45" /> In flight (≤ K)
+        </span>
+        <span className="flex items-center gap-1.5">
+          <span className="w-2 h-2 rounded-[1px] bg-muted/30" /> Acknowledged
+        </span>
+      </div>
+    </Wrapper>
+  );
+}
+
+function CopRetransmitDiagram() {
+  const steps = [
+    { trigger: "CLCW Retransmit=1 or T1 expiry", effect: "Abort lower-layer transfers on VC" },
+    { trigger: "Transmission_Count++", effect: "Reset timer to T1_Initial" },
+    { trigger: "Mark Sent_Queue", effect: "To_Be_Retransmitted_Flag on all unacked frames" },
+    { trigger: "Sequential replay", effect: "Pass copies to Lower Procedures; clear flag on Accept" },
+    { trigger: "Transmission_Limit exceeded", effect: "Alert [limit] or Suspend per TT" },
+  ];
+  return (
+    <Wrapper title="Go-Back-n Retransmission Sequence">
+      <div className="space-y-0">
+        {steps.map((step, i) => (
+          <div key={i} className="flex items-stretch gap-3">
+            <div className="flex flex-col items-center shrink-0">
+              <div
+                className={`w-2 h-2 rounded-full mt-1 shrink-0 ${
+                  i === steps.length - 1 ? "bg-muted-foreground/40" : "bg-primary/55"
+                }`}
+              />
+              {i < steps.length - 1 && (
+                <div className="w-px flex-1 bg-line/40 my-1" style={{ minHeight: "16px" }} />
+              )}
+            </div>
+            <div className="pb-2.5">
+              <span className="font-mono text-[10px] text-foreground/80">{step.trigger}</span>
+              <span className="font-mono text-[10px] text-muted-foreground/45 mx-2">→</span>
+              <span className="font-mono text-[10px] text-muted-foreground/70">{step.effect}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </Wrapper>
+  );
+}
+
 // ── Public export ─────────────────────────────────────────────────────────────
 
 export function ArticleDiagram({ id }: { id: string }) {
@@ -490,7 +630,11 @@ export function ArticleDiagram({ id }: { id: string }) {
     case "deltav":   return <DeltaVDiagram />;
     case "cascade":          return <CascadeDiagram />;
     case "sensor-fusion":    return <SensorFusionDiagram />;
-    case "killchain-timing": return <KillChainTimingDiagram />;
+    case "engagement-timing": return <EngagementTimingDiagram />;
+    case "cop-fop-farm":      return <CopFopFarmDiagram />;
+    case "cop-fop-states":    return <CopFopStatesDiagram />;
+    case "cop-sliding-window": return <CopSlidingWindowDiagram />;
+    case "cop-retransmit":    return <CopRetransmitDiagram />;
     default:                 return null;
   }
 }

@@ -110,8 +110,8 @@ const article: Article = {
         "This distinction matters because these protocols are frequently mentioned alongside onboard buses in systems engineering discussions, which can create the impression that they compete for the same architectural role. They do not. If you are discussing radio to ground or spacecraft-to-spacecraft proximity communications, CCSDS TM/TC and Proximity-1 are the right references. If you are discussing OBC to PDU or payload to mass memory, they are completely out of scope. Keeping the space-link layer and the onboard avionics layer mentally separate is one of the fastest ways to avoid confusion in architecture reviews.",
       ],
       relatedArticle: {
-        slug: "spacecraft-link-security",
-        label: "Continue: Spacecraft Link Encryption (SDLS)",
+        slug: "cop-1-protocol",
+        label: "Continue: COP-1 Reliable Telecommand (FOP/FARM)",
       },
     },
     {

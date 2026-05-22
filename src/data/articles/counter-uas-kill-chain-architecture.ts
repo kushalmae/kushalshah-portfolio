@@ -2,7 +2,7 @@ import type { Article } from "./types";
 
 const article: Article = {
   slug: "counter-uas-kill-chain-architecture",
-  title: "Designing the Kill Chain",
+  title: "Counter-UAS Engagement Architecture",
   subtitle: "Sensor fusion, timing budgets, and SWaP constraints in forward-deployed drone defense",
   description:
     "A drone swarm costs a few thousand dollars to field. Defeating it reliably, in any weather, in under 20 seconds, from a system you can assemble in three hours — that's a systems engineering problem.",
@@ -11,12 +11,12 @@ const article: Article = {
   tags: ["Aerospace", "Systems Engineering", "Architecture"],
   intro: [
     "A drone swarm isn't just a volume problem — it's a geometry, timing, and weather problem simultaneously. Small Group 1 quadrotors fly slow and low; larger Group 3 drones fly fast and high. Defeating all three classes at ranges from 3 to 13 kilometers, in all-weather conditions, while keeping the system light enough to airdrop into a forward operating base: that's the design space.",
-    "The architecture that emerged from those constraints is a case study in resource-budget thinking — the same discipline that governs spacecraft design. Mass, power, volume, and time are all fixed. Every component decision is a trade. And the kill chain either closes within its timing budget, or the drone wins.",
+    "The architecture that emerged from those constraints is a case study in resource-budget thinking — the same discipline that governs spacecraft design. Mass, power, volume, and time are all fixed. Every component decision is a trade. And the engagement loop either closes within its timing budget, or the drone wins.",
   ],
   sections: [
     {
       id: "threat",
-      label: "The Problem",
+      label: "Phase 01",
       heading: "What Makes Drone Swarms Hard to Defeat",
       paragraphs: [
         "The drone threat isn't monolithic. Group 1 drones are small commercial quadrotors — slow, low-altitude, visually small. Group 2 are medium UAS with greater range and speed. Group 3 are large, fast, and fly at altitudes that challenge both optical and radar systems differently. A defense architecture that closes against Group 1 at 3 km may fail against Group 3 at 5 km.",
@@ -26,7 +26,7 @@ const article: Article = {
     },
     {
       id: "sensors",
-      label: "The Core Tradeoff",
+      label: "Phase 02",
       heading: "Why No Single Sensor Closes the Gap",
       paragraphs: [
         "EOIR cameras offer superior track accuracy — on the order of 100 microradians, compared to 0.5 degrees for a radar system. That precision matters enormously when you're trying to cue a gun at a fast-moving target at 3 kilometers. But EOIR has a hard failure mode: fog, heavy rain, and dust render it effectively blind. In contested forward areas, those are not edge cases.",
@@ -36,19 +36,19 @@ const article: Article = {
       diagramId: "sensor-fusion",
     },
     {
-      id: "killchain",
-      label: "The Architecture",
-      heading: "The Kill Chain and Its Timing Budget",
+      id: "engagement",
+      label: "Phase 03",
+      heading: "The Engagement Loop and Its Timing Budget",
       paragraphs: [
-        "A kill chain has four phases: detect, identify, track, and engage. Each consumes time from a fixed budget. The requirement — 20 seconds per single threat at threshold — sets the total. The architecture allocates that time across phases, and the allocation determines which sensors can be used, how long the C2 system has to classify, and how many shots the gun can fire before the threat exits the engagement envelope.",
+        "Counter-UAS engagement has four phases: detect, identify, track, and engage. Each consumes time from a fixed budget. The requirement — 20 seconds per single threat at threshold — sets the total. The architecture allocates that time across phases, and the allocation determines which sensors can be used, how long the C2 system has to classify, and how many shots the gun can fire before the threat exits the engagement envelope.",
         "The timing analysis across all three drone groups revealed an important asymmetry. Group 2 drones, flying faster and at moderate altitude, had the tightest engage window — only 23.3 seconds to close the shot — while Group 1's lower speed provided a more forgiving 58.3 seconds. Group 3's size made it the easiest to detect early, but its altitude and speed created the most complex engagement geometry.",
         "C2 system latency directly eats the timing budget. Every second spent on threat classification, display rendering, or operator decision time is a second not available for track refinement or engagement. This is why AI-assisted classification matters architecturally — not as a feature, but as a timing budget recapture mechanism. If the system can present a classified, prioritized threat to the operator in two seconds instead of eight, that six seconds flows directly into fire control.",
       ],
-      diagramId: "killchain-timing",
+      diagramId: "engagement-timing",
     },
     {
       id: "swap",
-      label: "The Constraint",
+      label: "Phase 04",
       heading: "SWaP as a Design Driver",
       paragraphs: [
         "The SWaP-C envelope — Size, Weight, and Power, plus Cost — is not a packaging constraint. It's an architectural one. A system limited to 20 kilowatts rules out certain radar configurations entirely. A 2,000-pound limit means helicopter-liftable, which means modular subassemblies with no field-permanent connections. A 1,000 cubic foot volume limit means C-130 compatible. The 3-hour assembly requirement means no soldering, no custom cable runs, no specialized tooling on site.",
@@ -58,7 +58,7 @@ const article: Article = {
     },
     {
       id: "results",
-      label: "What Closed",
+      label: "Phase 05",
       heading: "Where the Architecture Succeeded — and Where It Didn't",
       paragraphs: [
         "The architecture met objective-level performance on four of six requirements: 360-degree field of regard, simultaneous engagement of 20 targets, 3-kilometer engagement range for Group 1 and 2 drones, and a 20-second single-threat engagement time. On multiple simultaneous threats, the system achieved 1 second per threat — ten times better than the objective.",
@@ -68,7 +68,7 @@ const article: Article = {
     },
   ],
   insight:
-    "Every kill chain is a budget. You have a fixed amount of time, a fixed amount of sensor accuracy, and a fixed amount of power to work with. The architecture's job is to allocate those resources so the chain closes — not just on paper, but in the worst weather, against the hardest target, on the day when nothing goes as planned.",
+    "Every engagement architecture is a budget. You have a fixed amount of time, a fixed amount of sensor accuracy, and a fixed amount of power to work with. The architecture's job is to allocate those resources so the loop closes — not just on paper, but in the worst weather, against the hardest target, on the day when nothing goes as planned.",
 };
 
 export default article;

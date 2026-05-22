@@ -153,7 +153,7 @@ const article: Article = {
       type: "Government White Paper",
       role: "Primary Technical Author & System Architect",
       highlights: [
-        "Designed a multi-layer kill chain under strict SWaP constraints (≤1,000 ft³, ≤2,000 lbs, ≤20 kW) — integrating a Ku-band MESA radar, EOIR imaging system, and 30mm chain gun via FAAD C2.",
+        "Designed a multi-layer engagement architecture under strict SWaP constraints (≤1,000 ft³, ≤2,000 lbs, ≤20 kW) — integrating a Ku-band MESA radar, EOIR imaging system, and 30mm chain gun via FAAD C2.",
         "Developed timing budgets allocating detect, identify, and engage phases to hit a 20-second single-threat engagement window across Group 1, 2, and 3 drone classes.",
         "Architecture met objective-level performance on 4 of 6 RPP requirements — 360° field of regard, 20-target simultaneous capacity, 3 km engagement range, and 98% system effectiveness — at a $420K fielded unit cost.",
       ],

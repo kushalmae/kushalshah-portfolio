@@ -15,14 +15,14 @@ const caseStudy: CaseStudy = {
     "FAAD C2",
     "ADS-B / IFF",
     "Timing Budget Analysis",
-    "Kill Chain Design",
+    "Engagement Architecture",
     "SWaP-C Optimization",
     "Sensor Fusion",
     "AI/ML Target Classification",
   ],
   tldr: {
     problem: "No single-sensor solution could meet the 97%+ effectiveness threshold against swarms of Group 1–3 drones at forward deployment ranges in all-weather conditions.",
-    solution: "Multi-layer kill chain fusing Ku-band MESA radar and EOIR imaging to cue a 30mm chain gun, with timing budgets allocated across detect, identify, track, and engage phases per drone class.",
+    solution: "Multi-layer engagement architecture fusing Ku-band MESA radar and EOIR imaging to cue a 30mm chain gun, with timing budgets allocated across detect, identify, track, and engage phases per drone class.",
     impact: "Met objective-level performance on 4 of 6 requirements — 98% system effectiveness, 20-second single-threat engagement, $420K fielded unit cost.",
   },
   metrics: [
@@ -47,13 +47,13 @@ const caseStudy: CaseStudy = {
   ],
   role: [
     "System architect and primary technical author",
-    "Designed sensor fusion architecture and kill chain concept of operations",
+    "Designed sensor fusion architecture and engagement concept of operations",
     "Developed timing budget analysis across all drone group classes and authored the full technical white paper",
   ],
   approach: [
     "Analyzed swarm angular spread to show that sequential engagement allows field-of-interest narrowing after first target acquisition",
     "Assigned radar as primary 360° search sensor and EOIR as high-accuracy cue sensor — each compensating where the other degrades",
-    "Allocated timing budgets per drone class to verify the kill chain closed within all engagement windows before selecting components",
+    "Allocated timing budgets per drone class to verify the engagement loop closed within all engagement windows before selecting components",
   ],
   solution: [
     "Echodyne Echoshield MESA radar (Ku-band, 11.4 km, 0.5° accuracy) + CM202U EOIR (13 km, 100 μrad) + MK-44 30mm chain gun (200 rds/min, 5 km max kill distance)",
@@ -65,10 +65,10 @@ const caseStudy: CaseStudy = {
     "Multiple-threat engagement at 1 second per threat, well beyond the 10-second objective",
     "Fielded unit cost of $420K in production lots of 50; prototype budget $5.26M NRE",
   ],
-  insight: "A multi-sensor kill chain isn't just about redundancy — it's about designing each sensor to compensate precisely where the other degrades. The architecture is only as good as your understanding of each component's failure modes under real operational conditions.",
+  insight: "A multi-sensor engagement architecture isn't just about redundancy — it's about designing each sensor to compensate precisely where the other degrades. The architecture is only as good as your understanding of each component's failure modes under real operational conditions.",
   relatedArticle: {
     slug: "counter-uas-kill-chain-architecture",
-    label: "Deep Dive: Kill Chain Architecture",
+    label: "Deep Dive: Engagement Architecture",
   },
 };
 
