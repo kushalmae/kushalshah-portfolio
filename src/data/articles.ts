@@ -1,5 +1,7 @@
 export type { ArticleTable, ArticleSection, Article } from "./articles/types";
 
+import spacecraftPowerBudgeting from "./articles/spacecraft-power-budgeting";
+import spacecraftRfCommunications from "./articles/spacecraft-rf-communications";
 import spacecraftCommunicationProtocols from "./articles/spacecraft-communication-protocols";
 import spacecraftLinkSecurity from "./articles/spacecraft-link-security";
 import cop1Protocol from "./articles/cop-1-protocol";
@@ -7,8 +9,12 @@ import satelliteEngineeringBudgets from "./articles/satellite-engineering-budget
 import satellitePointingBudget from "./articles/satellite-pointing-budget";
 import counterUasKillChainArchitecture from "./articles/counter-uas-kill-chain-architecture";
 import satopsProcedureTool from "./articles/satops-procedure-tool";
+import electricPropulsionSystems from "./articles/electric-propulsion-systems";
 
 export const articles = [
+  electricPropulsionSystems,
+  spacecraftPowerBudgeting,
+  spacecraftRfCommunications,
   spacecraftCommunicationProtocols,
   spacecraftLinkSecurity,
   cop1Protocol,

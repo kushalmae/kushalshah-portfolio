@@ -84,6 +84,10 @@ const article: Article = {
         "Every watt dissipated as heat inside the spacecraft must also be rejected to space. A 1,000W heat load requires approximately 3 square meters of radiator area in GEO. The power budget doesn't just govern what you can operate — it governs how large your satellite has to become.",
       ],
       diagramId: "power",
+      relatedArticle: {
+        slug: "spacecraft-power-budgeting",
+        label: "Deep Dive: Power Budgeting, SOC, and Undervoltage FDIR",
+      },
     },
     {
       id: "link",

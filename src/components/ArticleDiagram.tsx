@@ -618,6 +618,360 @@ function CopRetransmitDiagram() {
   );
 }
 
+// ── RF Communications ───────────────────────────────────────────────────────────
+
+function RfSignalStackDiagram() {
+  const layers = [
+    { name: "RF Carrier", role: "Physical highway", detail: "S / X / Ka-band sine wave" },
+    { name: "Subcarrier", role: "Lane on the highway", detail: "Intermediate tone" },
+    { name: "Data Symbols", role: "Markers in the lane", detail: "BPSK / QPSK states" },
+    { name: "Bits", role: "Vehicles", detail: "Binary stream" },
+    { name: "Frames / Packets", role: "Cargo", detail: "CCSDS structures" },
+  ];
+  return (
+    <Wrapper title="Signal Hierarchy — Carrier to CCSDS Frames">
+      <div className="space-y-0">
+        {layers.map((l, i) => (
+          <div key={l.name} className="flex items-stretch gap-3">
+            <div className="flex flex-col items-center shrink-0 w-4">
+              <div
+                className={`w-2.5 h-2.5 rounded-full mt-1 shrink-0 ${
+                  i === 0 ? "bg-primary" : "bg-primary/45"
+                }`}
+              />
+              {i < layers.length - 1 && (
+                <div className="w-px flex-1 bg-line/40 my-1" style={{ minHeight: "14px" }} />
+              )}
+            </div>
+            <div className="pb-2.5 flex-1">
+              <div className="font-mono text-[10px] text-primary">{l.name}</div>
+              <div className="font-mono text-[10px] text-foreground/80">{l.role}</div>
+              <div className="font-mono text-[9px] text-muted-foreground/55">{l.detail}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </Wrapper>
+  );
+}
+
+function RfDemodPipelineDiagram() {
+  const steps = [
+    "Capture RF via antenna",
+    "Amplify & downconvert",
+    "PLL carrier lock",
+    "Track Doppler / phase",
+    "Remove carrier",
+    "Recover subcarrier & symbols",
+    "Bit synchronizer",
+    "Frame sync",
+    "Telemetry packets",
+  ];
+  return (
+    <Wrapper title="Ground Demodulation Chain — Sequential Recovery">
+      <div className="flex flex-wrap justify-center gap-1.5">
+        {steps.map((s, i) => (
+          <React.Fragment key={s}>
+            <div
+              className={`border rounded-[2px] px-2 py-1.5 font-mono text-[9px] text-center max-w-[108px] ${
+                i === steps.length - 1
+                  ? "border-primary/30 bg-primary/5 text-primary"
+                  : "border-line bg-card/60 text-foreground/75"
+              }`}
+            >
+              {s}
+            </div>
+            {i < steps.length - 1 && (
+              <span className="font-mono text-[10px] text-muted-foreground/35 self-center">→</span>
+            )}
+          </React.Fragment>
+        ))}
+      </div>
+      <p className="mt-3 font-mono text-[9px] text-muted-foreground/50 text-center">
+        Residual carrier enables PLL lock before data decode
+      </p>
+    </Wrapper>
+  );
+}
+
+function RfLockHierarchyDiagram() {
+  const states = [
+    { name: "No Signal", note: "No RF energy detected" },
+    { name: "Carrier Lock", note: "PLL tracking RF wave" },
+    { name: "Subcarrier / Symbol Lock", note: "Data markers identified" },
+    { name: "Frame Sync", note: "CCSDS structures recognized" },
+    { name: "Valid Telemetry", note: "Decoded, usable for ops" },
+  ];
+  return (
+    <Wrapper title="Lock State Hierarchy — Operations Status Board">
+      <div className="space-y-2">
+        {states.map((s, i) => (
+          <div
+            key={s.name}
+            className={`flex items-center gap-3 border rounded-[2px] px-3 py-2 ${
+              i === states.length - 1
+                ? "border-primary/30 bg-primary/5"
+                : "border-line bg-card/50"
+            }`}
+          >
+            <span className="font-mono text-[9px] text-muted-foreground/45 w-4 shrink-0">
+              {i + 1}
+            </span>
+            <div className="flex-1 min-w-0">
+              <div className="font-mono text-[10px] text-foreground/85">{s.name}</div>
+              <div className="font-mono text-[9px] text-muted-foreground/55">{s.note}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </Wrapper>
+  );
+}
+
+function RfDopplerLeoDiagram() {
+  const points = [
+    { label: "AOS", freq: "High", note: "Approaching — tune high" },
+    { label: "TCA", freq: "Center", note: "Doppler rate flattens" },
+    { label: "LOS", freq: "Low", note: "Receding — tune low" },
+  ];
+  return (
+    <Wrapper title="LEO Pass Doppler Profile — Frequency vs. Time">
+      <div className="flex justify-between items-end h-16 px-2 mb-2">
+        <div className="flex flex-col items-center">
+          <div className="w-2 h-10 bg-primary/50 rounded-[1px]" />
+          <span className="font-mono text-[9px] text-muted-foreground/55 mt-1">AOS</span>
+        </div>
+        <div className="flex flex-col items-center flex-1 mx-2">
+          <div className="w-full h-px bg-line/50 relative top-5" />
+          <div className="w-2 h-2 rounded-full bg-primary/70 relative top-3" />
+          <span className="font-mono text-[9px] text-muted-foreground/55 mt-4">TCA</span>
+        </div>
+        <div className="flex flex-col items-center">
+          <div className="w-2 h-4 bg-primary/30 rounded-[1px]" />
+          <span className="font-mono text-[9px] text-muted-foreground/55 mt-1">LOS</span>
+        </div>
+      </div>
+      <div className="grid grid-cols-3 gap-2">
+        {points.map((p) => (
+          <div key={p.label} className="border border-line/30 rounded-[2px] px-2 py-1.5 text-center">
+            <div className="font-mono text-[9px] text-primary">{p.label}</div>
+            <div className="font-mono text-[10px] text-foreground/80">{p.freq}</div>
+            <div className="font-mono text-[8px] text-muted-foreground/50">{p.note}</div>
+          </div>
+        ))}
+      </div>
+      <p className="mt-3 font-mono text-[9px] text-muted-foreground/50 text-center">
+        Δf/f = v/c — higher bands → larger shift at same velocity
+      </p>
+    </Wrapper>
+  );
+}
+
+function RfLinkMarginDiagram() {
+  const margins = [
+    { db: "< 0", meaning: "Link failure — does not close", tone: "critical" as const },
+    { db: "0 – 2", meaning: "Critical risk — small errors break link", tone: "warn" as const },
+    { db: "3 – 5", meaning: "Workable — requires monitoring", tone: "ok" as const },
+    { db: "6+", meaning: "Comfortable design cushion", tone: "good" as const },
+  ];
+  return (
+    <Wrapper title="Link Margin Interpretation — Eb/N0 Safety Cushion">
+      <div className="space-y-1.5">
+        {margins.map((m) => (
+          <div
+            key={m.db}
+            className={`flex items-center gap-3 border rounded-[2px] px-3 py-2 ${
+              m.tone === "good"
+                ? "border-primary/30 bg-primary/5"
+                : m.tone === "critical"
+                ? "border-destructive/25 bg-destructive/5"
+                : "border-line bg-card/50"
+            }`}
+          >
+            <span className="font-mono text-xs font-medium w-12 shrink-0 text-foreground">
+              {m.db} dB
+            </span>
+            <span className="font-mono text-[10px] text-muted-foreground/70">{m.meaning}</span>
+          </div>
+        ))}
+      </div>
+      <p className="mt-3 font-mono text-[9px] text-muted-foreground/50 text-center">
+        ↑ Data rate → ↓ Eb/N0 → ↓ margin · Doubling distance → −6 dB FSPL
+      </p>
+    </Wrapper>
+  );
+}
+
+// ── EPS Power Budgeting ───────────────────────────────────────────────────────
+
+function EpsSystemLayersDiagram() {
+  const layers = [
+    { name: "Mission / Orbit", detail: "Eclipse duration, beta angle, season" },
+    { name: "Power Source", detail: "Cells, area, packing, EOL degradation" },
+    { name: "Battery", detail: "Li-ion, Wh/Ah, temp limits, cycle life" },
+    { name: "Power Electronics", detail: "Bus regulation, MPPT/DET, converters" },
+    { name: "Loads", detail: "Avionics, comm, payload, heaters" },
+  ];
+  return (
+    <Wrapper title="EPS Analysis Layers — Five Interdependent Domains">
+      <div className="space-y-2">
+        {layers.map((l, i) => (
+          <div
+            key={l.name}
+            className={`border rounded-[2px] px-3 py-2 ${
+              i === 0 ? "border-primary/25 bg-primary/5" : "border-line bg-card/50"
+            }`}
+          >
+            <div className="font-mono text-[10px] text-primary">{l.name}</div>
+            <div className="font-mono text-[9px] text-muted-foreground/60">{l.detail}</div>
+          </div>
+        ))}
+      </div>
+    </Wrapper>
+  );
+}
+
+function EpsOrbitTimelineDiagram() {
+  return (
+    <Wrapper title="95-Min LEO Orbit — Sunlight vs. Eclipse (Typical)">
+      <div className="flex h-8 rounded-[2px] overflow-hidden border border-line/40">
+        <div
+          className="bg-primary/45 flex items-center justify-center font-mono text-[9px] text-foreground/80"
+          style={{ width: "63%" }}
+        >
+          Sunlight ~60 min
+        </div>
+        <div
+          className="bg-muted/50 flex items-center justify-center font-mono text-[9px] text-muted-foreground/70"
+          style={{ width: "37%" }}
+        >
+          Eclipse ~35 min
+        </div>
+      </div>
+      <div className="mt-3 grid grid-cols-2 gap-2 text-center">
+        <div className="border border-primary/20 rounded-[2px] px-2 py-1.5 bg-primary/5">
+          <div className="font-mono text-[9px] text-muted-foreground/60">Sunlight</div>
+          <div className="font-mono text-[10px] text-foreground">Generate + recharge</div>
+        </div>
+        <div className="border border-line/30 rounded-[2px] px-2 py-1.5">
+          <div className="font-mono text-[9px] text-muted-foreground/60">Eclipse</div>
+          <div className="font-mono text-[10px] text-foreground/80">Battery-only survival</div>
+        </div>
+      </div>
+      <p className="mt-3 font-mono text-[9px] text-muted-foreground/50 text-center">
+        P = instantaneous · E = P × t determines eclipse survival
+      </p>
+    </Wrapper>
+  );
+}
+
+function EpsOrbitEnergyDiagram() {
+  const segments = [
+    { mode: "Eclipse Survival", power: 21, min: 35, wh: 12.25 },
+    { mode: "Nominal Sunlit", power: 48, min: 45, wh: 36 },
+    { mode: "Downlink Sunlit", power: 32, min: 15, wh: 8 },
+  ];
+  const total = segments.reduce((s, x) => s + x.wh, 0);
+  const maxWh = 36;
+  return (
+    <Wrapper title={`Orbit Energy Budget — E_orbit = ${total} Wh (Worked Example)`}>
+      <div className="space-y-2">
+        {segments.map((s) => (
+          <div key={s.mode} className="flex items-center gap-3">
+            <span className="w-[120px] font-mono text-[10px] text-muted-foreground/70 text-right shrink-0">
+              {s.mode}
+            </span>
+            <div className="flex-1 h-3.5 bg-muted/30 rounded-[1px] overflow-hidden">
+              <div
+                className="h-full bg-primary/45 rounded-[1px]"
+                style={{ width: `${(s.wh / maxWh) * 100}%` }}
+              />
+            </div>
+            <span className="font-mono text-[10px] text-muted-foreground/60 w-[88px] shrink-0">
+              {s.power}W × {s.min}m = {s.wh}Wh
+            </span>
+          </div>
+        ))}
+      </div>
+      <div className="mt-3 font-mono text-[9px] text-muted-foreground/50 text-center">
+        P_sa ≈ {total}W in 60 min sun · EOL derate 0.75 → ~75W array target
+      </div>
+    </Wrapper>
+  );
+}
+
+function EpsUvStagesDiagram() {
+  const stages = [
+    { v: "13.2 V", label: "Low Power Warning", action: "Inhibit new high-power ops", level: 0 },
+    { v: "12.8 V", label: "Load Shed", action: "Drop non-critical + high-rate TX", level: 1 },
+    { v: "12.2 V", label: "Critical Safe Mode", action: "OBC, comm standby, min thermal", level: 2 },
+    { v: "11.8 V", label: "Battery Protection", action: "Hardware disconnect", level: 3 },
+  ];
+  return (
+    <Wrapper title="Staged Undervoltage — 14.8 V Nominal Li-Ion System">
+      <div className="space-y-1.5">
+        {stages.map((s) => (
+          <div
+            key={s.v}
+            className={`flex items-center gap-3 border rounded-[2px] px-3 py-2 ${
+              s.level >= 2
+                ? "border-destructive/20 bg-destructive/5"
+                : s.level === 1
+                ? "border-primary/25 bg-primary/5"
+                : "border-line bg-card/50"
+            }`}
+          >
+            <span className="font-mono text-[10px] font-medium w-14 shrink-0">{s.v}</span>
+            <div className="flex-1 min-w-0">
+              <div className="font-mono text-[10px] text-foreground/85">{s.label}</div>
+              <div className="font-mono text-[9px] text-muted-foreground/55">{s.action}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <p className="mt-3 font-mono text-[9px] text-muted-foreground/50 text-center">
+        Persist thresholds (e.g. &lt; 12.8 V for &gt; 5 s) to reject TX inrush transients
+      </p>
+    </Wrapper>
+  );
+}
+
+function EpsShedTiersDiagram() {
+  const tiers = [
+    {
+      tier: "Tier 1 — Survival",
+      loads: "EPS · OBC · Watchdog · Essential heaters · Low-rate comm",
+      shed: "Never shed",
+    },
+    {
+      tier: "Tier 2 — Mission Support",
+      loads: "Full ADCS · GPS · High-rate comm",
+      shed: "Shed after Tier 3 exhausted",
+    },
+    {
+      tier: "Tier 3 — Payload",
+      loads: "Science instruments · Experimental loads",
+      shed: "First to disable on UV",
+    },
+  ];
+  return (
+    <Wrapper title="Load Shed Priority — Re-enable with Hysteresis + SOC">
+      <div className="space-y-2">
+        {tiers.map((t) => (
+          <div key={t.tier} className="border border-line rounded-[2px] p-3 bg-card/50">
+            <div className="font-mono text-[10px] text-primary mb-1">{t.tier}</div>
+            <div className="font-mono text-[9px] text-foreground/75">{t.loads}</div>
+            <div className="font-mono text-[9px] text-muted-foreground/50 mt-1">{t.shed}</div>
+          </div>
+        ))}
+      </div>
+      <p className="mt-3 font-mono text-[9px] text-muted-foreground/50 text-center">
+        OFF: V &lt; 11.6 V for 5 s · ON: V &gt; 12.2 V for 10 min AND SOC &gt; 40%
+      </p>
+    </Wrapper>
+  );
+}
+
 // ── Public export ─────────────────────────────────────────────────────────────
 
 export function ArticleDiagram({ id }: { id: string }) {
@@ -634,7 +988,17 @@ export function ArticleDiagram({ id }: { id: string }) {
     case "cop-fop-farm":      return <CopFopFarmDiagram />;
     case "cop-fop-states":    return <CopFopStatesDiagram />;
     case "cop-sliding-window": return <CopSlidingWindowDiagram />;
-    case "cop-retransmit":    return <CopRetransmitDiagram />;
-    default:                 return null;
+    case "cop-retransmit":       return <CopRetransmitDiagram />;
+    case "rf-signal-stack":      return <RfSignalStackDiagram />;
+    case "rf-demod-pipeline":    return <RfDemodPipelineDiagram />;
+    case "rf-lock-hierarchy":    return <RfLockHierarchyDiagram />;
+    case "rf-doppler-leo":       return <RfDopplerLeoDiagram />;
+    case "rf-link-margin":       return <RfLinkMarginDiagram />;
+    case "eps-system-layers":    return <EpsSystemLayersDiagram />;
+    case "eps-orbit-timeline":   return <EpsOrbitTimelineDiagram />;
+    case "eps-orbit-energy":     return <EpsOrbitEnergyDiagram />;
+    case "eps-uv-stages":        return <EpsUvStagesDiagram />;
+    case "eps-shed-tiers":       return <EpsShedTiersDiagram />;
+    default:                     return null;
   }
 }
