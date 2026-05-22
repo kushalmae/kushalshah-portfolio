@@ -115,6 +115,36 @@ const Resume = () => (
 
         <div className="mb-16">
           <Reveal>
+            <h2 className="font-mono text-xs tracking-[0.2em] uppercase text-muted-foreground mb-8">Domains and Expertise</h2>
+            <div className="flex flex-wrap gap-2 mb-10">
+              {domains.map((domain) => (
+                <span
+                  key={domain}
+                  className="px-3 py-1.5 text-xs border border-line text-muted-foreground rounded-sm tracking-wide"
+                >
+                  {domain}
+                </span>
+              ))}
+            </div>
+          </Reveal>
+
+          <Reveal>
+            <h2 className="font-mono text-xs tracking-[0.2em] uppercase text-muted-foreground mb-8">Technical Stack</h2>
+            <div className="flex flex-wrap gap-2">
+              {technicalStack.map((item) => (
+                <span
+                  key={item}
+                  className="px-3 py-1.5 text-xs border border-line text-muted-foreground rounded-sm tracking-wide"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+
+        <div className="mb-16">
+          <Reveal>
             <h2 className="font-mono text-xs tracking-[0.2em] uppercase text-muted-foreground mb-8">Experience</h2>
           </Reveal>
           <div className="space-y-0">
@@ -176,34 +206,6 @@ const Resume = () => (
             ))}
           </ul>
         </div>
-
-        <Reveal>
-          <h2 className="font-mono text-xs tracking-[0.2em] uppercase text-muted-foreground mb-8">Domains and Expertise</h2>
-          <div className="flex flex-wrap gap-2">
-            {domains.map((domain) => (
-              <span
-                key={domain}
-                className="px-3 py-1.5 text-xs border border-line text-muted-foreground rounded-sm tracking-wide"
-              >
-                {domain}
-              </span>
-            ))}
-          </div>
-        </Reveal>
-
-        <Reveal>
-          <h2 className="font-mono text-xs tracking-[0.2em] uppercase text-muted-foreground mt-16 mb-8">Technical Stack</h2>
-          <div className="flex flex-wrap gap-2">
-            {technicalStack.map((item) => (
-              <span
-                key={item}
-                className="px-3 py-1.5 text-xs border border-line text-muted-foreground rounded-sm tracking-wide"
-              >
-                {item}
-              </span>
-            ))}
-          </div>
-        </Reveal>
       </div>
     </section>
   </PageLayout>
