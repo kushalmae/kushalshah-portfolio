@@ -91,8 +91,9 @@ The pillars ("Technical Strategy / Systems Architecture / Software Leverage") ar
 
 - No **/now** page (what you're focused on this quarter — answers "is this person currently engaged elsewhere?").
 - No **/speaking** or **/talks** even with 1–2 entries — talks are strong proof for senior IC / lead roles.
-- No **testimonials** / LinkedIn recommendation pull-quotes — the single highest-credibility content for hiring.
 - No **logos** of programs / orgs (OPIR, SBIRS, PWSA, Rocket Lab, Northrop Grumman, USSF) — these compress trust instantly for a recruiter who's skimming.
+
+> Testimonials and LinkedIn recommendations are intentionally kept on LinkedIn rather than mirrored on the site. The site links to LinkedIn prominently; that's where hiring-grade social proof belongs.
 - No **photo** of you anywhere — the site is well-credentialed but cool. One human-warm photo + a single line on *why* you do this raises conversion for hiring managers who want to picture you on their team.
 
 ---
@@ -150,11 +151,10 @@ Once recruiters are finding the site and have a clear conversion path, sharpen t
 
 1. Rewrite hero: one positioning sentence + 3–4 quantified stat tiles + one signature diagram or case study card.
 2. Add a **"Currently"** strip pulled from a single object in `src/data/now.ts` (what you're working on, last shipped, what role you're open to).
-3. Add a **testimonials** section. Start with 2–3 LinkedIn recommendation pull-quotes — the single highest-credibility content for hiring conversion.
-4. Add a **program-logos** strip on the home page: Northrop Grumman, Rocket Lab, USSF, SDA, Lockheed Martin, Thales, UCLA, UCI. Visual proof in under a second.
-5. Reconcile `/work` vs `/projects` — relabel `/projects` to `/code` and integrate visually, or fold into `/work` with a tab.
-6. Promote mental models out of `/books/models/:slug` to `/mental-models/:slug` (with redirects). Group `/books` + `/mental-models` under a "Library" parent in the header.
-7. Group header into 4 primary items (Work · Writing · About · Hire Me) + a "More" group for Library, Resume, Contact.
+3. Add a **program-logos** strip on the home page: Northrop Grumman, Rocket Lab, USSF, SDA, Lockheed Martin, Thales, UCLA, UCI. Visual proof in under a second.
+4. Reconcile `/work` vs `/projects` — relabel `/projects` to `/code` and integrate visually, or fold into `/work` with a tab.
+5. Promote mental models out of `/books/models/:slug` to `/mental-models/:slug` (with redirects). Group `/books` + `/mental-models` under a "Library" parent in the header.
+6. Group header into 4 primary items (Work · Writing · About · Hire Me) + a "More" group for Library, Resume, Contact.
 
 ### Tier 5 — Performance, content depth, personality
 
@@ -186,4 +186,3 @@ Don't ship anything in Tier 4+ until there are at least 30 days of data from Tie
 2. Comfortable listing role titles + geography + availability publicly on `/hire-me`, or keep that behind the contact form?
 3. Any case studies / programs that are NDA-sensitive and shouldn't get more SEO surface area? That changes how aggressively we prerender + index.
 4. Open to migrating off pure SPA to a static-site framework (Astro / vike) for content pages? Bigger lift but compounding SEO returns. Recommended only if Tier 2 prerender doesn't move Search Console numbers within ~6 weeks.
-5. Want testimonials displayed with names + companies + LinkedIn links, or anonymized to titles only?
