@@ -6,6 +6,7 @@ dist/
 dist-ssr/
 
 # Environment — commit .env.example only, never actual values
+.env
 .env.local
 .env.*.local
 
