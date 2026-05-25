@@ -1,9 +1,13 @@
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, ArrowRight, ChevronRight, Download } from "lucide-react";
+import { ArrowLeft, ArrowRight, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import PageLayout from "@/components/PageLayout";
 import SectionLabel from "@/components/SectionLabel";
 import Reveal from "@/components/Reveal";
+import Seo from "@/components/Seo";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import ReadingProgress from "@/components/ReadingProgress";
+import ShareLinks from "@/components/ShareLinks";
 import { ArticleDiagram } from "@/components/ArticleDiagram";
 import ArticleTableOfContents from "@/components/ArticleTableOfContents";
 import {
@@ -11,6 +15,12 @@ import {
   getAdjacentInSeries,
   getSeriesArticles,
 } from "@/data/articles";
+import {
+  articleSchema,
+  breadcrumbListSchema,
+  parseLooseDateToIso,
+} from "@/lib/seo/jsonld";
+import { absoluteUrl, articleOgImageUrl } from "@/lib/seo/urls";
 
 const ArticlePage = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -34,41 +44,48 @@ const ArticlePage = () => {
     ? getSeriesArticles(articles, article.series.id)
     : [];
 
+  const path = `/thinking/${article.slug}`;
+  const breadcrumbItems = [
+    { label: "Home", to: "/" },
+    { label: "Thinking", to: "/thinking" },
+    ...(article.series
+      ? [
+          {
+            label: article.series.title,
+            to: `/thinking?series=${article.series.id}`,
+          },
+        ]
+      : []),
+    { label: article.title },
+  ];
+
   return (
     <PageLayout title={article.title}>
+      <Seo
+        title={article.title}
+        description={article.description}
+        path={path}
+        type="article"
+        image={articleOgImageUrl(article.slug)}
+        publishedTime={parseLooseDateToIso(article.date)}
+        articleTags={article.tags}
+        jsonLd={[
+          articleSchema({
+            url: absoluteUrl(path),
+            title: article.title,
+            description: article.description,
+            datePublished: article.date,
+            image: articleOgImageUrl(article.slug),
+            tags: article.tags,
+          }),
+          breadcrumbListSchema(breadcrumbItems),
+        ]}
+      />
+      <ReadingProgress />
       <section className="py-24 md:py-32">
         <div className="container max-w-6xl">
           <Reveal>
-            <nav aria-label="Breadcrumb" className="mb-8">
-              <ol className="flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground">
-                <li>
-                  <Link to="/thinking" className="hover:text-foreground transition-colors">
-                    Thinking
-                  </Link>
-                </li>
-                {article.series && (
-                  <>
-                    <li aria-hidden>
-                      <ChevronRight size={12} className="opacity-50" />
-                    </li>
-                    <li>
-                      <Link
-                        to={`/thinking?series=${article.series.id}`}
-                        className="hover:text-foreground transition-colors"
-                      >
-                        {article.series.title}
-                      </Link>
-                    </li>
-                  </>
-                )}
-                <li aria-hidden>
-                  <ChevronRight size={12} className="opacity-50" />
-                </li>
-                <li className="text-foreground/80 truncate max-w-[min(100%,20rem)]" aria-current="page">
-                  {article.title}
-                </li>
-              </ol>
-            </nav>
+            <Breadcrumbs items={breadcrumbItems} />
 
             <Link
               to="/thinking"
@@ -334,6 +351,10 @@ const ArticlePage = () => {
                   </blockquote>
                 </div>
               </Reveal>
+
+              <div className="h-px bg-line my-12" />
+
+              <ShareLinks path={path} title={article.title} />
 
               {(prev || next) && (
                 <nav

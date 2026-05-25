@@ -7,6 +7,9 @@ import ArticleTableOfContents from "@/components/ArticleTableOfContents";
 import MentalModelCard from "@/components/MentalModelCard";
 import ThemeTag from "@/components/ThemeTag";
 import { getBookBySlug, getModelsForBook } from "@/data/books";
+import Seo from "@/components/Seo";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import { breadcrumbListSchema } from "@/lib/seo/jsonld";
 
 const BookPage = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -26,26 +29,25 @@ const BookPage = () => {
     );
   }
 
+  const path = `/books/${book.slug}`;
+  const breadcrumbItems = [
+    { label: "Home", to: "/" },
+    { label: "Books", to: "/books" },
+    { label: book.title },
+  ];
+
   return (
     <PageLayout title={book.title}>
+      <Seo
+        title={book.title}
+        description={book.description}
+        path={path}
+        jsonLd={[breadcrumbListSchema(breadcrumbItems)]}
+      />
       <section className="py-24 md:py-32">
         <div className="container max-w-6xl">
           <Reveal>
-            <nav aria-label="Breadcrumb" className="mb-8">
-              <ol className="flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground">
-                <li>
-                  <Link to="/books" className="hover:text-foreground transition-colors">
-                    Books
-                  </Link>
-                </li>
-                <li aria-hidden>
-                  <ChevronRight size={12} className="opacity-50" />
-                </li>
-                <li className="text-foreground/80 truncate max-w-[min(100%,20rem)]" aria-current="page">
-                  {book.title}
-                </li>
-              </ol>
-            </nav>
+            <Breadcrumbs items={breadcrumbItems} />
 
             <Link
               to="/books"

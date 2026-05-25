@@ -1,9 +1,17 @@
 import PageLayout from "@/components/PageLayout";
 import SectionLabel from "@/components/SectionLabel";
 import Reveal from "@/components/Reveal";
+import Seo from "@/components/Seo";
+import { personSchema } from "@/lib/seo/jsonld";
 
 const About = () => (
   <PageLayout title="About">
+    <Seo
+      title="About"
+      description="Aerospace systems leader spanning mission operations, OPIR/SBIRS payload systems, mission algorithms, and software platforms. Background, beliefs, and how I work."
+      path="/about"
+      jsonLd={[personSchema()]}
+    />
     <section className="py-24 md:py-40">
       <div className="container max-w-3xl">
         <Reveal>
@@ -77,6 +85,25 @@ const About = () => (
               </Reveal>
             ))}
           </ul>
+
+          <div className="h-px bg-line my-12" />
+
+          <Reveal>
+            <h2 className="text-xl font-semibold text-foreground mb-4">
+              Outside the system diagrams
+            </h2>
+          </Reveal>
+          <Reveal delay={60}>
+            <p>
+              Why I work across these domains: a spacecraft is the most honest
+              system humans build. It either survives every corner-case orbit
+              and recovers from every fault, or it doesn't come back. That bar
+              shaped how I think about every other system — APIs, organizations,
+              proposals, even teams. I'd rather work with people who treat their
+              work the same way: design for the failure modes you'll actually
+              face, not the ones that make for clean slides.
+            </p>
+          </Reveal>
         </div>
       </div>
     </section>

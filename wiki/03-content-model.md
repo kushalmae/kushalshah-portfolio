@@ -120,7 +120,7 @@ interface Book {
 }
 
 interface MentalModel {
-  slug: string;            // /books/models/:slug
+  slug: string;            // /mental-models/:slug
   name: string;
   oneLiner: string;
   description: string;

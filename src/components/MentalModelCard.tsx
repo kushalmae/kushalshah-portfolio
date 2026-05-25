@@ -10,7 +10,7 @@ interface MentalModelCardProps {
 
 const MentalModelCard = ({ model, activeTag }: MentalModelCardProps) => (
   <article className="group border border-line rounded-lg hover:border-muted-foreground/30 transition-all duration-300 p-5">
-    <Link to={`/books/models/${model.slug}`} className="block hover:no-underline">
+    <Link to={`/mental-models/${model.slug}`} className="block hover:no-underline">
       <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors leading-snug mb-2 text-base">
         {model.name}
       </h3>

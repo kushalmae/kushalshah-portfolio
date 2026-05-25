@@ -55,7 +55,7 @@ Content-specific cards & tools:
 | `CaseStudyTOC` | Sticky TOC for `CaseStudyPage`. |
 | `BookCard` | One book in the books index. |
 | `MentalModelCard` | One mental model in a grid. |
-| `GitHubProjectCard` | One project on `/projects`. |
+| `GitHubProjectCard` | One project on `/code`. |
 | `ContactForm` | Form on `/contact`, posts to Formspree or falls back to `mailto:`. |
 
 ---

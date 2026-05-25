@@ -182,7 +182,7 @@ export const books = [
 import type { MentalModel } from "../books/types";
 
 const model: MentalModel = {
-  slug: "the-model",                    // URL: /books/models/the-model
+  slug: "the-model",                    // URL: /mental-models/the-model
   name: "The Model",
   oneLiner: "Compressed essence.",
   description: "One-paragraph framing.",

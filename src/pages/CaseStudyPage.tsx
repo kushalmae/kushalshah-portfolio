@@ -5,6 +5,9 @@ import SectionLabel from "@/components/SectionLabel";
 import Reveal from "@/components/Reveal";
 import CaseStudyTOC from "@/components/CaseStudyTOC";
 import { caseStudies } from "@/data/case-studies";
+import Seo from "@/components/Seo";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import { breadcrumbListSchema } from "@/lib/seo/jsonld";
 
 const CaseStudyPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -36,6 +39,13 @@ const CaseStudyPage = () => {
 
   const hasTech = study.technologies.length > 0;
 
+  const path = `/work/${study.id}`;
+  const breadcrumbItems = [
+    { label: "Home", to: "/" },
+    { label: "Work", to: "/work" },
+    { label: study.title },
+  ];
+
   const tocItems = [
     { id: "summary", label: "Overview" },
     { id: "tldr", label: "TL;DR" },
@@ -46,7 +56,18 @@ const CaseStudyPage = () => {
 
   return (
     <PageLayout title={study.title}>
+      <Seo
+        title={study.title}
+        description={study.summary}
+        path={path}
+        image={study.image}
+        jsonLd={[breadcrumbListSchema(breadcrumbItems)]}
+      />
       <CaseStudyTOC items={tocItems} />
+
+      <div className="container max-w-4xl pt-6 md:pt-8">
+        <Breadcrumbs items={breadcrumbItems} className="mb-0" />
+      </div>
 
       {/* Hero */}
       <div className="relative">
