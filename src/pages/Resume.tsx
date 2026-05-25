@@ -80,6 +80,103 @@ const highlights = [
   "Authored technical BOEs for $10M+ proposals, translating mission requirements into architecture options, effort models, and risk profiles.",
 ];
 
+const careerTimeline = [
+  {
+    period: "2025 - Present",
+    type: "Role",
+    organization: "Rocket Lab",
+    phase: "Mission operations for proliferated LEO",
+    focus:
+      "Global Operations across commercial and government constellations, including Globalstar and SDA T2TL within PWSA.",
+    evidence: "FSW, GNC, FIDO, ground software, Kubernetes, AWS, and mission rehearsal integration.",
+    links: [
+      { label: "PWSA Transport Layer", to: "/thinking/pwsa-transport-layer" },
+      { label: "PWSA Architecture", to: "/thinking/pwsa-architecture" },
+    ],
+  },
+  {
+    period: "2024",
+    type: "Certification",
+    organization: "Project Management Institute",
+    phase: "Project Management Professional (PMP)",
+    focus:
+      "Formalized program leadership discipline across scope, schedule, cost, risk, stakeholders, and hybrid delivery.",
+    evidence: "Applied directly to OPIR IPT execution, EVMS, proposal BOEs, and cross-functional mission delivery.",
+    links: [
+      { label: "Mission-Critical System Leadership", to: "/work/mission-critical-systems" },
+    ],
+  },
+  {
+    period: "2023",
+    type: "Leadership Training",
+    organization: "SASE Top Gun 2",
+    phase: "High-potential leadership cohort",
+    focus:
+      "Selective cohort focused on emotional intelligence, leadership brand, intrapreneurship, and high-performance team dynamics.",
+    evidence: "Extended the people-and-team operating model behind technical program leadership.",
+  },
+  {
+    period: "2020 - 2025",
+    type: "Role",
+    organization: "Northrop Grumman",
+    phase: "OPIR payload and program leadership",
+    focus:
+      "System Performance IPT leadership across LOS/radiometry, anomaly response, EVMS, stakeholder alignment, and mission performance.",
+    evidence: "$5M annual budget, 25-engineer team, and six U.S. Space Force OPIR programs.",
+    links: [
+      { label: "Mission-Critical System Leadership", to: "/work/mission-critical-systems" },
+      { label: "PWSA Tracking Layer", to: "/thinking/pwsa-tracking-layer" },
+    ],
+  },
+  {
+    period: "2022",
+    type: "Architecture Training",
+    organization: "Architect Apprenticeship Program",
+    phase: "Counter-UAS systems architecture",
+    focus:
+      "Dissected customer mission requirements and ran trade studies for a layered counter-UAS architecture.",
+    evidence: "Capstone became the Drozone Layer case study: radar, EO/IR, C2, effector timing, and AOA trades.",
+    links: [
+      { label: "Drozone Layer", to: "/work/drozone-layer-cuas" },
+      { label: "Counter-UAS Engagement Architecture", to: "/thinking/counter-uas-kill-chain-architecture" },
+    ],
+  },
+  {
+    period: "2020",
+    type: "Certificate",
+    organization: "Caltech",
+    phase: "Caltech Certificate in Systems Engineering",
+    focus:
+      "Structured systems engineering training across requirements, interfaces, DSMs, trade studies, cost, schedule, and risk.",
+    evidence: "Capstone covered autonomous UAV delivery under FAA, ConOps, payload, range, and architecture constraints.",
+    links: [
+      { label: "The Hidden Architecture of Satellites", to: "/thinking/satellite-engineering-budgets" },
+    ],
+  },
+  {
+    period: "2015 - 2020",
+    type: "Role",
+    organization: "Northrop Grumman",
+    phase: "Payload systems and mission algorithms",
+    focus:
+      "On-orbit test campaigns, missile trajectory tooling, payload calibration, jitter analysis, and image-processing algorithm validation.",
+    evidence: "Rotations across SEIT, LOS system performance, and early mission-critical tooling.",
+    links: [
+      { label: "Mission-Critical System Leadership", to: "/work/mission-critical-systems" },
+      { label: "The Pointing Budget", to: "/thinking/satellite-pointing-budget" },
+    ],
+  },
+  {
+    period: "2013 - 2014",
+    type: "Role",
+    organization: "Thales Avionics",
+    phase: "R&D prototyping foundation",
+    focus:
+      "Hands-on mechanical engineering work in an innovation lab, validating design hypotheses through test hardware.",
+    evidence: "Early exposure to cross-functional product and systems constraints.",
+  },
+];
+
 const education = [
   "M.S., Mechanical Engineering (Control Systems), UCLA (GPA: 3.93)",
   "B.S., Mechanical Engineering and Aerospace Engineering (Double Major), UCI (GPA: 3.90)",
@@ -223,6 +320,76 @@ const Resume = () => (
             </div>
           </Reveal>
         </div>
+
+        <section
+          aria-labelledby="career-timeline-heading"
+          className="mb-16"
+        >
+          <Reveal>
+            <h2
+              id="career-timeline-heading"
+              className="font-mono text-xs tracking-[0.2em] uppercase text-muted-foreground mb-3"
+            >
+              Career Timeline
+            </h2>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-8">
+              The path from R&D prototyping into OPIR payload systems, program
+              leadership, and current mission operations for proliferated LEO.
+            </p>
+          </Reveal>
+          <ol className="relative border-l border-line ml-3 space-y-8">
+            {careerTimeline.map((item, i) => (
+              <li key={`${item.period}-${item.organization}`} className="relative pl-8">
+                <Reveal delay={i * 80}>
+                  <span
+                    className="absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full bg-primary ring-4 ring-background"
+                    aria-hidden
+                  />
+                  <div className="border border-line rounded-sm p-5 bg-card/30">
+                    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-3">
+                      <div>
+                        <div className="flex flex-wrap items-center gap-2 mb-1">
+                          <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-primary">
+                            {item.period}
+                          </p>
+                          <span className="font-mono text-[9px] tracking-[0.18em] uppercase text-muted-foreground border border-line rounded-sm px-1.5 py-px">
+                            {item.type}
+                          </span>
+                        </div>
+                        <h3 className="text-base font-semibold text-foreground">
+                          {item.phase}
+                        </h3>
+                      </div>
+                      <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-muted-foreground md:text-right">
+                        {item.organization}
+                      </p>
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {item.focus}
+                    </p>
+                    <p className="mt-3 text-xs text-foreground/80 leading-relaxed">
+                      {item.evidence}
+                    </p>
+                    {item.links && (
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        {item.links.map((link) => (
+                          <Link
+                            key={link.to}
+                            to={link.to}
+                            className="inline-flex items-center gap-1.5 font-mono text-[10px] tracking-[0.14em] uppercase text-primary hover:text-foreground transition-colors"
+                          >
+                            {link.label}
+                            <ArrowRight size={12} aria-hidden />
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </Reveal>
+              </li>
+            ))}
+          </ol>
+        </section>
 
         <div className="mb-16">
           <Reveal>

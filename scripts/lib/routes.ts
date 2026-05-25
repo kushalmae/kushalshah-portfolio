@@ -75,15 +75,15 @@ const STATIC_META: Record<
     description:
       "Book summaries and extracted mental models — leadership, learning, strategy, and culture. The frameworks I actually apply.",
   },
-  "/speaking": {
-    title: `Speaking — ${SHORT}`,
-    description:
-      "Talks and topics. Available for engineering org tech talks, hiring conferences, and aerospace systems forums.",
-  },
   "/resume": {
     title: `Resume — ${SHORT}`,
     description:
       "Aerospace systems leadership and technical execution — Rocket Lab, Northrop Grumman, OPIR/SBIRS, PWSA. Experience, education, certifications, and skills.",
+  },
+  "/now": {
+    title: `Now — ${SHORT}`,
+    description:
+      "Current focus, role, shipping work, and what Kushal Shah is open to next.",
   },
   "/contact": {
     title: `Contact — ${SHORT}`,

@@ -21,8 +21,8 @@ const Books = lazy(() => import("./pages/Books"));
 const BookPage = lazy(() => import("./pages/BookPage"));
 const MentalModelPage = lazy(() => import("./pages/MentalModelPage"));
 const Resume = lazy(() => import("./pages/Resume"));
+const Now = lazy(() => import("./pages/Now"));
 const Contact = lazy(() => import("./pages/Contact"));
-const Speaking = lazy(() => import("./pages/Speaking"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -67,6 +67,10 @@ const App = () => (
                     <Route path="/books" element={<Books />} />
                     <Route path="/books/:slug" element={<BookPage />} />
                     <Route
+                      path="/mental-models"
+                      element={<Navigate to="/books#mental-models" replace />}
+                    />
+                    <Route
                       path="/mental-models/:slug"
                       element={<MentalModelPage />}
                     />
@@ -75,8 +79,8 @@ const App = () => (
                       path="/books/models/:slug"
                       element={<SlugRedirect to={(s) => `/mental-models/${s}`} />}
                     />
-                    <Route path="/speaking" element={<Speaking />} />
                     <Route path="/resume" element={<Resume />} />
+                    <Route path="/now" element={<Now />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>

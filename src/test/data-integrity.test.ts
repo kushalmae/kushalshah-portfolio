@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { articles, ARTICLE_TOPICS } from "@/data/articles";
 import { caseStudies } from "@/data/case-studies";
 import { books, mentalModels } from "@/data/books";
+import { githubProjects } from "@/data/github-projects";
 
 const SLUG_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
@@ -102,6 +103,30 @@ describe("data integrity — case studies", () => {
     expect(study.solution.length).toBeGreaterThan(0);
     expect(study.impact.length).toBeGreaterThan(0);
     expect(study.insight).toBeTruthy();
+  });
+
+  it("case study related article slugs exist", () => {
+    const articleSet = new Set(articles.map((article) => article.slug));
+    for (const study of caseStudies) {
+      if (study.relatedArticle) {
+        expect(
+          articleSet.has(study.relatedArticle.slug),
+          `case study '${study.id}' references unknown article '${study.relatedArticle.slug}'`
+        ).toBe(true);
+      }
+    }
+  });
+
+  it("GitHub project case study references exist", () => {
+    const studySet = new Set(caseStudies.map((study) => study.id));
+    for (const project of githubProjects) {
+      if (project.caseStudyId) {
+        expect(
+          studySet.has(project.caseStudyId),
+          `GitHub project '${project.slug}' references unknown case study '${project.caseStudyId}'`
+        ).toBe(true);
+      }
+    }
   });
 });
 
