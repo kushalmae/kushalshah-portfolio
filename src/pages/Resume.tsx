@@ -83,6 +83,7 @@ const highlights = [
 const careerTimeline = [
   {
     period: "2025 - Present",
+    type: "Role",
     organization: "Rocket Lab",
     phase: "Mission operations for proliferated LEO",
     focus:
@@ -90,7 +91,26 @@ const careerTimeline = [
     evidence: "FSW, GNC, FIDO, ground software, Kubernetes, AWS, and mission rehearsal integration.",
   },
   {
+    period: "2024",
+    type: "Certification",
+    organization: "Project Management Institute",
+    phase: "Project Management Professional (PMP)",
+    focus:
+      "Formalized program leadership discipline across scope, schedule, cost, risk, stakeholders, and hybrid delivery.",
+    evidence: "Applied directly to OPIR IPT execution, EVMS, proposal BOEs, and cross-functional mission delivery.",
+  },
+  {
+    period: "2023",
+    type: "Leadership Training",
+    organization: "SASE Top Gun 2",
+    phase: "High-potential leadership cohort",
+    focus:
+      "Selective cohort focused on emotional intelligence, leadership brand, intrapreneurship, and high-performance team dynamics.",
+    evidence: "Extended the people-and-team operating model behind technical program leadership.",
+  },
+  {
     period: "2020 - 2025",
+    type: "Role",
     organization: "Northrop Grumman",
     phase: "OPIR payload and program leadership",
     focus:
@@ -98,7 +118,26 @@ const careerTimeline = [
     evidence: "$5M annual budget, 25-engineer team, and six U.S. Space Force OPIR programs.",
   },
   {
+    period: "2022",
+    type: "Architecture Training",
+    organization: "Architect Apprenticeship Program",
+    phase: "Counter-UAS systems architecture",
+    focus:
+      "Dissected customer mission requirements and ran trade studies for a layered counter-UAS architecture.",
+    evidence: "Capstone became the Drozone Layer case study: radar, EO/IR, C2, effector timing, and AOA trades.",
+  },
+  {
+    period: "2020",
+    type: "Certificate",
+    organization: "Caltech",
+    phase: "Caltech Certificate in Systems Engineering",
+    focus:
+      "Structured systems engineering training across requirements, interfaces, DSMs, trade studies, cost, schedule, and risk.",
+    evidence: "Capstone covered autonomous UAV delivery under FAA, ConOps, payload, range, and architecture constraints.",
+  },
+  {
     period: "2015 - 2020",
+    type: "Role",
     organization: "Northrop Grumman",
     phase: "Payload systems and mission algorithms",
     focus:
@@ -107,6 +146,7 @@ const careerTimeline = [
   },
   {
     period: "2013 - 2014",
+    type: "Role",
     organization: "Thales Avionics",
     phase: "R&D prototyping foundation",
     focus:
@@ -286,9 +326,14 @@ const Resume = () => (
                   <div className="border border-line rounded-sm p-5 bg-card/30">
                     <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-3">
                       <div>
-                        <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-primary mb-1">
-                          {item.period}
-                        </p>
+                        <div className="flex flex-wrap items-center gap-2 mb-1">
+                          <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-primary">
+                            {item.period}
+                          </p>
+                          <span className="font-mono text-[9px] tracking-[0.18em] uppercase text-muted-foreground border border-line rounded-sm px-1.5 py-px">
+                            {item.type}
+                          </span>
+                        </div>
                         <h3 className="text-base font-semibold text-foreground">
                           {item.phase}
                         </h3>

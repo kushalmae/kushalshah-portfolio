@@ -24,5 +24,9 @@ describe("Resume page", () => {
     expect(within(timeline).getByText(/Thales Avionics/i)).toBeInTheDocument();
     expect(within(timeline).getAllByText(/Mission operations/i).length).toBeGreaterThan(0);
     expect(within(timeline).getAllByText(/OPIR payload/i).length).toBeGreaterThan(0);
+    expect(within(timeline).getByText(/PMP/i)).toBeInTheDocument();
+    expect(within(timeline).getByText(/SASE Top Gun 2/i)).toBeInTheDocument();
+    expect(within(timeline).getByText(/Architect Apprenticeship Program/i)).toBeInTheDocument();
+    expect(within(timeline).getByText(/Caltech Certificate/i)).toBeInTheDocument();
   });
 });
