@@ -11,6 +11,7 @@ import {
 } from "@/data/github-projects";
 import { site } from "@/config/site";
 import { cn } from "@/lib/utils";
+import Seo from "@/components/Seo";
 
 const Projects = () => {
   const [activeTag, setActiveTag] = useState<GitHubProjectTag | null>(null);
@@ -24,7 +25,12 @@ const Projects = () => {
   );
 
   return (
-    <PageLayout title="Projects">
+    <PageLayout title="Code">
+      <Seo
+        title="Code"
+        description="Satellite operations platforms, telemetry pipelines, automation tooling, and AI workflows — GitHub projects you can inspect."
+        path="/code"
+      />
       <section className="py-16 md:py-24">
         <div className="container max-w-6xl">
           <Reveal>

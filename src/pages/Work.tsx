@@ -6,6 +6,7 @@ import SectionLabel from "@/components/SectionLabel";
 import Reveal from "@/components/Reveal";
 import { caseStudies, ALL_TAGS } from "@/data/case-studies";
 import { cn } from "@/lib/utils";
+import Seo from "@/components/Seo";
 
 const Work = () => {
   const [activeTag, setActiveTag] = useState<string | null>(null);
@@ -17,6 +18,11 @@ const Work = () => {
 
   return (
     <PageLayout title="Work">
+      <Seo
+        title="Work"
+        description="Selected case studies in systems thinking — aerospace, defense, mission operations, software platforms, and AI."
+        path="/work"
+      />
       <section className="py-16 md:py-24">
         <div className="container max-w-6xl">
           <Reveal>

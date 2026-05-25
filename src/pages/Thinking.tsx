@@ -1,10 +1,11 @@
 import { useMemo, useState, useId } from "react";
 import { useSearchParams } from "react-router-dom";
-import { Search } from "lucide-react";
+import { Rss, Search } from "lucide-react";
 import PageLayout from "@/components/PageLayout";
 import SectionLabel from "@/components/SectionLabel";
 import Reveal from "@/components/Reveal";
 import ArticleCard from "@/components/ArticleCard";
+import Seo from "@/components/Seo";
 import {
   articles,
   ALL_ARTICLE_TAGS,
@@ -104,6 +105,11 @@ const Thinking = () => {
 
   return (
     <PageLayout title="Thinking">
+      <Seo
+        title="Thinking"
+        description="Essays on systems thinking, spacecraft engineering, mission operations, communications protocols, and platform architecture."
+        path="/thinking"
+      />
       <a
         href="#article-list"
         className="sr-only focus:not-sr-only focus:absolute focus:top-20 focus:left-4 focus:z-50 focus:px-3 focus:py-2 focus:bg-background focus:border focus:border-line focus:rounded-sm focus:text-sm"
@@ -118,10 +124,17 @@ const Thinking = () => {
             <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground mb-4">
               Writing on systems, strategy, and structure.
             </h1>
-            <p className="text-muted-foreground leading-relaxed mb-10 max-w-2xl">
+            <p className="text-muted-foreground leading-relaxed mb-6 max-w-2xl">
               Essays on technical architecture, systems design, and the intersection of
               engineering leadership and software leverage.
             </p>
+            <a
+              href="/rss.xml"
+              className="inline-flex items-center gap-2 mb-10 text-xs text-muted-foreground hover:text-foreground tracking-widest uppercase transition-colors"
+            >
+              <Rss size={14} aria-hidden />
+              RSS Feed
+            </a>
           </Reveal>
 
           {/* Start here */}

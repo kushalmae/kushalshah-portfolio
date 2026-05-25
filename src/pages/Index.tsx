@@ -1,27 +1,44 @@
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 import PageLayout from "@/components/PageLayout";
 import SectionLabel from "@/components/SectionLabel";
 import Reveal from "@/components/Reveal";
+import Seo from "@/components/Seo";
 import { Button } from "@/components/ui/button";
 import { caseStudies } from "@/data/case-studies";
 import { featuredGitHubProjects } from "@/data/github-projects";
 import GitHubProjectCard from "@/components/GitHubProjectCard";
 import SystemsHero from "@/components/SystemsHero";
 import { site } from "@/config/site";
+import { personSchema, websiteSchema } from "@/lib/seo/jsonld";
+import { currentlyAtAGlance } from "@/data/now";
+import { programs } from "@/data/programs";
+
+/** Quantified proof tiles directly under the hero. Numbers tied to the resume
+ * so a recruiter sees scale in <60 seconds. */
+const proofTiles = [
+  { value: "$5M", label: "annual IPT budget owned" },
+  { value: "25", label: "engineers led across OPIR" },
+  { value: "6", label: "U.S. Space Force programs" },
+  { value: "$1M+", label: "automation savings shipped" },
+  { value: "$10M+", label: "proposal BOEs authored" },
+];
 
 const pillars = [
   {
     title: "Technical Strategy",
-    description: "Translating ambiguity into structured technical direction. Defining roadmaps, architectures, and priorities that align engineering with mission outcomes.",
+    description:
+      "Translating ambiguity into structured technical direction. Defining roadmaps, architectures, and priorities that align engineering with mission outcomes.",
   },
   {
     title: "Systems Architecture",
-    description: "Designing end-to-end systems across hardware, software, and operational boundaries. Building structures that survive contact with reality.",
+    description:
+      "Designing end-to-end systems across hardware, software, and operational boundaries. Building structures that survive contact with reality.",
   },
   {
     title: "Software & Platform Leverage",
-    description: "Applying software automation, APIs, and tooling to multiply the impact of technical teams. Turning manual processes into scalable platforms.",
+    description:
+      "Applying software automation, APIs, and tooling to multiply the impact of technical teams. Turning manual processes into scalable platforms.",
   },
 ];
 
@@ -29,9 +46,10 @@ const featuredWork = caseStudies.slice(0, 3);
 
 const Index = () => (
   <PageLayout>
+    <Seo path="/" jsonLd={[personSchema(), websiteSchema()]} />
+
     {/* Hero */}
     <section className="relative py-24 md:py-40 overflow-hidden">
-      {/* Animated systems diagram */}
       <div className="absolute inset-0 pointer-events-none">
         <SystemsHero />
         <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/70 to-background" />
@@ -44,21 +62,102 @@ const Index = () => (
           I lead complex technical systems from ambiguity to execution.
         </h1>
         <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mb-12 animate-fade-up" style={{ animationDelay: "0.1s" }}>
-          Combining systems thinking, technical strategy, architecture, software leverage, and cross-functional leadership to design and deliver what matters.
+          Mission operations for LEO constellations, OPIR/SBIRS payload performance, mission algorithms, and the software platforms that let engineering teams scale.
         </p>
         <div className="flex flex-wrap gap-4 animate-fade-up" style={{ animationDelay: "0.2s" }}>
           <Button variant="hero" size="lg" asChild>
             <Link to="/work">View Selected Work</Link>
           </Button>
           <Button variant="subtle" size="lg" asChild>
-            <Link to="/about">About Me</Link>
+            <a href={site.resumeUrl} download="Kushal_Shah_Resume.pdf" className="gap-2">
+              <Download size={14} aria-hidden />
+              Download Resume
+            </a>
           </Button>
         </div>
       </div>
     </section>
 
-    {/* Divider */}
-    <div className="container"><div className="h-px bg-line" /></div>
+    {/* Proof tiles */}
+    <section className="border-t border-line">
+      <div className="container">
+        <ul
+          aria-label="Quantified impact"
+          className="grid grid-cols-2 md:grid-cols-5 divide-y md:divide-y-0 md:divide-x divide-line"
+        >
+          {proofTiles.map((tile) => (
+            <li key={tile.label} className="py-6 px-4 md:px-6 first:pl-0 last:pr-0">
+              <p className="text-2xl md:text-3xl font-semibold tracking-tight text-foreground">
+                {tile.value}
+              </p>
+              <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-muted-foreground mt-1.5 leading-snug">
+                {tile.label}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    {/* Currently */}
+    <section className="border-t border-line py-12">
+      <div className="container max-w-5xl">
+        <Reveal>
+          <div className="grid md:grid-cols-[180px_1fr] gap-4 md:gap-10 items-start">
+            <div>
+              <SectionLabel>Currently</SectionLabel>
+              <p className="font-mono text-xs tracking-wider uppercase text-muted-foreground mt-1">
+                As of {currentlyAtAGlance.asOf}
+              </p>
+            </div>
+            <dl className="space-y-3 text-sm text-foreground/85 leading-relaxed">
+              <div className="grid grid-cols-1 md:grid-cols-[110px_1fr] gap-x-6 gap-y-1">
+                <dt className="font-mono text-[10px] tracking-[0.18em] uppercase text-muted-foreground pt-1">Role</dt>
+                <dd>{currentlyAtAGlance.role}</dd>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-[110px_1fr] gap-x-6 gap-y-1">
+                <dt className="font-mono text-[10px] tracking-[0.18em] uppercase text-muted-foreground pt-1">Focus</dt>
+                <dd>{currentlyAtAGlance.focus}</dd>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-[110px_1fr] gap-x-6 gap-y-1">
+                <dt className="font-mono text-[10px] tracking-[0.18em] uppercase text-muted-foreground pt-1">Shipping</dt>
+                <dd>{currentlyAtAGlance.shipping}</dd>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-[110px_1fr] gap-x-6 gap-y-1">
+                <dt className="font-mono text-[10px] tracking-[0.18em] uppercase text-primary pt-1">Open to</dt>
+                <dd className="text-foreground">{currentlyAtAGlance.openTo}</dd>
+              </div>
+            </dl>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+
+    {/* Program / org trust strip */}
+    <section className="border-t border-b border-line py-10">
+      <div className="container">
+        <Reveal>
+          <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-muted-foreground mb-6">
+            Programs and Organizations
+          </p>
+          <ul
+            aria-label="Programs and organizations"
+            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-6 md:gap-8 items-start"
+          >
+            {programs.map((p) => (
+              <li key={p.name}>
+                <p className="text-sm font-semibold text-foreground/90 tracking-tight leading-snug">
+                  {p.name}
+                </p>
+                <p className="font-mono text-[10px] tracking-wider uppercase text-muted-foreground mt-1 leading-snug">
+                  {p.context}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+      </div>
+    </section>
 
     {/* Pillars */}
     <section className="py-24 md:py-32">
@@ -154,7 +253,7 @@ const Index = () => (
         <Reveal delay={360}>
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <Button variant="subtle" asChild>
-              <Link to="/projects">View All Projects</Link>
+              <Link to="/code">View All Code</Link>
             </Button>
             <a
               href={site.github}
@@ -192,9 +291,7 @@ const Index = () => (
             </p>
           </Reveal>
           <Reveal delay={200}>
-            <p>
-              I design for coherence, not just correctness.
-            </p>
+            <p>I design for coherence, not just correctness.</p>
           </Reveal>
         </div>
       </div>
@@ -207,14 +304,21 @@ const Index = () => (
       <div className="container max-w-3xl text-center">
         <Reveal>
           <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-4 tracking-tight">
-            Let's build something that works.
+            Open to senior IC and technical leadership roles.
           </h2>
           <p className="text-muted-foreground mb-8">
-            I'm open to technical leadership roles, advisory work, and select collaborations.
+            Mission operations, systems architecture, technical program leadership, and platform engineering. LinkedIn is the fastest way to reach me.
           </p>
-          <Button variant="hero" size="lg" asChild>
-            <Link to="/contact">Get in Touch</Link>
-          </Button>
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <Button variant="hero" size="lg" asChild>
+              <a href={site.linkedin} target="_blank" rel="noopener noreferrer">
+                Connect on LinkedIn
+              </a>
+            </Button>
+            <Button variant="subtle" size="lg" asChild>
+              <Link to="/contact">All Contact Channels</Link>
+            </Button>
+          </div>
         </Reveal>
       </div>
     </section>

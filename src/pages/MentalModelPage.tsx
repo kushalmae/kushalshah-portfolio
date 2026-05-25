@@ -5,6 +5,9 @@ import SectionLabel from "@/components/SectionLabel";
 import Reveal from "@/components/Reveal";
 import ThemeTag from "@/components/ThemeTag";
 import { getMentalModelBySlug } from "@/data/books";
+import Seo from "@/components/Seo";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import { breadcrumbListSchema } from "@/lib/seo/jsonld";
 
 const MentalModelPage = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -23,37 +26,26 @@ const MentalModelPage = () => {
     );
   }
 
+  const path = `/mental-models/${model.slug}`;
+  const breadcrumbItems = [
+    { label: "Home", to: "/" },
+    { label: "Books", to: "/books" },
+    { label: "Mental Models", to: "/books#mental-models" },
+    { label: model.name },
+  ];
+
   return (
     <PageLayout title={model.name}>
+      <Seo
+        title={model.name}
+        description={model.oneLiner}
+        path={path}
+        jsonLd={[breadcrumbListSchema(breadcrumbItems)]}
+      />
       <section className="py-24 md:py-32">
         <div className="container max-w-3xl">
           <Reveal>
-            <nav aria-label="Breadcrumb" className="mb-8">
-              <ol className="flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground">
-                <li>
-                  <Link to="/books" className="hover:text-foreground transition-colors">
-                    Books
-                  </Link>
-                </li>
-                <li aria-hidden>
-                  <ChevronRight size={12} className="opacity-50" />
-                </li>
-                <li>
-                  <Link
-                    to="/books#mental-models"
-                    className="hover:text-foreground transition-colors"
-                  >
-                    Mental Models
-                  </Link>
-                </li>
-                <li aria-hidden>
-                  <ChevronRight size={12} className="opacity-50" />
-                </li>
-                <li className="text-foreground/80" aria-current="page">
-                  {model.name}
-                </li>
-              </ol>
-            </nav>
+            <Breadcrumbs items={breadcrumbItems} />
 
             <Link
               to="/books#mental-models"

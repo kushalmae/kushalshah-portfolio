@@ -9,6 +9,7 @@ import MentalModelCard from "@/components/MentalModelCard";
 import ThemeTag from "@/components/ThemeTag";
 import { books, mentalModels, ALL_THEME_TAGS, itemHasThemeTag } from "@/data/books";
 import { cn } from "@/lib/utils";
+import Seo from "@/components/Seo";
 
 const matchesSearch = (query: string, ...fields: string[]) => {
   const q = query.trim().toLowerCase();
@@ -68,6 +69,11 @@ const Books = () => {
 
   return (
     <PageLayout title="Books & Mental Models">
+      <Seo
+        title="Books & Mental Models"
+        description="Book summaries and extracted mental models — leadership, learning, strategy, and culture. The frameworks I actually apply."
+        path="/books"
+      />
       <a
         href="#book-list"
         className="sr-only focus:not-sr-only focus:absolute focus:top-20 focus:left-4 focus:z-50 focus:px-3 focus:py-2 focus:bg-background focus:border focus:border-line focus:rounded-sm focus:text-sm"

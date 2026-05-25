@@ -6,6 +6,8 @@ import { site } from "@/config/site";
 import drozoneLayerCuas from "@/data/case-studies/drozone-layer-cuas";
 import { Download, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import Seo from "@/components/Seo";
+import { personSchema } from "@/lib/seo/jsonld";
 
 const experience = [
   {
@@ -168,6 +170,12 @@ const technicalStack = [
 
 const Resume = () => (
   <PageLayout title="Resume">
+    <Seo
+      title="Resume"
+      description="Aerospace systems leadership and technical execution — Rocket Lab, Northrop Grumman, OPIR/SBIRS, PWSA. Experience, education, certifications, and skills."
+      path="/resume"
+      jsonLd={[personSchema()]}
+    />
     <section className="py-24 md:py-40">
       <div className="container max-w-3xl">
         <Reveal>
