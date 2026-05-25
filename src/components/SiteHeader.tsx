@@ -17,8 +17,13 @@ const navItems = [
 const SiteHeader = () => {
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -56,11 +61,16 @@ const SiteHeader = () => {
         <div className="flex items-center gap-3">
           {/* Theme toggle */}
           <button
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
             className="text-muted-foreground hover:text-foreground transition-colors"
             aria-label="Toggle theme"
+            suppressHydrationWarning
           >
-            {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
+            {mounted ? (
+              resolvedTheme === "dark" ? <Sun size={16} /> : <Moon size={16} />
+            ) : (
+              <Sun size={16} className="opacity-0" aria-hidden />
+            )}
           </button>
 
           {/* Mobile toggle */}
