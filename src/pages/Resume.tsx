@@ -80,6 +80,41 @@ const highlights = [
   "Authored technical BOEs for $10M+ proposals, translating mission requirements into architecture options, effort models, and risk profiles.",
 ];
 
+const careerTimeline = [
+  {
+    period: "2025 - Present",
+    organization: "Rocket Lab",
+    phase: "Mission operations for proliferated LEO",
+    focus:
+      "Global Operations across commercial and government constellations, including Globalstar and SDA T2TL within PWSA.",
+    evidence: "FSW, GNC, FIDO, ground software, Kubernetes, AWS, and mission rehearsal integration.",
+  },
+  {
+    period: "2020 - 2025",
+    organization: "Northrop Grumman",
+    phase: "OPIR payload and program leadership",
+    focus:
+      "System Performance IPT leadership across LOS/radiometry, anomaly response, EVMS, stakeholder alignment, and mission performance.",
+    evidence: "$5M annual budget, 25-engineer team, and six U.S. Space Force OPIR programs.",
+  },
+  {
+    period: "2015 - 2020",
+    organization: "Northrop Grumman",
+    phase: "Payload systems and mission algorithms",
+    focus:
+      "On-orbit test campaigns, missile trajectory tooling, payload calibration, jitter analysis, and image-processing algorithm validation.",
+    evidence: "Rotations across SEIT, LOS system performance, and early mission-critical tooling.",
+  },
+  {
+    period: "2013 - 2014",
+    organization: "Thales Avionics",
+    phase: "R&D prototyping foundation",
+    focus:
+      "Hands-on mechanical engineering work in an innovation lab, validating design hypotheses through test hardware.",
+    evidence: "Early exposure to cross-functional product and systems constraints.",
+  },
+];
+
 const education = [
   "M.S., Mechanical Engineering (Control Systems), UCLA (GPA: 3.93)",
   "B.S., Mechanical Engineering and Aerospace Engineering (Double Major), UCI (GPA: 3.90)",
@@ -223,6 +258,57 @@ const Resume = () => (
             </div>
           </Reveal>
         </div>
+
+        <section
+          aria-labelledby="career-timeline-heading"
+          className="mb-16"
+        >
+          <Reveal>
+            <h2
+              id="career-timeline-heading"
+              className="font-mono text-xs tracking-[0.2em] uppercase text-muted-foreground mb-3"
+            >
+              Career Timeline
+            </h2>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-8">
+              The path from R&D prototyping into OPIR payload systems, program
+              leadership, and current mission operations for proliferated LEO.
+            </p>
+          </Reveal>
+          <ol className="relative border-l border-line ml-3 space-y-8">
+            {careerTimeline.map((item, i) => (
+              <li key={`${item.period}-${item.organization}`} className="relative pl-8">
+                <Reveal delay={i * 80}>
+                  <span
+                    className="absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full bg-primary ring-4 ring-background"
+                    aria-hidden
+                  />
+                  <div className="border border-line rounded-sm p-5 bg-card/30">
+                    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-3">
+                      <div>
+                        <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-primary mb-1">
+                          {item.period}
+                        </p>
+                        <h3 className="text-base font-semibold text-foreground">
+                          {item.phase}
+                        </h3>
+                      </div>
+                      <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-muted-foreground md:text-right">
+                        {item.organization}
+                      </p>
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {item.focus}
+                    </p>
+                    <p className="mt-3 text-xs text-foreground/80 leading-relaxed">
+                      {item.evidence}
+                    </p>
+                  </div>
+                </Reveal>
+              </li>
+            ))}
+          </ol>
+        </section>
 
         <div className="mb-16">
           <Reveal>
