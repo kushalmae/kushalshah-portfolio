@@ -44,9 +44,8 @@ const MentalModelPage = () => {
       />
       <section className="py-24 md:py-32">
         <div className="container max-w-3xl">
+          <Breadcrumbs items={breadcrumbItems} sticky />
           <Reveal>
-            <Breadcrumbs items={breadcrumbItems} />
-
             <Link
               to="/books#mental-models"
               className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground tracking-widest uppercase mb-8 transition-colors"

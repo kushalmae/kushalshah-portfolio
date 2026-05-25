@@ -21,6 +21,7 @@ const primaryNav: NavItem[] = [
   { label: "Work", path: "/work" },
   { label: "Thinking", path: "/thinking" },
   { label: "About", path: "/about" },
+  { label: "Resume", path: "/resume" },
   { label: "Contact", path: "/contact" },
 ];
 
@@ -28,7 +29,6 @@ const moreNav: NavItem[] = [
   { label: "Code", path: "/code", match: ["/projects"] },
   { label: "Books", path: "/books" },
   { label: "Mental Models", path: "/books#mental-models", match: ["/mental-models"] },
-  { label: "Resume", path: "/resume" },
   { label: "Now", path: "/now" },
 ];
 
