@@ -19,4 +19,21 @@ describe("site navigation", () => {
       "/books#mental-models"
     );
   });
+
+  it("shows resume in the primary nav instead of only under more", () => {
+    render(
+      <MemoryRouter>
+        <SiteHeader />
+      </MemoryRouter>
+    );
+
+    const resumeLinks = screen.getAllByRole("link", { name: /^resume$/i });
+    expect(resumeLinks.some((link) => link.getAttribute("href") === "/resume")).toBe(
+      true
+    );
+    expect(screen.getByRole("button", { name: /more/i })).toBeInTheDocument();
+    expect(
+      screen.queryAllByRole("menuitem", { name: /^resume$/i })
+    ).toHaveLength(0);
+  });
 });
