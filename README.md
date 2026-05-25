@@ -57,12 +57,15 @@ docs/
 | `/about` | Background, beliefs |
 | `/work` | Filterable case study grid |
 | `/work/:id` | Full case study with table of contents |
-| `/projects` | GitHub projects |
+| `/code` | GitHub projects |
+| `/projects` | Legacy redirect to `/code` |
 | `/thinking` | Long-form writing index (topics + series) |
 | `/thinking/:slug` | Article |
 | `/books` | Book summaries and mental models index |
 | `/books/:slug` | Full book summary |
-| `/books/models/:slug` | Mental model detail |
+| `/mental-models` | Redirect to `/books#mental-models` |
+| `/mental-models/:slug` | Mental model detail |
+| `/books/models/:slug` | Legacy redirect to `/mental-models/:slug` |
 | `/resume` | Experience, expertise, PDF download |
 | `/contact` | Contact form + direct links |
 

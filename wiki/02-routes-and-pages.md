@@ -17,6 +17,7 @@ The route table lives in `src/App.tsx`. Every route maps 1:1 to a page component
 | `/thinking/:slug` | `pages/ArticlePage.tsx` | Full article, TOC, key takeaways, series nav | `data/articles.ts` |
 | `/books` | `pages/Books.tsx` | Book summaries + mental models index | `data/books.ts` |
 | `/books/:slug` | `pages/BookPage.tsx` | Full book summary, linked models | `data/books.ts` |
+| `/mental-models` | redirect | Sends visitors to `/books#mental-models` | — |
 | `/mental-models/:slug` | `pages/MentalModelPage.tsx` | One mental model | `data/books.ts` |
 | `/resume` | `pages/Resume.tsx` | Experience, skills, PDF download | static copy + `public/resume.pdf` |
 | `/contact` | `pages/Contact.tsx` | Contact form + direct links | `components/ContactForm.tsx` |
@@ -39,10 +40,10 @@ src/App.tsx
             ├── ScrollToTop      // resets scroll on route change
             ├── PageTransition   // fade/slide between pages
             └── Routes
-                 └── <Route path="…" element={…} />  ×13
+                 └── <Route path="…" element={…} />  ×16
 ```
 
-`ScrollToTop` is a side-effect-only component that resets `window.scrollY` whenever the pathname changes. `PageTransition` is the wrapper that animates page-to-page transitions.
+`ScrollToTop` is a side-effect-only component that resets `window.scrollY` whenever the pathname changes, while honoring hash anchors such as `/books#mental-models`. `PageTransition` is the wrapper that animates page-to-page transitions.
 
 ---
 
@@ -68,7 +69,7 @@ So a "page" is really just the middle block.
 
 ## Dynamic Routes
 
-Three routes carry a URL parameter:
+Four routes carry a URL parameter:
 
 - `/work/:id` — `id` matches `CaseStudy.id` in `src/data/case-studies/*`.
 - `/thinking/:slug` — `slug` matches `Article.slug` in `src/data/articles/*`.
@@ -77,4 +78,4 @@ Three routes carry a URL parameter:
 
 Each page resolves the parameter against the relevant `getXBySlug` / `find` helper and renders a 404-ish state when no match exists.
 
-Note: `/mental-models/:slug` is registered **before** `/books/:slug` in `App.tsx` so that the more specific pattern wins.
+Legacy `/books/models/:slug` links redirect to `/mental-models/:slug`.

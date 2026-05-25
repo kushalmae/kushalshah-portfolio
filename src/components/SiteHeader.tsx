@@ -27,8 +27,7 @@ const primaryNav: NavItem[] = [
 const moreNav: NavItem[] = [
   { label: "Code", path: "/code", match: ["/projects"] },
   { label: "Books", path: "/books" },
-  { label: "Mental Models", path: "/mental-models", match: ["/books#mental-models"] },
-  { label: "Speaking", path: "/speaking" },
+  { label: "Mental Models", path: "/books#mental-models", match: ["/mental-models"] },
   { label: "Resume", path: "/resume" },
 ];
 

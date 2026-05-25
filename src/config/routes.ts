@@ -21,7 +21,6 @@ export const STATIC_ROUTES: StaticRoute[] = [
   { path: "/code", changefreq: "monthly", priority: 0.8 },
   { path: "/thinking", changefreq: "weekly", priority: 0.9 },
   { path: "/books", changefreq: "monthly", priority: 0.7 },
-  { path: "/speaking", changefreq: "monthly", priority: 0.6 },
   { path: "/resume", changefreq: "monthly", priority: 0.9 },
   { path: "/contact", changefreq: "monthly", priority: 0.7 },
 ];

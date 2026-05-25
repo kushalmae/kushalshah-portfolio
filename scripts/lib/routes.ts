@@ -75,11 +75,6 @@ const STATIC_META: Record<
     description:
       "Book summaries and extracted mental models — leadership, learning, strategy, and culture. The frameworks I actually apply.",
   },
-  "/speaking": {
-    title: `Speaking — ${SHORT}`,
-    description:
-      "Talks and topics. Available for engineering org tech talks, hiring conferences, and aerospace systems forums.",
-  },
   "/resume": {
     title: `Resume — ${SHORT}`,
     description:
