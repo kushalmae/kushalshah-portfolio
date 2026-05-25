@@ -38,7 +38,7 @@ React 18 + TypeScript SPA built with Vite and React SWC. Client-side routing via
 | `/thinking/:slug` | Full article |
 | `/books` | Book summaries and mental models index |
 | `/books/:slug` | Full book summary |
-| `/books/models/:slug` | Mental model detail |
+| `/mental-models/:slug` | Mental model detail |
 | `/resume` | Experience, skills, PDF download |
 | `/contact` | Contact form + direct links |
 
