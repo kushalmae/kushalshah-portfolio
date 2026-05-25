@@ -67,6 +67,7 @@ docs/
 | `/mental-models/:slug` | Mental model detail |
 | `/books/models/:slug` | Legacy redirect to `/mental-models/:slug` |
 | `/resume` | Experience, expertise, PDF download |
+| `/now` | Current focus and open-to framing |
 | `/contact` | Contact form + direct links |
 
 ## Content layer

@@ -89,6 +89,10 @@ const careerTimeline = [
     focus:
       "Global Operations across commercial and government constellations, including Globalstar and SDA T2TL within PWSA.",
     evidence: "FSW, GNC, FIDO, ground software, Kubernetes, AWS, and mission rehearsal integration.",
+    links: [
+      { label: "PWSA Transport Layer", to: "/thinking/pwsa-transport-layer" },
+      { label: "PWSA Architecture", to: "/thinking/pwsa-architecture" },
+    ],
   },
   {
     period: "2024",
@@ -98,6 +102,9 @@ const careerTimeline = [
     focus:
       "Formalized program leadership discipline across scope, schedule, cost, risk, stakeholders, and hybrid delivery.",
     evidence: "Applied directly to OPIR IPT execution, EVMS, proposal BOEs, and cross-functional mission delivery.",
+    links: [
+      { label: "Mission-Critical System Leadership", to: "/work/mission-critical-systems" },
+    ],
   },
   {
     period: "2023",
@@ -116,6 +123,10 @@ const careerTimeline = [
     focus:
       "System Performance IPT leadership across LOS/radiometry, anomaly response, EVMS, stakeholder alignment, and mission performance.",
     evidence: "$5M annual budget, 25-engineer team, and six U.S. Space Force OPIR programs.",
+    links: [
+      { label: "Mission-Critical System Leadership", to: "/work/mission-critical-systems" },
+      { label: "PWSA Tracking Layer", to: "/thinking/pwsa-tracking-layer" },
+    ],
   },
   {
     period: "2022",
@@ -125,6 +136,10 @@ const careerTimeline = [
     focus:
       "Dissected customer mission requirements and ran trade studies for a layered counter-UAS architecture.",
     evidence: "Capstone became the Drozone Layer case study: radar, EO/IR, C2, effector timing, and AOA trades.",
+    links: [
+      { label: "Drozone Layer", to: "/work/drozone-layer-cuas" },
+      { label: "Counter-UAS Engagement Architecture", to: "/thinking/counter-uas-kill-chain-architecture" },
+    ],
   },
   {
     period: "2020",
@@ -134,6 +149,9 @@ const careerTimeline = [
     focus:
       "Structured systems engineering training across requirements, interfaces, DSMs, trade studies, cost, schedule, and risk.",
     evidence: "Capstone covered autonomous UAV delivery under FAA, ConOps, payload, range, and architecture constraints.",
+    links: [
+      { label: "The Hidden Architecture of Satellites", to: "/thinking/satellite-engineering-budgets" },
+    ],
   },
   {
     period: "2015 - 2020",
@@ -143,6 +161,10 @@ const careerTimeline = [
     focus:
       "On-orbit test campaigns, missile trajectory tooling, payload calibration, jitter analysis, and image-processing algorithm validation.",
     evidence: "Rotations across SEIT, LOS system performance, and early mission-critical tooling.",
+    links: [
+      { label: "Mission-Critical System Leadership", to: "/work/mission-critical-systems" },
+      { label: "The Pointing Budget", to: "/thinking/satellite-pointing-budget" },
+    ],
   },
   {
     period: "2013 - 2014",
@@ -348,6 +370,20 @@ const Resume = () => (
                     <p className="mt-3 text-xs text-foreground/80 leading-relaxed">
                       {item.evidence}
                     </p>
+                    {item.links && (
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        {item.links.map((link) => (
+                          <Link
+                            key={link.to}
+                            to={link.to}
+                            className="inline-flex items-center gap-1.5 font-mono text-[10px] tracking-[0.14em] uppercase text-primary hover:text-foreground transition-colors"
+                          >
+                            {link.label}
+                            <ArrowRight size={12} aria-hidden />
+                          </Link>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </Reveal>
               </li>

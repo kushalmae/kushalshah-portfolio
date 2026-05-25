@@ -4,6 +4,24 @@ import Reveal from "@/components/Reveal";
 import Seo from "@/components/Seo";
 import { personSchema } from "@/lib/seo/jsonld";
 
+const operatingPrinciples = [
+  {
+    title: "Map the system before optimizing",
+    body:
+      "Start with constraints, stakeholders, interfaces, and failure modes before committing to a solution path.",
+  },
+  {
+    title: "Design for failure modes",
+    body:
+      "Assume the real environment will stress timing, handoffs, operators, and assumptions; make resilience explicit.",
+  },
+  {
+    title: "Translate across domains",
+    body:
+      "Connect hardware, software, mission operations, program execution, and executive framing without flattening the details.",
+  },
+];
+
 const About = () => (
   <PageLayout title="About">
     <Seo
@@ -63,6 +81,31 @@ const About = () => (
               My value isn't in doing one thing extremely well. It's in seeing the whole system, identifying where structure is missing, and designing the architecture — technical, organizational, or strategic — that makes everything else work better.
             </p>
           </Reveal>
+
+          <div className="h-px bg-line my-12" />
+
+          <Reveal>
+            <h2 className="text-xl font-semibold text-foreground mb-4">
+              Operating Principles
+            </h2>
+          </Reveal>
+          <div className="grid md:grid-cols-3 gap-3">
+            {operatingPrinciples.map((principle, i) => (
+              <Reveal key={principle.title} delay={i * 60}>
+                <div className="border border-line rounded-sm p-4 bg-card/30 h-full">
+                  <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-primary mb-3">
+                    {String(i + 1).padStart(2, "0")}
+                  </p>
+                  <h3 className="text-sm font-semibold text-foreground mb-2">
+                    {principle.title}
+                  </h3>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    {principle.body}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
 
           <div className="h-px bg-line my-12" />
 

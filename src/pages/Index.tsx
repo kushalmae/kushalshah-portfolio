@@ -6,8 +6,12 @@ import Reveal from "@/components/Reveal";
 import Seo from "@/components/Seo";
 import { Button } from "@/components/ui/button";
 import { caseStudies } from "@/data/case-studies";
+import { articles } from "@/data/articles";
+import { mentalModels } from "@/data/books";
 import { featuredGitHubProjects } from "@/data/github-projects";
 import GitHubProjectCard from "@/components/GitHubProjectCard";
+import ArticleCard from "@/components/ArticleCard";
+import MentalModelCard from "@/components/MentalModelCard";
 import SystemsHero from "@/components/SystemsHero";
 import { site } from "@/config/site";
 import { personSchema, websiteSchema } from "@/lib/seo/jsonld";
@@ -43,6 +47,8 @@ const pillars = [
 ];
 
 const featuredWork = caseStudies.slice(0, 3);
+const featuredArticles = articles.slice(0, 3);
+const featuredModels = mentalModels.slice(0, 3);
 
 const Index = () => (
   <PageLayout>
@@ -128,6 +134,15 @@ const Index = () => (
                 <dd className="text-foreground">{currentlyAtAGlance.openTo}</dd>
               </div>
             </dl>
+            <div className="md:col-start-2">
+              <Link
+                to="/now"
+                className="inline-flex items-center gap-2 font-mono text-[10px] tracking-[0.18em] uppercase text-primary hover:text-foreground transition-colors"
+              >
+                Current Focus
+                <ArrowRight size={12} aria-hidden />
+              </Link>
+            </div>
           </div>
         </Reveal>
       </div>
@@ -270,6 +285,73 @@ const Index = () => (
 
     <div className="container"><div className="h-px bg-line" /></div>
 
+    {/* Thinking & Mental Models */}
+    <section className="py-24 md:py-32">
+      <div className="container max-w-6xl">
+        <Reveal>
+          <SectionLabel>Thinking & Mental Models</SectionLabel>
+          <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-4 tracking-tight">
+            Thinking & Mental Models
+          </h2>
+          <p className="text-sm text-muted-foreground leading-relaxed mb-10 max-w-2xl">
+            Technical writing and extracted frameworks that make the systems
+            thinking visible: architecture, operations, learning loops, and
+            leadership judgment.
+          </p>
+        </Reveal>
+
+        <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-8 md:gap-10">
+          <div>
+            <Reveal>
+              <div className="flex items-center justify-between gap-4 mb-4">
+                <h3 className="font-mono text-xs tracking-[0.2em] uppercase text-muted-foreground">
+                  Featured writing
+                </h3>
+                <Link
+                  to="/thinking"
+                  className="font-mono text-[10px] tracking-[0.18em] uppercase text-primary hover:text-foreground transition-colors"
+                >
+                  Read Technical Writing
+                </Link>
+              </div>
+            </Reveal>
+            <div className="grid md:grid-cols-3 lg:grid-cols-1 gap-3">
+              {featuredArticles.map((article, i) => (
+                <Reveal key={article.slug} delay={i * 60}>
+                  <ArticleCard article={article} compact />
+                </Reveal>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <Reveal>
+              <div className="flex items-center justify-between gap-4 mb-4">
+                <h3 className="font-mono text-xs tracking-[0.2em] uppercase text-muted-foreground">
+                  Portable models
+                </h3>
+                <Link
+                  to="/books#mental-models"
+                  className="font-mono text-[10px] tracking-[0.18em] uppercase text-primary hover:text-foreground transition-colors"
+                >
+                  Explore Mental Models
+                </Link>
+              </div>
+            </Reveal>
+            <div className="space-y-3">
+              {featuredModels.map((model, i) => (
+                <Reveal key={model.slug} delay={i * 60}>
+                  <MentalModelCard model={model} />
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div className="container"><div className="h-px bg-line" /></div>
+
     {/* How I Think */}
     <section className="py-24 md:py-32">
       <div className="container max-w-3xl">
@@ -311,12 +393,13 @@ const Index = () => (
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Button variant="hero" size="lg" asChild>
-              <a href={site.linkedin} target="_blank" rel="noopener noreferrer">
-                Connect on LinkedIn
-              </a>
+              <Link to="/work">Explore Systems Work</Link>
             </Button>
             <Button variant="subtle" size="lg" asChild>
-              <Link to="/contact">All Contact Channels</Link>
+              <Link to="/resume">Review Resume</Link>
+            </Button>
+            <Button variant="subtle" size="lg" asChild>
+              <Link to="/contact">Start a Conversation</Link>
             </Button>
           </div>
         </Reveal>

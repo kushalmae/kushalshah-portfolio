@@ -20,6 +20,7 @@ The route table lives in `src/App.tsx`. Every route maps 1:1 to a page component
 | `/mental-models` | redirect | Sends visitors to `/books#mental-models` | — |
 | `/mental-models/:slug` | `pages/MentalModelPage.tsx` | One mental model | `data/books.ts` |
 | `/resume` | `pages/Resume.tsx` | Experience, skills, PDF download | static copy + `public/resume.pdf` |
+| `/now` | `pages/Now.tsx` | Current focus, shipping work, and open-to framing | `data/now.ts` |
 | `/contact` | `pages/Contact.tsx` | Contact form + direct links | `components/ContactForm.tsx` |
 | `*` | `pages/NotFound.tsx` | 404 | — |
 
@@ -40,7 +41,7 @@ src/App.tsx
             ├── ScrollToTop      // resets scroll on route change
             ├── PageTransition   // fade/slide between pages
             └── Routes
-                 └── <Route path="…" element={…} />  ×16
+                 └── <Route path="…" element={…} />  ×17
 ```
 
 `ScrollToTop` is a side-effect-only component that resets `window.scrollY` whenever the pathname changes, while honoring hash anchors such as `/books#mental-models`. `PageTransition` is the wrapper that animates page-to-page transitions.

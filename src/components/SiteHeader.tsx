@@ -29,6 +29,7 @@ const moreNav: NavItem[] = [
   { label: "Books", path: "/books" },
   { label: "Mental Models", path: "/books#mental-models", match: ["/mental-models"] },
   { label: "Resume", path: "/resume" },
+  { label: "Now", path: "/now" },
 ];
 
 const isActive = (pathname: string, item: NavItem) => {

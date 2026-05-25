@@ -80,6 +80,11 @@ const STATIC_META: Record<
     description:
       "Aerospace systems leadership and technical execution — Rocket Lab, Northrop Grumman, OPIR/SBIRS, PWSA. Experience, education, certifications, and skills.",
   },
+  "/now": {
+    title: `Now — ${SHORT}`,
+    description:
+      "Current focus, role, shipping work, and what Kushal Shah is open to next.",
+  },
   "/contact": {
     title: `Contact — ${SHORT}`,
     description:

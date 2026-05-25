@@ -16,6 +16,7 @@ const footerSections = [
       { label: "Books", to: "/books" },
       { label: "Mental Models", to: "/books#mental-models" },
       { label: "Resume", to: "/resume" },
+      { label: "Now", to: "/now" },
     ],
   },
   {

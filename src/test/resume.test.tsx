@@ -28,5 +28,14 @@ describe("Resume page", () => {
     expect(within(timeline).getByText(/SASE Top Gun 2/i)).toBeInTheDocument();
     expect(within(timeline).getByText(/Architect Apprenticeship Program/i)).toBeInTheDocument();
     expect(within(timeline).getByText(/Caltech Certificate/i)).toBeInTheDocument();
+    expect(
+      within(timeline).getByRole("link", { name: /PWSA Transport Layer/i })
+    ).toHaveAttribute("href", "/thinking/pwsa-transport-layer");
+    expect(
+      within(timeline).getAllByRole("link", { name: /Mission-Critical System Leadership/i })[0]
+    ).toHaveAttribute("href", "/work/mission-critical-systems");
+    expect(
+      within(timeline).getByRole("link", { name: /Drozone Layer/i })
+    ).toHaveAttribute("href", "/work/drozone-layer-cuas");
   });
 });

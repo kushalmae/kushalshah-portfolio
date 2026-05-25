@@ -21,6 +21,7 @@ const Books = lazy(() => import("./pages/Books"));
 const BookPage = lazy(() => import("./pages/BookPage"));
 const MentalModelPage = lazy(() => import("./pages/MentalModelPage"));
 const Resume = lazy(() => import("./pages/Resume"));
+const Now = lazy(() => import("./pages/Now"));
 const Contact = lazy(() => import("./pages/Contact"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
@@ -79,6 +80,7 @@ const App = () => (
                       element={<SlugRedirect to={(s) => `/mental-models/${s}`} />}
                     />
                     <Route path="/resume" element={<Resume />} />
+                    <Route path="/now" element={<Now />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>

@@ -5,6 +5,7 @@ import SectionLabel from "@/components/SectionLabel";
 import Reveal from "@/components/Reveal";
 import CaseStudyTOC from "@/components/CaseStudyTOC";
 import { caseStudies } from "@/data/case-studies";
+import { githubProjects } from "@/data/github-projects";
 import Seo from "@/components/Seo";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { breadcrumbListSchema } from "@/lib/seo/jsonld";
@@ -38,6 +39,10 @@ const CaseStudyPage = () => {
   ];
 
   const hasTech = study.technologies.length > 0;
+  const relatedProjects = githubProjects.filter(
+    (project) => project.caseStudyId === study.id
+  );
+  const hasRelatedPaths = Boolean(study.relatedArticle || relatedProjects.length > 0);
 
   const path = `/work/${study.id}`;
   const breadcrumbItems = [
@@ -51,6 +56,7 @@ const CaseStudyPage = () => {
     { id: "tldr", label: "TL;DR" },
     ...(hasTech ? [{ id: "tech", label: "Tech" }] : []),
     ...sections.map((s) => ({ id: s.id, label: s.label })),
+    ...(hasRelatedPaths ? [{ id: "related-paths", label: "Related" }] : []),
     { id: "insight", label: "Insight" },
   ];
 
@@ -222,22 +228,52 @@ const CaseStudyPage = () => {
 
       <div className="container max-w-4xl"><div className="h-px bg-line" /></div>
 
-      {/* Related article */}
-      {study.relatedArticle && (
-        <section className="py-8 md:py-10">
+      {/* Related paths */}
+      {hasRelatedPaths && (
+        <section
+          id="related-paths"
+          aria-label="Related paths"
+          className="py-8 md:py-10 scroll-mt-24"
+        >
           <div className="container max-w-4xl">
             <Reveal>
               <div className="md:ml-[160px] md:pl-10">
                 <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-muted-foreground mb-3">
-                  Want the full technical depth?
+                  Related paths
                 </p>
-                <Link
-                  to={`/thinking/${study.relatedArticle.slug}`}
-                  className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.15em] uppercase text-primary hover:text-primary/70 transition-colors"
-                >
-                  {study.relatedArticle.label}
-                  <ArrowRight size={12} />
-                </Link>
+                <div className="grid gap-3">
+                  {study.relatedArticle && (
+                    <Link
+                      to={`/thinking/${study.relatedArticle.slug}`}
+                      className="group border border-line rounded-sm p-4 hover:border-muted-foreground/30 transition-colors"
+                    >
+                      <span className="font-mono text-[9px] tracking-[0.18em] uppercase text-muted-foreground">
+                        Related writing
+                      </span>
+                      <span className="mt-1 flex items-center gap-2 text-sm font-medium text-foreground group-hover:text-primary transition-colors">
+                        {study.relatedArticle.label}
+                        <ArrowRight size={12} aria-hidden />
+                      </span>
+                    </Link>
+                  )}
+                  {relatedProjects.map((project) => (
+                    <a
+                      key={project.slug}
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group border border-line rounded-sm p-4 hover:border-muted-foreground/30 transition-colors"
+                    >
+                      <span className="font-mono text-[9px] tracking-[0.18em] uppercase text-muted-foreground">
+                        Related code
+                      </span>
+                      <span className="mt-1 flex items-center gap-2 text-sm font-medium text-foreground group-hover:text-primary transition-colors">
+                        {project.name}
+                        <ExternalLink size={12} aria-hidden />
+                      </span>
+                    </a>
+                  ))}
+                </div>
               </div>
             </Reveal>
           </div>
