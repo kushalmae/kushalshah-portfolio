@@ -46,9 +46,8 @@ const BookPage = () => {
       />
       <section className="py-24 md:py-32">
         <div className="container max-w-6xl">
+          <Breadcrumbs items={breadcrumbItems} sticky />
           <Reveal>
-            <Breadcrumbs items={breadcrumbItems} />
-
             <Link
               to="/books"
               className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground tracking-widest uppercase mb-8 transition-colors"

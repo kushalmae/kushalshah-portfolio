@@ -72,7 +72,7 @@ const CaseStudyPage = () => {
       <CaseStudyTOC items={tocItems} />
 
       <div className="container max-w-4xl pt-6 md:pt-8">
-        <Breadcrumbs items={breadcrumbItems} className="mb-0" />
+        <Breadcrumbs items={breadcrumbItems} className="mb-0" sticky />
       </div>
 
       {/* Hero */}
